@@ -7,25 +7,8 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import update from 'immutability-helper';
 import SelectField from 'material-ui/SelectField';
 import GenericProject from './GenericProject';
-import {TextFieldPositiveReals, TextFieldPositiveIntegers} from './CustomTextFields';
-/*const fieldKeys=[
-    'numAssets',
-    'timeHorizon',
-    'x0',
-    'systemicDrift',
-    'systemicVol',
-    'q',
-    'lambda',
-    'StepsX',
-    'StepsU'
-];*/
+import {TextFieldPositiveReals, TextFieldPositiveIntegers, TextFieldUnit} from './CustomTextFields';
 const fields={
-    numAssets:{
-        isGood:true,
-        value:100000,
-        label:"Number of Assets",
-        component:TextFieldPositiveIntegers
-    },
     timeHorizon:{
         isGood:true,
         value:1,
@@ -38,29 +21,53 @@ const fields={
         label:"X0",
         component:TextFieldPositiveReals
     },
-    systemicDrift:{
+    speed:{
         isGood:true,
         value:.1,
-        label:"Systemic Drift",
+        label:"Speed",
         component:TextFieldPositiveReals
     },
-    systemicVol:{
+    volatility:{
         isGood:true,
         value:.3,
-        label:"Systemic Volatility",
-        component:TextFieldPositiveReals
-    },
-    q:{
-        isGood:true,
-        value:.05,
-        label:"q",
+        label:"Volatility",
         component:TextFieldPositiveReals
     },
     lambda:{
         isGood:true,
-        value:.05,
+        value:100,
         label:"lambda",
         component:TextFieldPositiveReals
+    },
+    alpha:{
+        isGood:true,
+        value:1.1,
+        label:"alpha",
+        component:TextFieldPositiveReals
+    },
+    shift:{
+        isGood:true,
+        value:1300,
+        label:"Shift (Stable)",
+        component:TextFieldPositiveReals
+    },
+    scale:{
+        isGood:true,
+        value:100,
+        label:"Scale (Stable)",
+        component:TextFieldPositiveReals
+    },
+    correlation:{
+        isGood:true,
+        value:.9,
+        label:"Correlation",
+        component:TextFieldUnit
+    },
+    StepsODE:{
+        isGood:true,
+        value:128, 
+        label:"Steps in ODE",
+        component:TextFieldPositiveIntegers
     },
     StepsX:{
         isGood:true,
@@ -70,16 +77,16 @@ const fields={
     },
     StepsU:{
         isGood:true,
-        value:128,
+        value:256,
         label:"Steps in U",
         component:TextFieldPositiveReals
     }
 };
-export default class CreditProject extends Component{
+export default class OpsProject extends Component{
     render(){
         return(
-            <GenericProject fields={fields} onSubmit={this.props.onSubmit} project="creditrisk"/>
-        );
+            <GenericProject fields={fields}/>
+        )
     }
 
 }
