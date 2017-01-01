@@ -9,7 +9,6 @@ import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import {GridList, GridTile} from 'material-ui/GridList';
 import {grey700, grey800, grey500} from 'material-ui/styles/colors';
-import Flexbox from 'flexbox-react';
 const name="Daniel Stahl";
 const iconSize=50;
 const iconStyle={
@@ -46,7 +45,9 @@ export default class Navs extends React.Component {
             title=""
             iconClassNameRight="muidocs-icon-navigation-expand-more"
             onLeftIconButtonTouchTap={this.handleToggle}
+            style={{position: 'fixed'}}
         />
+        {this.props.children}
         <Drawer
             docked={false}
             width={255}

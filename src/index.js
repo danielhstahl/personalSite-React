@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+/*import App from './App';*/
 import About from './About';
 import Projects from './Projects';
+import Home from './Home';
 import Research from './Research';
+import logo from './logo.svg';
 import Navs from './Navs';
 import './index.css';
-import { Link, hashHistory, Router,  Route} from 'react-router'
+import { Link, hashHistory, Router,  Route, IndexRoute} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 //import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -37,34 +39,31 @@ const muiTheme = getMuiTheme({
   },
 });
 /*<AppBar title="My AppBar" />*/
-
 const routes=[
-  {path:"/", component:App, text:"Home"},
-  {path:"/about", component:About, text:"About"},
-  {path:"/projects", component:Projects, text:"Projects"},
-  {path:"/research", component:Research, text:"Research"}
+  {path:"/", component:Home, text:"Home"},
+  {path:"about", component:About, text:"About"},
+  {path:"projects", component:Projects, text:"Projects"},
+  {path:"research", component:Research, text:"Research"}
 ];
 
+class WrappedNav extends Component{
+  render(){
+    return(<Navs menuItems={routes}>{this.props.children}</Navs>);
+  }
+} 
 ReactDOM.render((
   
  <MuiThemeProvider muiTheme={muiTheme}>
- <div>
-    <Navs menuItems={routes}/>
     <Router history={hashHistory}>
-      
-      {
-        routes.map((val, index)=>{
+      <Route path="/" component={WrappedNav}>
+        <IndexRoute component={Home} />
+        {routes.map((val, index)=>{
           return(<Route key={index} path={val.path} component={val.component}/>);
-        })
-      }
+        })}
+      </Route>
     </Router>
-    
-    </div>
   </MuiThemeProvider>
 
   
 ), document.getElementById('root'));
-/*ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);*/
+
