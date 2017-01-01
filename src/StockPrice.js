@@ -38,7 +38,7 @@ export default class StockPrice extends Component{
     render(){
         return(
         <span>
-            <span>{this.state.symbol}</span>
+            <span>{this.state.symbol} </span>
             <span>{this.state.price}</span>
             {this.state.up?<span style={{color:'green'}}> {this.state.change}</span>:
             <span style={{color:'red'}}> {this.state.change}</span>}       

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-export default class CustomCard extends Component{
+export class CustomCard extends Component{
 render() {
     return (
          <Card style={{maxWidth:'500px'}}>
@@ -11,6 +11,20 @@ render() {
             >
             <img style={{objectFit: 'cover'}} src={this.props.img} />
             </CardMedia>
+            <CardText>
+            {this.props.children}
+            </CardText>
+        </Card>   
+    );
+  }
+}
+export class TextCard extends Component{
+render() {
+    return (
+         <Card style={{maxWidth:'500px'}}>
+            <CardTitle
+                title={this.props.title}
+            />
             <CardText>
             {this.props.children}
             </CardText>

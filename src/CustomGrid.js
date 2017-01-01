@@ -1,7 +1,9 @@
 import {GridList, GridTile} from 'material-ui/GridList';
 import React, { Component } from 'react';
 const gridStyle={
-    margin:'50px'
+    marginTop:'75px',
+    marginLeft:'50px',
+    marginRight:'50px',
 };
 
 export class CustomGridList extends Component{

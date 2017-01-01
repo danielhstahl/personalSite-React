@@ -5,6 +5,7 @@ import About from './About';
 import Projects from './Projects';
 import Home from './Home';
 import Research from './Research';
+import Thoughts from './Thoughts';
 import logo from './logo.svg';
 import Navs from './Navs';
 import './index.css';
@@ -42,6 +43,7 @@ const muiTheme = getMuiTheme({
 const routes=[
   {path:"/", component:Home, text:"Home"},
   {path:"about", component:About, text:"About"},
+  {path:"thoughts", component:Thoughts, text:"Thoughts"},
   {path:"projects", component:Projects, text:"Projects"},
   {path:"research", component:Research, text:"Research"}
 ];
