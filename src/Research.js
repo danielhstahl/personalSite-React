@@ -10,7 +10,7 @@ class Research extends Component {
             <CustomCard title="Credit Risk" img={require("./assets/images/creditRisk.jpg")} >
                 This paper is published in the Journal of Credit Risk and pioneers efficient computation of the distribution of credit loss for large heterogenuous portfolios.
                 <br/>
-                <a href="assets/pdf/CreditRiskPaper.pdf">Internal Link </a>
+                <a href={require("./assets/pdf/CreditRiskPaper.pdf")}>Internal Link </a>
                 <br/>
                 <a href="http://www.risk.net/journal-of-credit-risk/technical-paper/2436463/loss-distributions-computational-efficiency-in-an-extended-framework">External Link </a>
 
@@ -21,7 +21,7 @@ class Research extends Component {
             <CustomCard title="Operational Risk" img={require("./assets/images/operationalRisk.jpg")} >
                 This paper is published in the Journal of Operational Risk and significantly extends the standard LDA operational loss framework to include correlation between severity and frequency and auto-correlation in frequency.  The distribution can be recovered practically instantly even for very long tailed severity distributions.
                 <br/>
-                <a href="assets/pdf/OpsRiskPaper.pdf">Internal Link </a>
+                <a href={require("./assets/pdf/OpsRiskPaper.pdf")}>Internal Link </a>
                 <br/>
                 <a href="http://www.risk.net/journal-of-operational-risk/technical-paper/2454227/operational-loss-with-correlated-frequency-and-severity-an-analytical-approach">External Link </a>
                 <br/>
@@ -34,7 +34,7 @@ class Research extends Component {
                 This paper describes in greater detail how to allocate risk to individual loans including marginal liquidity risk.
                 <br/>
                 
-                <a href="assets/pdf/CreditRiskExtensions.pdf">Internal Link</a>
+                <a href={require("./assets/pdf/CreditRiskExtensions.pdf")}>Internal Link</a>
 
             </CustomCard>
         </CustomGrid>
@@ -43,7 +43,7 @@ class Research extends Component {
                 This paper is a short description and proposal for managing liquidity risk.
                 <br/>
                 
-                <a href="assets/pdf/LiquidityRisk.pdf">Internal Link</a>
+                <a href={require("./assets/pdf/LiquidityRisk.pdf")}>Internal Link</a>
 
             </CustomCard>
         </CustomGrid>
