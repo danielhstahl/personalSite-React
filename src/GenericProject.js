@@ -44,7 +44,7 @@ export default class GenericProject extends Component{
     render(){
         return(
             
-            <ExpandableComponent>
+            <ExpandableComponent documentation={this.props.documentation}>
 
                 <GridList cols={2} cellHeight='auto'>
                     <GridTile cols={2}>

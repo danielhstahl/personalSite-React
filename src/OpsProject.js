@@ -136,7 +136,7 @@ export default class OpsProject extends Component{
         return(
             <CustomCard title="Operational Risk" img={require("./assets/images/operationalRisk.jpg")} >
                This project significantly extends the standard LDA operational loss framework to include correlation between severity and frequency and auto-correlation in frequency. The distribution can be recovered practically instantly even for very long tailed severity distributions.
-               <GenericProject fields={fields} onSubmit={this.onOpsSubmit}/>
+               <GenericProject fields={fields} onSubmit={this.onOpsSubmit} documentation="assets/pdf/OpsRiskPaper.pdf"/>
                <Dialog
                 modal={false}
                 open={this.state.showDialog}

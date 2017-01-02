@@ -29,7 +29,7 @@ export default class ExpandableComponent extends Component{
 
         <IconButton
             tooltip="Documentation"
-            onClick={this.toggleHidden}
+            href={this.props.documentation}
         >
             <ActionDescription/>
             

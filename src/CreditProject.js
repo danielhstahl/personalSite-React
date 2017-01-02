@@ -119,7 +119,7 @@ export default class CreditProject extends Component{
         return(
             <CustomCard title="Credit Risk" img={require("./assets/images/creditRisk.jpg")} >
                This project shows how to compute the distribution of a credit portfolio of defaultable assets with stochastic PD and LGD.  It includes full granularity and efficient computation.
-              <GenericProject fields={fields} onSubmit={this.onCreditSubmit}/>
+              <GenericProject fields={fields} onSubmit={this.onCreditSubmit} documentation="assets/pdf/CreditRiskPaper.pdf"/>
               <Dialog
                 modal={false}
                 open={this.state.showDialog}
