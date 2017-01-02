@@ -92,7 +92,6 @@ export default class CreditProject extends Component{
         };
         this.props.ws.on('creditRisk-data', (msg)=>{
             var vals=JSON.parse(msg);
-            console.log(vals);
             var shadowObj={
                 showProgress:{$set:false},
                 config:{
@@ -100,7 +99,6 @@ export default class CreditProject extends Component{
                 }
             };
             const updateConfig=update(this.state, shadowObj);
-            console.log(updateConfig);
             this.setState(updateConfig);
         });
     }
@@ -119,7 +117,7 @@ export default class CreditProject extends Component{
         return(
             <CustomCard title="Credit Risk" img={require("./assets/images/creditRisk.jpg")} >
                This project shows how to compute the distribution of a credit portfolio of defaultable assets with stochastic PD and LGD.  It includes full granularity and efficient computation.
-              <GenericProject fields={fields} onSubmit={this.onCreditSubmit} documentation="assets/pdf/CreditRiskPaper.pdf"/>
+              <GenericProject fields={fields} onSubmit={this.onCreditSubmit} documentation={require("./assets/pdf/CreditRiskPaper.pdf")}/>
               <Dialog
                 modal={false}
                 open={this.state.showDialog}

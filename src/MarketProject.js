@@ -427,7 +427,7 @@ export default class MarketProject extends Component{
         return(
             <CustomCard title="Market Risk" img={require("./assets/images/marketRisk.jpg")} >
                This project shows a Monte Carlo simulation (featuring C++ backend) for the distribution of a variety of assets.
-              <GenericProject fields={this.state.fields} onSubmit={this.onMarketSubmit} parseValidation={checkValidation} documentation="assets/pdf/MarketRiskDocumentation.pdf">
+              <GenericProject fields={this.state.fields} onSubmit={this.onMarketSubmit} parseValidation={checkValidation} documentation={require("./assets/pdf/MarketRiskDocumentation.pdf")}>
                 <SelectField
                     floatingLabelText="Select an Asset"
                     value={this.state.selectedAsset}

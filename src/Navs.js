@@ -93,7 +93,7 @@ export default class Navs extends React.Component {
         
         <Divider />
           {this.props.menuItems.map((val, index)=>{
-            return(<MenuItem key={index} onTouchTap={!this.state.docked?this.handleClose:()=>{}} containerElement={<Link to={val.path}/>} primaryText={val.text}/> )
+            return(<MenuItem key={index} onClick={!this.state.docked?this.handleClose:()=>{}} containerElement={<Link to={val.path}/>} primaryText={val.text}/> )
           })}
 
         </Drawer>

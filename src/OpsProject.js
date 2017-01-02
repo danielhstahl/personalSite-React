@@ -109,7 +109,6 @@ export default class OpsProject extends Component{
         };
         this.props.ws.on('opsRisk-data', (msg)=>{
             var vals=JSON.parse(msg);
-            console.log(vals);
             var shadowObj={
                 showProgress:{$set:false},
                 config:{
@@ -117,7 +116,6 @@ export default class OpsProject extends Component{
                 }
             };
             const updateConfig=update(this.state, shadowObj);
-            console.log(updateConfig);
             this.setState(updateConfig);
         });
     }
@@ -136,7 +134,7 @@ export default class OpsProject extends Component{
         return(
             <CustomCard title="Operational Risk" img={require("./assets/images/operationalRisk.jpg")} >
                This project significantly extends the standard LDA operational loss framework to include correlation between severity and frequency and auto-correlation in frequency. The distribution can be recovered practically instantly even for very long tailed severity distributions.
-               <GenericProject fields={fields} onSubmit={this.onOpsSubmit} documentation="assets/pdf/OpsRiskPaper.pdf"/>
+               <GenericProject fields={fields} onSubmit={this.onOpsSubmit} documentation={require("./assets/pdf/OpsRiskPaper.pdf")}/>
                <Dialog
                 modal={false}
                 open={this.state.showDialog}
