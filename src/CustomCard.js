@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 export class CustomCard extends Component{
 render() {
@@ -9,7 +9,7 @@ render() {
             overlay={<CardTitle title={this.props.title}/>}
             
             >
-            <img style={{objectFit: 'cover'}} src={this.props.img} />
+            <img role="presentation" style={{objectFit: 'cover'}} src={this.props.img} />
             </CardMedia>
             <CardText>
             {this.props.children}

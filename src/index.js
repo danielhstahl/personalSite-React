@@ -6,10 +6,9 @@ import Projects from './Projects';
 import Home from './Home';
 import Research from './Research';
 import Thoughts from './Thoughts';
-import logo from './logo.svg';
 import Navs from './Navs';
 import './index.css';
-import { Link, hashHistory, Router,  Route, IndexRoute} from 'react-router';
+import { hashHistory, Router,  Route, IndexRoute} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 //import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -31,6 +30,7 @@ const muiTheme = getMuiTheme({
     primary1Color: grey500,
     primary2Color: grey800,
     primary3Color: grey500,
+    accent1Color:grey500
     /*accent1Color: pinkA200,
     accent2Color: grey100,
     accent3Color: grey500,*/

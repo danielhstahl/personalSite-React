@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import ExpandableComponent from './ExpandableComponent';
 import {GridList, GridTile} from 'material-ui/GridList';
 import update from 'immutability-helper';
-import SelectField from 'material-ui/SelectField';
-//import {TextFieldPositiveReals, TextFieldPositiveIntegers} from './CustomTextFields';
-
 export default class GenericProject extends Component{
     constructor(props){
         super(props);
@@ -22,11 +17,11 @@ export default class GenericProject extends Component{
         });
     }
     aggregateResults=(value, error, name)=>{
+        var upObj={
+            fields:{}
+        }
         if(error){
-            var upObj={
-                fields:{},
-                anyErrors:{$set:true}
-            };
+            upObj.anyErrors={$set:true};
             upObj.fields[name]={
                 isGood:{$set:false}
             };
@@ -34,11 +29,9 @@ export default class GenericProject extends Component{
             this.setState(newData);
         }
         else{
-            var upObj={
-                fields:{}
-            };
             upObj.fields[name]={
-                isGood:{$set:true}
+                isGood:{$set:true},
+                value:{$set:value}
             };
             const newData=update(this.state, upObj);
             this.setState(newData, ()=>{
@@ -52,7 +45,11 @@ export default class GenericProject extends Component{
         return(
             
             <ExpandableComponent>
+
                 <GridList cols={2} cellHeight='auto'>
+                    <GridTile cols={2}>
+                        {this.props.children}
+                    </GridTile>
                     {Object.keys(this.props.fields).map((val, index)=>{
                         var actualItem=this.props.fields[val];
                         var Type=actualItem.component;
@@ -61,6 +58,10 @@ export default class GenericProject extends Component{
                                 <Type 
                                     value={actualItem.value} 
                                     label={actualItem.label} 
+                                    error={actualItem.errMessage}
+                                    upper={actualItem.max}
+                                    lower={actualItem.min}
+                                    validation={(val)=>{return this.props.parseValidation(val, actualItem, this.state.fields); } }
                                     checkIfCanSubmit={
                                         (stateValue, error)=>{
                                             return this.aggregateResults(stateValue, error, val);
@@ -68,11 +69,11 @@ export default class GenericProject extends Component{
                                     }
                                 />
                             </GridTile>
-                        )
+                        );
                     })}
                 </GridList>
                 {this.state.anyErrors?null:<RaisedButton label="Run" onClick={()=>{
-                this.props.onSubmit(this.state.fields, this.props.project);}}/>}
+                this.props.onSubmit(this.state.fields);}}/>}
                     
             </ExpandableComponent>
         );

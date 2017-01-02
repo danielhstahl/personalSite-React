@@ -1,32 +1,21 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import ExpandableComponent from './ExpandableComponent';
-import {GridList, GridTile} from 'material-ui/GridList';
-import update from 'immutability-helper';
-import SelectField from 'material-ui/SelectField';
 import GenericProject from './GenericProject';
 import {TextFieldPositiveReals, TextFieldPositiveIntegers} from './CustomTextFields';
-/*const fieldKeys=[
-    'numAssets',
-    'timeHorizon',
-    'x0',
-    'systemicDrift',
-    'systemicVol',
-    'q',
-    'lambda',
-    'StepsX',
-    'StepsU'
-];*/
+import {CustomCard} from './CustomCard';
+import ReactHighcharts from 'react-highcharts';
+import CircularProgress from 'material-ui/CircularProgress';
+import Dialog from 'material-ui/Dialog';
+import update from 'immutability-helper';
+import {grey500} from 'material-ui/styles/colors';
+/*These keys are the same keys in the c++ code!*/
 const fields={
-    numAssets:{
+    n:{
         isGood:true,
         value:100000,
         label:"Number of Assets",
         component:TextFieldPositiveIntegers
     },
-    timeHorizon:{
+    t:{
         isGood:true,
         value:1,
         label:"Time Horizon",
@@ -38,13 +27,13 @@ const fields={
         label:"X0",
         component:TextFieldPositiveReals
     },
-    systemicDrift:{
+    alpha:{
         isGood:true,
         value:.1,
         label:"Systemic Drift",
         component:TextFieldPositiveReals
     },
-    systemicVol:{
+    sigma:{
         isGood:true,
         value:.3,
         label:"Systemic Volatility",
@@ -62,23 +51,85 @@ const fields={
         label:"lambda",
         component:TextFieldPositiveReals
     },
-    StepsX:{
+    xNum:{
         isGood:true,
         value:1024,
         label:"Steps in X",
         component:TextFieldPositiveReals
     },
-    StepsU:{
+    uNum:{
         isGood:true,
         value:128,
         label:"Steps in U",
         component:TextFieldPositiveReals
     }
 };
+const config={
+    chart: {
+        type: 'line'
+    },
+    credits:{
+        enabled:false
+    },
+    legend:{
+      enabled:false
+    },
+    title: {
+      text: 'Credit Economic Capital'
+    },
+    series:[{
+        data:[]
+    }]
+    
+};
 export default class CreditProject extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            showProgress:true,
+            showDialog:false,
+            config:config
+        };
+        this.props.ws.on('creditRisk-data', (msg)=>{
+            var vals=JSON.parse(msg);
+            console.log(vals);
+            var shadowObj={
+                showProgress:{$set:false},
+                config:{
+                    series:[{$set:{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}}]
+                }
+            };
+            const updateConfig=update(this.state, shadowObj);
+            console.log(updateConfig);
+            this.setState(updateConfig);
+        });
+    }
+    onCreditSubmit=(submission)=>{
+        this.props.ws.emit('getCredit', this.props.filterSubmission(submission));
+        this.handleOpen();
+        //this.sendData('getCredit', 'showCreditDialog', );
+    }
+    handleOpen = () => {
+        this.setState({showDialog: true});
+    };
+    handleClose = () => {
+        this.setState({showDialog: false});
+    };
     render(){
         return(
-            <GenericProject fields={fields} onSubmit={this.props.onSubmit} project="creditrisk"/>
+            <CustomCard title="Credit Risk" img={require("./assets/images/creditRisk.jpg")} >
+               This project shows how to compute the distribution of a credit portfolio of defaultable assets with stochastic PD and LGD.  It includes full granularity and efficient computation.
+              <GenericProject fields={fields} onSubmit={this.onCreditSubmit}/>
+              <Dialog
+                modal={false}
+                open={this.state.showDialog}
+                onRequestClose={this.handleClose}
+                >
+                {this.state.showProgress?
+                    <CircularProgress size={80} thickness={5} />:
+                    <ReactHighcharts config={this.state.config}></ReactHighcharts>}
+                </Dialog>
+            </CustomCard>
         );
     }
 

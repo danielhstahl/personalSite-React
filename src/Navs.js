@@ -1,14 +1,10 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router';
 import AppBar from 'material-ui/AppBar';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import {GridList, GridTile} from 'material-ui/GridList';
-import {grey700, grey800, grey500} from 'material-ui/styles/colors';
 const name="Daniel Stahl";
 const iconSize=50;
 const iconStyle={
@@ -31,13 +27,25 @@ export default class Navs extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false};
+    this.state = {open: false, docked:false, mql:null};
   }
-
+  componentWillMount() {
+    const mql = window.matchMedia(`(min-width: 800px)`);
+    mql.addListener(this.mediaQueryChanged);
+    this.setState({mql: mql, docked: mql.matches, open:mql.matches});
+  }
+  componentWillUnmount() {
+    this.state.mql.removeListener(this.mediaQueryChanged);
+  }
+  
   handleToggle = () => this.setState({open: !this.state.open});
 
   handleClose = () => this.setState({open: false});
-
+  
+  mediaQueryChanged=()=>{
+    this.setState({docked: this.state.mql.matches, open:this.state.mql.matches});
+    //this.handleToggle();
+  }
   render() {
     return (
         <div>
@@ -47,9 +55,11 @@ export default class Navs extends React.Component {
             onLeftIconButtonTouchTap={this.handleToggle}
             style={{position: 'fixed'}}
         />
-        {this.props.children}
+        <div style={{marginLeft:this.state.docked?'300px':'0px'}}>
+          {this.props.children}
+        </div>
         <Drawer
-            docked={false}
+            docked={this.state.docked}
             width={255}
             open={this.state.open}
             onRequestChange={(open) => this.setState({open})}
@@ -66,17 +76,17 @@ export default class Navs extends React.Component {
           </GridTile>
           <GridTile>
           <a href='https://www.linkedin.com/profile/view?id=AAIAAAYja3AB_fq6IhUtF5CBw1yjTHheP8YIooE&trk=nav_responsive_tab_profile'>
-                <img style={iconStyle} src={require('./assets/icons/linkedin.svg')}/>
+                <img role="presentation"  style={iconStyle} src={require('./assets/icons/linkedin.svg')}/>
               </a>
           </GridTile>
           <GridTile>
           <a href='https://plus.google.com/u/0/+DanielStahl1138'>
-                <img style={iconStyle} src={require('./assets/icons/googleplus.svg')}/>
+                <img role="presentation" style={iconStyle} src={require('./assets/icons/googleplus.svg')}/>
               </a>    
           </GridTile>
           <GridTile>
           <a href='https://github.com/phillyfan1138'>
-                <img style={iconStyle} src={require('./assets/icons/github.svg')}/>
+                <img role="presentation"  style={iconStyle} src={require('./assets/icons/github.svg')}/>
               </a>
             </GridTile>
         </GridList>

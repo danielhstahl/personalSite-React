@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import { Link} from 'react-router'
 import {CustomCard} from './CustomCard';
 import {CustomGrid, CustomGridList} from './CustomGrid';
-//$color-primary: $palette-grey-500;
-//mdl-color--grey-800
 
 class Research extends Component {
   render() {

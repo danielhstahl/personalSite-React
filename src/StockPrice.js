@@ -21,7 +21,6 @@ export default class StockPrice extends Component{
         ajax.on('success', (event)=>{
             var data=event.target.response;
             data=JSON.parse(data.substring(3));
-            console.log(data);
             data=data[0];
             this.setState({
                 up:data.c.substring(0, 1)!=='-',

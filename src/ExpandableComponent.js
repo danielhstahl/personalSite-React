@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import { Link} from 'react-router';
-import {CustomCard} from './CustomCard';
-import {CustomGrid, CustomGridList} from './CustomGrid';
-import {GridList} from 'material-ui/GridList';
-
 import ActionDescription from 'material-ui/svg-icons/action/description';
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
