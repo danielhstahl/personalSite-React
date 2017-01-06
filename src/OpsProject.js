@@ -1,84 +1,80 @@
 import React, { Component } from 'react';
-import GenericProject from './GenericProject';
-import {TextFieldPositiveReals, TextFieldPositiveIntegers, TextFieldUnit} from './CustomTextFields';
+import {GenericProject} from './GenericProject';
 import {CustomCard} from './CustomCard';
 import ReactHighcharts from 'react-highcharts';
 import CircularProgress from 'material-ui/CircularProgress';
 import Dialog from 'material-ui/Dialog';
 import update from 'immutability-helper';
 import {grey500} from 'material-ui/styles/colors';
+const integerValidation=(number)=>{
+    return number.toString().match(/^[1-9]\d*$/)?"":"Requires a positive integer";
+}
+const realValidation=(number)=>{
+    return number.toString().match(/^[+]?([.]\d+|\d+([.]\d+)?)$/)?"":"Requires a positive number";
+}
 const fields={
     t:{
-        isGood:true,
         value:1,
         label:"Time Horizon",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     v0:{
-        isGood:true,
+
         value:1,
         label:"X0",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     a:{
-        isGood:true,
+
         value:.1,
         label:"Speed",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     sigma:{
-        isGood:true,
+
         value:.3,
         label:"Volatility",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     lambda:{
-        isGood:true,
         value:100,
         label:"lambda",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     alphaStable:{
-        isGood:true,
         value:1.1,
         label:"alpha",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     muStable:{
-        isGood:true,
         value:1300,
         label:"Shift (Stable)",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     cStable:{
-        isGood:true,
         value:100,
         label:"Scale (Stable)",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     rho:{
-        isGood:true,
         value:.9,
         label:"Correlation",
-        component:TextFieldUnit
+        validationFunction:realValidation
     },
     numODE:{
-        isGood:true,
         value:128, 
         label:"Steps in ODE",
-        component:TextFieldPositiveIntegers
+        validationFunction:realValidation
     },
     xNum:{
-        isGood:true,
         value:1024,
         label:"Steps in X",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     uNum:{
-        isGood:true,
         value:256,
         label:"Steps in U",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     }
 };
 const config={
@@ -105,7 +101,8 @@ export default class OpsProject extends Component{
         this.state={
             showProgress:true,
             showDialog:false,
-            config:config
+            config:config,
+            fields:fields
         };
         this.props.ws.on('opsRisk-data', (msg)=>{
             var vals=JSON.parse(msg);
@@ -119,8 +116,8 @@ export default class OpsProject extends Component{
             this.setState(updateConfig);
         });
     }
-    onOpsSubmit=(submission)=>{
-        this.props.ws.emit('getOps', this.props.filterSubmission(submission));
+    onOpsSubmit=()=>{
+        this.props.ws.emit('getOps', this.props.filterSubmission(this.state.fields));
         this.handleOpen();
         //this.sendData('getCredit', 'showCreditDialog', );
     }
@@ -130,11 +127,21 @@ export default class OpsProject extends Component{
     handleClose = () => {
         this.setState({showDialog: false});
     };
+    onTypeTextField=(value, name)=>{
+        var upObj={
+            fields:{}
+        }
+        upObj.fields[name]={
+            value:{$set:value}
+        };
+        const newData=update(this.state, upObj);
+        this.setState(newData);
+    };
     render(){
         return(
             <CustomCard title="Operational Risk" img={require("./assets/images/operationalRisk.jpg")} >
                This project significantly extends the standard LDA operational loss framework to include correlation between severity and frequency and auto-correlation in frequency. The distribution can be recovered practically instantly even for very long tailed severity distributions.
-               <GenericProject fields={fields} onSubmit={this.onOpsSubmit} documentation={require("./assets/pdf/OpsRiskPaper.pdf")}/>
+               <GenericProject fields={this.state.fields} onRun={this.onOpsSubmit} documentation={require("./assets/pdf/OpsRiskPaper.pdf")} callback={this.onTypeTextField} />
                <Dialog
                 modal={false}
                 open={this.state.showDialog}

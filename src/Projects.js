@@ -6,14 +6,7 @@ import OpsProject from './OpsProject';
 import MarketProject from './MarketProject';
 //import GenericModalChart from './GenericModalChart';
 
-const socket = io.connect('http://45.55.153.219:80/');
-socket.on('connect', ()=>{
-  console.log("Connected");
-  socket.emit('creditrisk', {hello:"world"});//dummy data
-  socket.emit('marketrisk', {hello:"world"});//dummy data
-  socket.emit('getYield', {hello:"world"});//dummy data
-  socket.emit('opsrisk', {hello:"world"});//dummy data
-});
+
 const filterSubmission=(submission)=>{
   var obj={};
   for(var key in submission){
@@ -22,20 +15,31 @@ const filterSubmission=(submission)=>{
   return obj;
 }
 class Projects extends Component {
+  constructor(props){
+    super(props);
+    this.socket = io.connect('http://45.55.153.219:80/');
+    this.socket.on('connect', ()=>{
+      console.log("Connected");
+      this.socket.emit('creditrisk', {hello:"world"});//dummy data
+      this.socket.emit('marketrisk', {hello:"world"});//dummy data
+      this.socket.emit('getYield', {hello:"world"});//dummy data
+      this.socket.emit('opsrisk', {hello:"world"});//dummy data
+    });
+  }
   componentWillUnmount(){
-    socket.close();
+    this.socket.close();
   }
   render() {
     return (
       <CustomGridList>
         <CustomGrid>
-            <CreditProject ws={socket} filterSubmission={filterSubmission}/>
+            <CreditProject ws={this.socket} filterSubmission={filterSubmission}/>
         </CustomGrid>
         <CustomGrid>
-            <OpsProject ws={socket} filterSubmission={filterSubmission}/>
+            <OpsProject ws={this.socket} filterSubmission={filterSubmission}/>
         </CustomGrid>
         <CustomGrid>
-            <MarketProject ws={socket} filterSubmission={filterSubmission}/>
+            <MarketProject ws={this.socket} filterSubmission={filterSubmission}/>
         </CustomGrid>
        </CustomGridList> 
     );

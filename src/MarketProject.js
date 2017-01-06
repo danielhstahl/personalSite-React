@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GenericProject from './GenericProject';
+import {GenericProject} from './GenericProject';
 import {TextFieldPositiveReals, TextFieldBoundedInteger,  TextFieldGeneric, TextFieldPositiveIntegers, TextFieldBoundedReal} from './CustomTextFields';
 import {CustomCard} from './CustomCard';
 import ReactHighcharts from 'react-highcharts';
@@ -15,46 +15,53 @@ const startingAsset=0;
 
 const checkValidation=(val, item, obj)=>{
     //const item=obj1[name];
-    if(item.validation){
+    if(item.validationFunction){
         const otherKey=item.depends||"";
         const val2=otherKey?obj[otherKey].value:0;
-        return item.validation(val, val2);
+        return item.validationFunction(val, val2);
     }
-    return true;
+    return "";
 }
-
+const isPositiveInteger=(number)=>{
+    return number.toString().match(/^[1-9]\d*$/);
+}
+const isPositiveNumber=(number)=>{
+    return number.toString().match(/^[+]?([.]\d+|\d+([.]\d+)?)$/);
+}
+const integerValidation=(number)=>{
+    return isPositiveInteger(number)?"":"Requires a positive integer";
+}
+const realValidation=(number)=>{
+    return isPositiveNumber(number)?"":"Requires a positive number";
+}
 const standardFields={
     n:{
         label:"# of simulations",
         value:1000,
-        min:50,
-        max:100000,
-        isGood:true,
-        component:TextFieldBoundedInteger
+        validationFunction:function(val){
+            return isPositiveInteger(val)&&val<100000&&val>50?"":"Between 50 and 100000";
+        }
     },
     sigma:{
         label:"Volatility",
         value:0.04,
-        min:0.01,
-        max:0.1,
-        isGood:true,
-        component:TextFieldBoundedReal
+        validationFunction:function(val){
+            return isPositiveNumber(val)&&val<.5&&val>.01?"":"Between .01 and .1";
+        }
     },
     a:{
         label:"Mean Reversion",
         value:0.2,
-        min:0.01,
-        max:0.5,
-        isGood:true,
-        component:TextFieldBoundedReal
+        validationFunction:function(val){
+            return isPositiveNumber(val)&&val<.5&&val>.01?"":"Between .01 and .5";
+        }
     },
     t:{
         label:"Simulate to (in days)",
         value:10,
-        min:1,
-        max:30,
-        isGood:true,
-        component:TextFieldPositiveIntegers
+        validationFunction:function(val){
+            return isPositiveInteger(val)&&val<30?"":"Positive Integer<30"
+        }
     }
 };
 const assets=[{
@@ -62,16 +69,14 @@ const assets=[{
     value:0,
     params:Object.assign({
         T:{
-        label:"Maturity (years)",
-        value:1,
-        depends:"t",
-        validation:function(val, val1){
-            return val*360>val1;
-        },
-        isGood:true,
-        component:TextFieldGeneric,
-        errMessage:"Required > \"Simulate to date\""
-    }}, standardFields)
+            label:"Maturity (years)",
+            value:1,
+            depends:"t",
+            validationFunction:function(val, val1){
+                return val*360>val1?"":"Required > \"Simulate to date\"";
+            }
+        }
+    }, standardFields)
 },{
     label:"Euro Dollar Future",
     value:1,
@@ -80,22 +85,14 @@ const assets=[{
             label:"Maturity (years)",
             value:1,
             depends:"t",
-            isGood:true,
-            validation:function(val, val1){
-                return val*360>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > \"Simulate to date\""
+            validationFunction:function(val, val1){
+                return val*360>val1?"":"Required > \"Simulate to date\"";
+            }
         },
         delta:{
             label:"Floating Tenor",
             value:.25,
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         }
     }, standardFields)
 },{
@@ -106,33 +103,22 @@ const assets=[{
             label:"Maturity (years)",
             value:1,
             depends:"t",
-            isGood:true,
-            validation:function(val, val1){
-                return  val*360>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > \"Simulate to date\""
+            validationFunction:function(val, val1){
+                return  val*360>val1?"":"Required > \"Simulate to date\"";
+            }
         },
         Tm:{
             label:"Underlying Maturity",
             value:1.25,
             depends:"T",
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > Maturity"
+            validationFunction:function(val, val1){
+                return val>val1?"":"Required > Maturity";
+            }
         },
         k:{
             label:"Strike",
             value:.97,
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         }
     }, standardFields)
 },{
@@ -143,33 +129,22 @@ const assets=[{
             label:"Maturity (years)",
             value:1,
             depends:"t",
-            isGood:true,
-            validation:function(val, val1){
-                return val*360>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > \"Simulate to date\""
+            validationFunction:function(val, val1){
+                return val*360>val1?"":"Required > \"Simulate to date\"";
+            }
         },
         Tm:{
             label:"Underlying Maturity",
             value:1.25,
             depends:"T",
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > Maturity"
+            validationFunction:function(val, val1){
+                return val>val1?"":"Required > Maturity";
+            }
         },
         k:{
             label:"Strike",
-            isGood:true,
             value:.97,
-            validation:function(val, val1){
-                return  val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         }
     }, standardFields)
 },{
@@ -180,32 +155,19 @@ const assets=[{
             label:"Maturity (years)",
             value:1,
             depends:"t",
-            isGood:true,
-            validation:function(val, val1){
-                return val*360>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > \"Simulate to date\""
+            validationFunction:function(val, val1){
+                return val*360>val1?"":"Required > \"Simulate to date\"";
+            }
         },
         delta:{
             label:"Floating Tenor",
             value:.25,
-            isGood:true,
-            validation:function(val, val1){
-                return  val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         },
         k:{
             label:"Strike",
             value:.02,
-            isGood:true,
-            validation:function(val, val1){
-                return  val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         }
     }, standardFields)
 },{
@@ -216,32 +178,19 @@ const assets=[{
             label:"Maturity (years)",
             value:1,
             depends:"t",
-            isGood:true,
-            validation:function(val, val1){
-                return  val*360>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > \"Simulate to date\""
+            validationFunction:function(val, val1){
+                return  val*360>val1?"":"Required > \"Simulate to date\"";
+            }
         },
         delta:{
             label:"Floating Tenor",
             value:.25,
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         },
         k:{
             label:"Swap Rate",
             value:.02,
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         }
     }, standardFields)
 },{
@@ -252,43 +201,27 @@ const assets=[{
             label:"Maturity (years)",
             value:1,
             depends:"t",
-            isGood:true,
-            validation:function(val, val1){
-                return  val*360>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > \"Simulate to date\""
+            validationFunction:function(val, val1){
+                return  val*360>val1?"":"Required > \"Simulate to date\"";
+            }
         },
         delta:{
             label:"Floating Tenor",
             value:.25,
-            isGood:true,
-            validation:function(val, val1){
-                return  val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         },
         Tm:{
             label:"Underlying Maturity",
             value:6,
             depends:"T",
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > Maturity"
+            validationFunction:function(val, val1){
+                return val>val1?"":"Required > Maturity";
+            }
         },
         k:{
             label:"Strike",
             value:.03,
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         }
     }, standardFields)
 },{
@@ -299,43 +232,27 @@ const assets=[{
             label:"Maturity (years)",
             value:1,
             depends:"t",
-            isGood:true,
-            validation:function(val, val1){
-                return val*360>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > \"Simulate to date\""
+            validationFunction:function(val, val1){
+                return val*360>val1?"":"Required > \"Simulate to date\"";
+            }
         },
         delta:{
             label:"Floating Tenor",
             value:.25,
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation,
         },
         Tm:{
             label:"Underlying Maturity",
             value:6,
             depends:"T",
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > Maturity"
+            validationFunction:function(val, val1){
+                return val>val1?"":"Required > Maturity";
+            }
         },
         k:{
             label:"Strike",
             value:.03,
-            isGood:true,
-            validation:function(val, val1){
-                return val>val1;
-            },
-            component:TextFieldGeneric,
-            errMessage:"Required > zero"
+            validationFunction:realValidation
         }
     }, standardFields)
 }];
@@ -374,6 +291,12 @@ const getSubFields=(value, obj)=>{
         return value===element.value;
     });
 }
+const checkIfAllGood=(fields)=>{
+    return Object.keys(fields).every((val, index)=>{
+        const item=fields[val];
+        return item.validationFunction(item.value)==="";
+    });
+}
 export default class MarketProject extends Component{
     constructor(props){
         super(props);
@@ -401,8 +324,8 @@ export default class MarketProject extends Component{
             }
         });
     }
-    onMarketSubmit=(submission)=>{
-        var myObj=this.props.filterSubmission(submission);
+    onMarketSubmit=()=>{
+        var myObj=this.props.filterSubmission(this.state.fields);
         myObj.asset=this.state.selectedAsset;
         this.props.ws.emit('getMarket', myObj);
         this.handleOpen();
@@ -423,11 +346,21 @@ export default class MarketProject extends Component{
         const updateConfig=update(this.state, shadowObj);
         this.setState(updateConfig);
     }
+    onTypeTextField=(value, name)=>{
+        var upObj={
+            fields:{}
+        }
+        upObj.fields[name]={
+            value:{$set:value}
+        };
+        const newData=update(this.state, upObj);
+        this.setState(newData);
+    };
     render(){
         return(
             <CustomCard title="Market Risk" img={require("./assets/images/marketRisk.jpg")} >
                This project shows a Monte Carlo simulation (featuring C++ backend) for the distribution of a variety of assets.
-              <GenericProject fields={this.state.fields} onSubmit={this.onMarketSubmit} parseValidation={checkValidation} documentation={require("./assets/pdf/MarketRiskDocumentation.pdf")}>
+              <GenericProject fields={this.state.fields} onRun={this.onMarketSubmit} parseValidation={checkValidation} documentation={require("./assets/pdf/MarketRiskDocumentation.pdf")} callback={this.onTypeTextField}>
                 <SelectField
                     floatingLabelText="Select an Asset"
                     value={this.state.selectedAsset}

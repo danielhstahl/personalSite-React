@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {TextCard} from './CustomCard';
 import {CustomGrid, CustomGridList} from './CustomGrid';
 
 
-class Thoughts extends Component {
-  render() {
-    return (
+const Thoughts =()=>
       <CustomGridList>
         <CustomGrid>
             <TextCard
@@ -69,8 +67,5 @@ class Thoughts extends Component {
             </TextCard>
         </CustomGrid>
         </CustomGridList>
-    );
-  }
-}
 
 export default Thoughts;

@@ -1,23 +1,17 @@
 import {GridList, GridTile} from 'material-ui/GridList';
-import React, { Component } from 'react';
+import React from 'react';
 const gridStyle={
     marginTop:'75px',
-    marginLeft:'50px',
+    marginLeft:'20px',
     marginRight:'50px',
 };
 
-export class CustomGridList extends Component{
-    render(){
-        return(<GridList cols={1} cellHeight='auto'>
-            {this.props.children}
-        </GridList>);
-    }
-}
-export class CustomGrid extends Component{
-    render(){
-       return(<GridTile style={gridStyle}>
-            {this.props.children}
-       </GridTile>);
-            
-    }
-}
+export const CustomGridList=({children})=>
+    <GridList cols={1} cellHeight='auto'>
+        {children}
+    </GridList>
+
+export const CustomGrid =({children})=>
+    <GridTile style={gridStyle}>
+        {children}
+    </GridTile>

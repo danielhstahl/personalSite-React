@@ -1,67 +1,65 @@
 import React, { Component } from 'react';
-import GenericProject from './GenericProject';
-import {TextFieldPositiveReals, TextFieldPositiveIntegers} from './CustomTextFields';
+import {GenericProject} from './GenericProject';
 import {CustomCard} from './CustomCard';
 import ReactHighcharts from 'react-highcharts';
 import CircularProgress from 'material-ui/CircularProgress';
+//import {TextFieldGeneric} from './CustomTextFields';
 import Dialog from 'material-ui/Dialog';
 import update from 'immutability-helper';
 import {grey500} from 'material-ui/styles/colors';
+const integerValidation=(number)=>{
+    return number.toString().match(/^[1-9]\d*$/)?"":"Requires a positive integer";
+}
+const realValidation=(number)=>{
+    return number.toString().match(/^[+]?([.]\d+|\d+([.]\d+)?)$/)?"":"Requires a positive number";
+}
+
 /*These keys are the same keys in the c++ code!*/
 const fields={
     n:{
-        isGood:true,
         value:100000,
         label:"Number of Assets",
-        component:TextFieldPositiveIntegers
+        validationFunction:integerValidation
     },
     t:{
-        isGood:true,
         value:1,
         label:"Time Horizon",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     xO:{
-        isGood:true,
         value:1,
         label:"X0",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     alpha:{
-        isGood:true,
         value:.1,
         label:"Systemic Drift",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     sigma:{
-        isGood:true,
         value:.3,
         label:"Systemic Volatility",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     q:{
-        isGood:true,
         value:.05,
         label:"q",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     lambda:{
-        isGood:true,
         value:.05,
         label:"lambda",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     xNum:{
-        isGood:true,
         value:1024,
         label:"Steps in X",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     },
     uNum:{
-        isGood:true,
         value:128,
         label:"Steps in U",
-        component:TextFieldPositiveReals
+        validationFunction:realValidation
     }
 };
 const config={
@@ -82,13 +80,15 @@ const config={
     }]
     
 };
+
 export default class CreditProject extends Component{
     constructor(props){
         super(props);
         this.state={
             showProgress:true,
             showDialog:false,
-            config:config
+            config:config,
+            fields:fields
         };
         this.props.ws.on('creditRisk-data', (msg)=>{
             var vals=JSON.parse(msg);
@@ -102,10 +102,10 @@ export default class CreditProject extends Component{
             this.setState(updateConfig);
         });
     }
-    onCreditSubmit=(submission)=>{
-        this.props.ws.emit('getCredit', this.props.filterSubmission(submission));
+    
+    onCreditSubmit=()=>{
+        this.props.ws.emit('getCredit', this.props.filterSubmission(this.state.fields));
         this.handleOpen();
-        //this.sendData('getCredit', 'showCreditDialog', );
     }
     handleOpen = () => {
         this.setState({showDialog: true});
@@ -113,11 +113,23 @@ export default class CreditProject extends Component{
     handleClose = () => {
         this.setState({showDialog: false});
     };
+    onTypeTextField=(value, name)=>{
+        var upObj={
+            fields:{}
+        }
+        upObj.fields[name]={
+            value:{$set:value}
+        };
+        const newData=update(this.state, upObj);
+        this.setState(newData);
+    };
     render(){
         return(
             <CustomCard title="Credit Risk" img={require("./assets/images/creditRisk.jpg")} >
                This project shows how to compute the distribution of a credit portfolio of defaultable assets with stochastic PD and LGD.  It includes full granularity and efficient computation.
-              <GenericProject fields={fields} onSubmit={this.onCreditSubmit} documentation={require("./assets/pdf/CreditRiskPaper.pdf")}/>
+              <GenericProject fields={this.state.fields} onRun={this.onCreditSubmit} documentation={require("./assets/pdf/CreditRiskPaper.pdf")} callback={this.onTypeTextField} />
+              
+              
               <Dialog
                 modal={false}
                 open={this.state.showDialog}

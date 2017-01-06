@@ -48,11 +48,9 @@ const routes=[
   {path:"research", component:Research, text:"Research"}
 ];
 
-class WrappedNav extends Component{
-  render(){
-    return(<Navs menuItems={routes}>{this.props.children}</Navs>);
-  }
-} 
+const WrappedNav =({location, route, children})=>
+  <Navs location={location} route={route} menuItems={routes}>{children}</Navs>
+
 ReactDOM.render((
   
  <MuiThemeProvider muiTheme={muiTheme}>

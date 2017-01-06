@@ -1,17 +1,21 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import {List, ListItem, makeSelectable} from 'material-ui/List';
 import { Link } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
 import {GridList, GridTile} from 'material-ui/GridList';
+import Divider from 'material-ui/Divider';
 const name="Daniel Stahl";
 const iconSize=50;
 const iconStyle={
   height:iconSize,
   width:iconSize
 };
-import Divider from 'material-ui/Divider';
+let SelectableList = makeSelectable(List);
+
+
 /*const offStyle={
   backgroundColor:grey800, 
   color:grey500
@@ -27,7 +31,7 @@ export default class Navs extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false, docked:false, mql:null};
+    this.state = {open: false, docked:false, mql:null, selectedList:this.props.location.pathname};
   }
   componentWillMount() {
     const mql = window.matchMedia(`(min-width: 800px)`);
@@ -45,6 +49,11 @@ export default class Navs extends React.Component {
   mediaQueryChanged=()=>{
     this.setState({docked: this.state.mql.matches, open:this.state.mql.matches});
     //this.handleToggle();
+  }
+  onChangeLink=(event, val)=>{
+    this.setState({
+      selectedList:val
+    });
   }
   render() {
     return (
@@ -92,10 +101,11 @@ export default class Navs extends React.Component {
         </GridList>
         
         <Divider />
+          <SelectableList value={this.state.selectedList} onChange={this.onChangeLink}>
           {this.props.menuItems.map((val, index)=>{
-            return(<MenuItem key={index} onClick={!this.state.docked?this.handleClose:()=>{}} containerElement={<Link to={val.path}/>} primaryText={val.text}/> )
+            return(<ListItem value={val.path==="/"?val.path:"/"+val.path} key={index} onClick={!this.state.docked?this.handleClose:()=>{}} containerElement={<Link to={val.path}/>} primaryText={val.text}/> )
           })}
-
+          </SelectableList>
         </Drawer>
       </div>
     );
