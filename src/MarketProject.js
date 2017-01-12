@@ -42,6 +42,13 @@ const standardFields={
             return isPositiveInteger(val)&&val<100000&&val>50?"":"Between 50 and 100000";
         }
     },
+    r0:{
+        label:"Current Short Rate",
+        value:0.04,
+        validationFunction:function(val){
+            return isPositiveNumber(val)&&val<.5&&val>.001?"":"Between .001 and .1";
+        }
+    },
     sigma:{
         label:"Volatility",
         value:0.04,
@@ -56,6 +63,14 @@ const standardFields={
             return isPositiveNumber(val)&&val<.5&&val>.01?"":"Between .01 and .5";
         }
     },
+    b:{
+        label:"Long Run Average",
+        value:0.05,
+        validationFunction:function(val){
+            return isPositiveNumber(val)&&val<.5&&val>.01?"":"Between .01 and .5";
+        }
+    },
+
     t:{
         label:"Simulate to (in days)",
         value:10,
