@@ -17,14 +17,14 @@ const filterSubmission=(submission)=>{
 class Projects extends Component {
   constructor(props){
     super(props);
-    this.socket = io.connect('http://45.55.153.219:80/');
+    /*this.socket = io.connect('http://45.55.153.219:80/');
     this.socket.on('connect', ()=>{
       console.log("Connected");
       this.socket.emit('creditrisk', {hello:"world"});//dummy data
       this.socket.emit('marketrisk', {hello:"world"});//dummy data
       this.socket.emit('getYield', {hello:"world"});//dummy data
       this.socket.emit('opsrisk', {hello:"world"});//dummy data
-    });
+    });*/
   }
   componentWillUnmount(){
     this.socket.close();

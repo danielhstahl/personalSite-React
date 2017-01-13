@@ -9,7 +9,7 @@ import update from 'immutability-helper';
 import {grey500} from 'material-ui/styles/colors';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-
+import axios from 'axios';
 
 const startingAsset=0;
 
@@ -322,7 +322,7 @@ export default class MarketProject extends Component{
             selectedAsset:startingAsset,
             fields:getSubFields(startingAsset, assets).params
         };
-        this.props.ws.on('marketRisk-data', (msg)=>{
+        /*this.props.ws.on('marketRisk-data', (msg)=>{
             var vals=JSON.parse(msg);
             if(!vals.Spot&&!vals.Forward){
                 var shadowObj={
@@ -337,12 +337,31 @@ export default class MarketProject extends Component{
                 const updateConfig=update(this.state, shadowObj);
                 this.setState(updateConfig);
             }
-        });
+        });*/
     }
     onMarketSubmit=()=>{
         var myObj=this.props.filterSubmission(this.state.fields);
         myObj.asset=this.state.selectedAsset;
-        this.props.ws.emit('getMarket', myObj);
+       // this.props.ws.emit('getMarket', myObj);
+        axios.post('/RunModel/marketRisk', myObj)
+        .then((response)=>{
+            //console.log(response);
+            var vals=JSON.parse(response.data);
+            var shadowObj={
+                showProgress:{$set:false},
+                config:{
+                    xAxis:{
+                        categories:{$set:vals.bins}
+                    },
+                    series:[{$set:{color:grey500,  data:vals.count}}]
+                }
+            };
+            const updateConfig=update(this.state, shadowObj);
+            this.setState(updateConfig);
+        })
+        .catch( (error)=>{
+            console.log(error);
+        });
         this.handleOpen();
     }
     handleOpen = () => {

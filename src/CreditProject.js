@@ -7,6 +7,9 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Dialog from 'material-ui/Dialog';
 import update from 'immutability-helper';
 import {grey500} from 'material-ui/styles/colors';
+import axios from 'axios';
+ 
+
 const integerValidation=(number)=>{
     return number.toString().match(/^[1-9]\d*$/)?"":"Requires a positive integer";
 }
@@ -90,7 +93,7 @@ export default class CreditProject extends Component{
             config:config,
             fields:fields
         };
-        this.props.ws.on('creditRisk-data', (msg)=>{
+       /* this.props.ws.on('creditRisk-data', (msg)=>{
             var vals=JSON.parse(msg);
             var shadowObj={
                 showProgress:{$set:false},
@@ -100,11 +103,27 @@ export default class CreditProject extends Component{
             };
             const updateConfig=update(this.state, shadowObj);
             this.setState(updateConfig);
-        });
+        });*/
     }
     
     onCreditSubmit=()=>{
-        this.props.ws.emit('getCredit', this.props.filterSubmission(this.state.fields));
+        //this.props.ws.emit('getCredit', this.props.filterSubmission(this.state.fields));
+        axios.post('/RunModel/creditRisk', this.props.filterSubmission(this.state.fields))
+        .then((response)=>{
+            //console.log(response.data);
+            var vals=JSON.parse(response.data);
+            var shadowObj={
+                showProgress:{$set:false},
+                config:{
+                    series:[{$set:{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}}]
+                }
+            };
+            const updateConfig=update(this.state, shadowObj);
+            this.setState(updateConfig);
+        })
+        .catch( (error)=>{
+            console.log(error);
+        });
         this.handleOpen();
     }
     handleOpen = () => {

@@ -6,6 +6,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Dialog from 'material-ui/Dialog';
 import update from 'immutability-helper';
 import {grey500} from 'material-ui/styles/colors';
+import axios from 'axios';
 const integerValidation=(number)=>{
     return number.toString().match(/^[1-9]\d*$/)?"":"Requires a positive integer";
 }
@@ -104,7 +105,7 @@ export default class OpsProject extends Component{
             config:config,
             fields:fields
         };
-        this.props.ws.on('opsRisk-data', (msg)=>{
+       /* this.props.ws.on('opsRisk-data', (msg)=>{
             var vals=JSON.parse(msg);
             var shadowObj={
                 showProgress:{$set:false},
@@ -114,10 +115,25 @@ export default class OpsProject extends Component{
             };
             const updateConfig=update(this.state, shadowObj);
             this.setState(updateConfig);
-        });
+        });*/
     }
     onOpsSubmit=()=>{
-        this.props.ws.emit('getOps', this.props.filterSubmission(this.state.fields));
+        axios.post('/RunModel/opsRisk',  this.props.filterSubmission(this.state.fields))
+        .then((response)=>{
+            //console.log(response);
+            var vals=JSON.parse(response.data);
+            var shadowObj={
+                showProgress:{$set:false},
+                config:{
+                    series:[{$set:{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}}]
+                }
+            };
+            const updateConfig=update(this.state, shadowObj);
+            this.setState(updateConfig);
+        })
+        .catch( (error)=>{
+            console.log(error);
+        });
         this.handleOpen();
         //this.sendData('getCredit', 'showCreditDialog', );
     }
