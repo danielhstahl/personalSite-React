@@ -3,19 +3,10 @@ import {GenericProject} from './GenericProject';
 import {CustomCard} from './CustomCard';
 import ReactHighcharts from 'react-highcharts';
 import CircularProgress from 'material-ui/CircularProgress';
-//import {TextFieldGeneric} from './CustomTextFields';
 import Dialog from 'material-ui/Dialog';
-import update from 'immutability-helper';
 import {grey500} from 'material-ui/styles/colors';
 import axios from 'axios';
- 
-
-const integerValidation=(number)=>{
-    return number.toString().match(/^[1-9]\d*$/)?"":"Requires a positive integer";
-}
-const realValidation=(number)=>{
-    return number.toString().match(/^[+]?([.]\d+|\d+([.]\d+)?)$/)?"":"Requires a positive number";
-}
+ import {realValidation, integerValidation, onTypeTextField} from './UsefulProjectLambda.js';
 
 /*These keys are the same keys in the c++ code!*/
 const fields={
@@ -119,14 +110,7 @@ export default class CreditProject extends Component{
         this.setState({showDialog: false});
     };
     onTypeTextField=(value, name)=>{
-        var upObj={
-            fields:{}
-        }
-        upObj.fields[name]={
-            value:{$set:value}
-        };
-        const newData=update(this.state, upObj);
-        this.setState(newData);
+        this.setState(onTypeTextField(value, name));
     };
     render(){
         return(

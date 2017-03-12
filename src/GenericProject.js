@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import ExpandableComponent from './ExpandableComponent';
 import {GridList, GridTile} from 'material-ui/GridList';
-import update from 'immutability-helper';
 import {TextFieldGeneric} from './CustomTextFields';
 
 const checkIfAllGood=(fields, parseValidation)=>{

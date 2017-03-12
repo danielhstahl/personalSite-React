@@ -1,39 +1,16 @@
 import React, { Component } from 'react';
 import {GenericProject} from './GenericProject';
-import {TextFieldPositiveReals, TextFieldBoundedInteger,  TextFieldGeneric, TextFieldPositiveIntegers, TextFieldBoundedReal} from './CustomTextFields';
 import {CustomCard} from './CustomCard';
 import ReactHighcharts from 'react-highcharts';
 import CircularProgress from 'material-ui/CircularProgress';
 import Dialog from 'material-ui/Dialog';
-import update from 'immutability-helper';
 import {grey500} from 'material-ui/styles/colors';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import axios from 'axios';
-
+import {realValidation, checkValidation, isPositiveInteger, isPositiveNumber, onTypeTextField} from './UsefulProjectLambda.js';
 const startingAsset=0;
 
-const checkValidation=(val, item, obj)=>{
-    //const item=obj1[name];
-    if(item.validationFunction){
-        const otherKey=item.depends||"";
-        const val2=otherKey?obj[otherKey].value:0;
-        return item.validationFunction(val, val2);
-    }
-    return "";
-}
-const isPositiveInteger=(number)=>{
-    return number.toString().match(/^[1-9]\d*$/);
-}
-const isPositiveNumber=(number)=>{
-    return number.toString().match(/^[+]?([.]\d+|\d+([.]\d+)?)$/);
-}
-const integerValidation=(number)=>{
-    return isPositiveInteger(number)?"":"Requires a positive integer";
-}
-const realValidation=(number)=>{
-    return isPositiveNumber(number)?"":"Requires a positive number";
-}
 const standardFields={
     n:{
         label:"# of simulations",
@@ -306,12 +283,6 @@ const getSubFields=(value, obj)=>{
         return value===element.value;
     });
 }
-const checkIfAllGood=(fields)=>{
-    return Object.keys(fields).every((val, index)=>{
-        const item=fields[val];
-        return item.validationFunction(item.value)==="";
-    });
-}
 export default class MarketProject extends Component{
     constructor(props){
         super(props);
@@ -353,24 +324,15 @@ export default class MarketProject extends Component{
         this.setState({showDialog: false});
     };
     onChange=(event, index, value)=>{
-        const shadowObj={
-            selectedAsset:{$set:value},
-            fields:{
-                $set:getSubFields(value, assets).params
+        this.setState((prevState, props)=>{
+            return {
+                selectedAsset:value,
+                fields:getSubFields(value, assets).params
             }
-        };
-        const updateConfig=update(this.state, shadowObj);
-        this.setState(updateConfig);
+        });
     }
     onTypeTextField=(value, name)=>{
-        var upObj={
-            fields:{}
-        }
-        upObj.fields[name]={
-            value:{$set:value}
-        };
-        const newData=update(this.state, upObj);
-        this.setState(newData);
+        this.setState(onTypeTextField(value, name));
     };
     render(){
         return(

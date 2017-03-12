@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 //import io from 'socket.io-client';
 import {CustomGrid, CustomGridList} from './CustomGrid';
 import CreditProject from './CreditProject';
@@ -14,14 +14,7 @@ const filterSubmission=(submission)=>{
   }
   return obj;
 }
-const Projects=(props)=>{//extends Component {
-  /*onstructor(props){
-    super(props);
-  }*/
-  /*componentWillUnmount(){
-    this.socket.close();
-  }*/
-  //render() {
+const Projects=(props)=>{
     return (
       <CustomGridList>
         <CustomGrid>
@@ -35,7 +28,6 @@ const Projects=(props)=>{//extends Component {
         </CustomGrid>
        </CustomGridList> 
     );
-  //}
 }
 
 export default Projects;

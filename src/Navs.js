@@ -1,6 +1,5 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 import {List, ListItem, makeSelectable} from 'material-ui/List';
 import { Link } from 'react-router';
 import AppBar from 'material-ui/AppBar';
