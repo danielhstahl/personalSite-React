@@ -105,31 +105,21 @@ export default class OpsProject extends Component{
             config:config,
             fields:fields
         };
-       /* this.props.ws.on('opsRisk-data', (msg)=>{
-            var vals=JSON.parse(msg);
-            var shadowObj={
-                showProgress:{$set:false},
-                config:{
-                    series:[{$set:{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}}]
-                }
-            };
-            const updateConfig=update(this.state, shadowObj);
-            this.setState(updateConfig);
-        });*/
     }
     onOpsSubmit=()=>{
-        axios.post('/RunModel/opsRisk',  this.props.filterSubmission(this.state.fields))
+        axios.get(`${this.props.url}/opsRisk`,  {params:this.props.filterSubmission(this.state.fields)})
         .then((response)=>{
             //console.log(response);
-            var vals=JSON.parse(response.data);
-            var shadowObj={
+            //console.log(response);
+            const vals=response.data;
+            const shadowObj={
                 showProgress:{$set:false},
                 config:{
                     series:[{$set:{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}}]
                 }
             };
-            const updateConfig=update(this.state, shadowObj);
-            this.setState(updateConfig);
+            //const updateConfig=update(this.state, shadowObj);
+            this.setState(update(this.state, shadowObj));
         })
         .catch( (error)=>{
             console.log(error);

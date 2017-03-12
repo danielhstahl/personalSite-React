@@ -342,12 +342,14 @@ export default class MarketProject extends Component{
     onMarketSubmit=()=>{
         var myObj=this.props.filterSubmission(this.state.fields);
         myObj.asset=this.state.selectedAsset;
+        console.log(myObj);
        // this.props.ws.emit('getMarket', myObj);
-        axios.post('/RunModel/marketRisk', myObj)
+       //console.log(myObj);
+        axios.get(`${this.props.url}/marketRisk`, {params:myObj})
         .then((response)=>{
             //console.log(response);
-            var vals=JSON.parse(response.data);
-            var shadowObj={
+            const vals=response.data;
+            const shadowObj={
                 showProgress:{$set:false},
                 config:{
                     xAxis:{
@@ -356,8 +358,8 @@ export default class MarketProject extends Component{
                     series:[{$set:{color:grey500,  data:vals.count}}]
                 }
             };
-            const updateConfig=update(this.state, shadowObj);
-            this.setState(updateConfig);
+            //const updateConfig=update(this.state, shadowObj);
+            this.setState(update(this.state, shadowObj));
         })
         .catch( (error)=>{
             console.log(error);

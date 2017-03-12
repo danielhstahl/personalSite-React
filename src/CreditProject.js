@@ -93,33 +93,19 @@ export default class CreditProject extends Component{
             config:config,
             fields:fields
         };
-       /* this.props.ws.on('creditRisk-data', (msg)=>{
-            var vals=JSON.parse(msg);
-            var shadowObj={
-                showProgress:{$set:false},
-                config:{
-                    series:[{$set:{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}}]
-                }
-            };
-            const updateConfig=update(this.state, shadowObj);
-            this.setState(updateConfig);
-        });*/
     }
-    
     onCreditSubmit=()=>{
-        //this.props.ws.emit('getCredit', this.props.filterSubmission(this.state.fields));
-        axios.post('/RunModel/creditRisk', this.props.filterSubmission(this.state.fields))
+        axios.get(`${this.props.url}/creditRisk`, {params:this.props.filterSubmission(this.state.fields)})
         .then((response)=>{
-            //console.log(response.data);
-            var vals=JSON.parse(response.data);
-            var shadowObj={
+            const vals=response.data;
+            const shadowObj={
                 showProgress:{$set:false},
                 config:{
                     series:[{$set:{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}}]
                 }
             };
             const updateConfig=update(this.state, shadowObj);
-            this.setState(updateConfig);
+            this.setState(update(this.state, shadowObj));
         })
         .catch( (error)=>{
             console.log(error);

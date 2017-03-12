@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import io from 'socket.io-client';
+//import io from 'socket.io-client';
 import {CustomGrid, CustomGridList} from './CustomGrid';
 import CreditProject from './CreditProject';
 import OpsProject from './OpsProject';
 import MarketProject from './MarketProject';
 //import GenericModalChart from './GenericModalChart';
 
-
+const httpurl="https://7229z53ukd.execute-api.us-east-1.amazonaws.com/prd";
 const filterSubmission=(submission)=>{
   var obj={};
   for(var key in submission){
@@ -14,36 +14,28 @@ const filterSubmission=(submission)=>{
   }
   return obj;
 }
-class Projects extends Component {
-  constructor(props){
+const Projects=(props)=>{//extends Component {
+  /*onstructor(props){
     super(props);
-    /*this.socket = io.connect('http://45.55.153.219:80/');
-    this.socket.on('connect', ()=>{
-      console.log("Connected");
-      this.socket.emit('creditrisk', {hello:"world"});//dummy data
-      this.socket.emit('marketrisk', {hello:"world"});//dummy data
-      this.socket.emit('getYield', {hello:"world"});//dummy data
-      this.socket.emit('opsrisk', {hello:"world"});//dummy data
-    });*/
-  }
-  componentWillUnmount(){
+  }*/
+  /*componentWillUnmount(){
     this.socket.close();
-  }
-  render() {
+  }*/
+  //render() {
     return (
       <CustomGridList>
         <CustomGrid>
-            <CreditProject ws={this.socket} filterSubmission={filterSubmission}/>
+            <CreditProject url={httpurl} filterSubmission={filterSubmission}/>
         </CustomGrid>
         <CustomGrid>
-            <OpsProject ws={this.socket} filterSubmission={filterSubmission}/>
+            <OpsProject url={httpurl} filterSubmission={filterSubmission}/>
         </CustomGrid>
         <CustomGrid>
-            <MarketProject ws={this.socket} filterSubmission={filterSubmission}/>
+            <MarketProject url={httpurl} filterSubmission={filterSubmission}/>
         </CustomGrid>
        </CustomGridList> 
     );
-  }
+  //}
 }
 
 export default Projects;
