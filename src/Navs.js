@@ -15,15 +15,6 @@ const iconStyle={
 };
 let SelectableList = makeSelectable(List);
 
-
-/*const offStyle={
-  backgroundColor:grey800, 
-  color:grey500
-}
-const mainStyle={
-  backgroundColor:grey700, 
-  color:grey500
-}*/
 const gridStyle={
   margin:'10px'
 }

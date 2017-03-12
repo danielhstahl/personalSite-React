@@ -322,44 +322,24 @@ export default class MarketProject extends Component{
             selectedAsset:startingAsset,
             fields:getSubFields(startingAsset, assets).params
         };
-        /*this.props.ws.on('marketRisk-data', (msg)=>{
-            var vals=JSON.parse(msg);
-            if(!vals.Spot&&!vals.Forward){
-                var shadowObj={
-                    showProgress:{$set:false},
-                    config:{
-                        xAxis:{
-                            categories:{$set:vals.bins}
-                        },
-                        series:[{$set:{color:grey500,  data:vals.count}}]
-                    }
-                };
-                const updateConfig=update(this.state, shadowObj);
-                this.setState(updateConfig);
-            }
-        });*/
     }
     onMarketSubmit=()=>{
         var myObj=this.props.filterSubmission(this.state.fields);
         myObj.asset=this.state.selectedAsset;
-        console.log(myObj);
-       // this.props.ws.emit('getMarket', myObj);
-       //console.log(myObj);
         axios.get(`${this.props.url}/marketRisk`, {params:myObj})
         .then((response)=>{
-            //console.log(response);
             const vals=response.data;
-            const shadowObj={
-                showProgress:{$set:false},
-                config:{
-                    xAxis:{
-                        categories:{$set:vals.bins}
-                    },
-                    series:[{$set:{color:grey500,  data:vals.count}}]
-                }
-            };
-            //const updateConfig=update(this.state, shadowObj);
-            this.setState(update(this.state, shadowObj));
+            this.setState((prevState, props)=>{
+                return {
+                    showProgress:false,
+                    config:Object.assign(prevState.config, {
+                        xAxis:{
+                            categories:vals.bins
+                        },
+                        series:[{color:grey500,  data:vals.count}]
+                    })
+                };
+            });
         })
         .catch( (error)=>{
             console.log(error);

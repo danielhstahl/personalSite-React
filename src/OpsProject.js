@@ -109,19 +109,17 @@ export default class OpsProject extends Component{
     onOpsSubmit=()=>{
         axios.get(`${this.props.url}/opsRisk`,  {params:this.props.filterSubmission(this.state.fields)})
         .then((response)=>{
-            //console.log(response);
-            //console.log(response);
             const vals=response.data;
-            const shadowObj={
-                showProgress:{$set:false},
-                config:{
-                    series:[{$set:{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}}]
-                }
-            };
-            //const updateConfig=update(this.state, shadowObj);
-            this.setState(update(this.state, shadowObj));
+            this.setState((prevState, props)=>{
+                return {
+                    showProgress:false,
+                    config:Object.assign(prevState.config, {
+                        series:[{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}]
+                    })
+                };
+            });
         })
-        .catch( (error)=>{
+        .catch((error)=>{
             console.log(error);
         });
         this.handleOpen();
