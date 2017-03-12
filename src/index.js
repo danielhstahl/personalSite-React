@@ -10,7 +10,7 @@ import Navs from './Navs';
 import './index.css';
 import { hashHistory, Router,  Route, IndexRoute} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-//import MyAwesomeReactComponent from './MyAwesomeReactComponent';
+
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {grey800, grey500} from 'material-ui/styles/colors';
@@ -50,11 +50,16 @@ const routes=[
 
 const WrappedNav =({location, route, children})=>
   <Navs location={location} route={route} menuItems={routes}>{children}</Navs>
-
+const ReactGA=require('react-ga');
+ReactGA.initialize('UA-73388166-1');
+const logPageView=()=>{
+  ReactGA.set({page:window.location.pathname});
+  ReactGA.pageview(window.location.pathname)
+}
 ReactDOM.render((
   
  <MuiThemeProvider muiTheme={muiTheme}>
-    <Router history={hashHistory}>
+    <Router onUpdate={logPageView} history={hashHistory}>
       <Route path="/" component={WrappedNav}>
         <IndexRoute component={Home} />
         {routes.map((val, index)=>{
