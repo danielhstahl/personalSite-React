@@ -51,7 +51,7 @@ const routes=[
 const WrappedNav =({location, route, children})=>
   <Navs location={location} route={route} menuItems={routes}>{children}</Navs>
 const ReactGA=require('react-ga');
-ReactGA.initialize('UA-73388166-1');
+ReactGA.initialize('UA-73388166-2');
 const logPageView=()=>{
   ReactGA.set({page:window.location.pathname});
   ReactGA.pageview(window.location.pathname)
