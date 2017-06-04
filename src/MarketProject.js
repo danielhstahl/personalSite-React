@@ -283,27 +283,29 @@ const getSubFields=(value, obj)=>{
         return value===element.value;
     });
 }
+const preDefinedDropDown=assets.map((val, index)=>{
+    return(<MenuItem key={index} value={val.value} primaryText={val.label}/>);
+})
 export default class MarketProject extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            showProgress:true,
-            showDialog:false,
-            config:config,
-            selectedAsset:startingAsset,
-            fields:getSubFields(startingAsset, assets).params
-        };
+    state={
+        showProgress:true,
+        showDialog:false,
+        config:config,
+        selectedAsset:startingAsset,
+        fields:getSubFields(startingAsset, assets).params
+    };
+    shouldComponentUpdate(nextProps, nextState){
+        return nextState!==this.state
     }
     onMarketSubmit=()=>{
-        var myObj=this.props.filterSubmission(this.state.fields);
-        myObj.asset=this.state.selectedAsset;
+        const myObj=Object.assign(this.props.filterSubmission(this.state.fields), {asset:this.state.selectedAsset})
         axios.get(`${this.props.url}/marketRisk`, {params:myObj})
         .then((response)=>{
             const vals=response.data;
             this.setState((prevState, props)=>{
                 return {
                     showProgress:false,
-                    config:Object.assign(prevState.config, {
+                    config:Object.assign({}, prevState.config, {
                         xAxis:{
                             categories:vals.bins
                         },
@@ -332,35 +334,35 @@ export default class MarketProject extends Component{
         });
     }
     onTypeTextField=(value, name)=>{
+        console.log(value)
         this.setState(onTypeTextField(value, name));
     };
     render(){
+        const {fields, selectedAsset, showDialog, showProgress, config}=this.state
         return(
             <CustomCard title="Market Risk" img={require("./assets/images/marketRisk.jpg")} >
                This project shows a Monte Carlo simulation (featuring C++ backend) for the distribution of a variety of assets.
-              <GenericProject fields={this.state.fields} onRun={this.onMarketSubmit} parseValidation={checkValidation} documentation={require("./assets/pdf/MarketRiskDocumentation.pdf")} callback={this.onTypeTextField}>
+              <GenericProject fields={fields} onRun={this.onMarketSubmit} parseValidation={checkValidation} documentation={require("./assets/pdf/MarketRiskDocumentation.pdf")} callback={this.onTypeTextField}>
                 <SelectField
                     floatingLabelText="Select an Asset"
-                    value={this.state.selectedAsset}
+                    value={selectedAsset}
                     onChange={this.onChange}
                 >
-                {assets.map((val, index)=>{
-                    return(<MenuItem key={index} value={val.value} primaryText={val.label}/>);
-                })}
+                {preDefinedDropDown}
                 </SelectField>
 
               </GenericProject>
               <Dialog
                 modal={false}
-                open={this.state.showDialog}
+                open={showDialog}
                 onRequestClose={this.handleClose}
                 >
-                {this.state.showProgress?
+                {showProgress?
                     <CircularProgress size={80} thickness={5} />:
-                    <ReactHighcharts config={this.state.config}></ReactHighcharts>}
+                    <ReactHighcharts config={config}></ReactHighcharts>}
                 </Dialog>
             </CustomCard>
         );
     }
-
 }
+

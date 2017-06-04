@@ -76,14 +76,14 @@ const config={
 };
 
 export default class CreditProject extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            showProgress:true,
-            showDialog:false,
-            config:config,
-            fields:fields
-        };
+    state={
+        showProgress:true,
+        showDialog:false,
+        config:config,
+        fields:fields
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        return nextState!==this.state
     }
     onCreditSubmit=()=>{
         axios.get(`${this.props.url}/creditRisk`, {params:this.props.filterSubmission(this.state.fields)})

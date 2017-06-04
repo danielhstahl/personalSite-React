@@ -93,14 +93,15 @@ const config={
     
 };
 export default class OpsProject extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            showProgress:true,
-            showDialog:false,
-            config:config,
-            fields:fields
-        };
+    
+    state={
+        showProgress:true,
+        showDialog:false,
+        config:config,
+        fields:fields
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        return nextState!==this.state
     }
     onOpsSubmit=()=>{
         axios.get(`${this.props.url}/opsRisk`,  {params:this.props.filterSubmission(this.state.fields)})

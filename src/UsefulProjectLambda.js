@@ -1,7 +1,7 @@
 export const onTypeTextField=(value, name)=>{
     return (prevState, props)=>{
-        prevState.fields[name].value=value;
-        return {fields:prevState.fields};
+        const field=Object.assign({}, prevState.fields[name], {value})
+        return {fields:Object.assign({}, prevState.fields, {[name]:field})};
     };
 };
 

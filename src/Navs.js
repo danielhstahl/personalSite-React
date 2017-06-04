@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import Drawer from 'material-ui/Drawer';
 import {List, ListItem, makeSelectable} from 'material-ui/List';
 import { Link } from 'react-router';
@@ -17,7 +17,7 @@ let SelectableList = makeSelectable(List);
 const gridStyle={
   margin:'10px'
 }
-export default class Navs extends React.Component {
+export default class Navs extends PureComponent {
 
   constructor(props) {
     super(props);

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import ActionDescription from 'material-ui/svg-icons/action/description';
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 import IconButton from 'material-ui/IconButton';
 
-export default class ExpandableComponent extends Component{
+export default class ExpandableComponent extends PureComponent{
     constructor(props){
         super(props);
         this.state={

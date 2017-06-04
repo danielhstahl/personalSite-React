@@ -8,11 +8,10 @@ import MarketProject from './MarketProject';
 
 const httpurl="https://7229z53ukd.execute-api.us-east-1.amazonaws.com/prd";
 const filterSubmission=(submission)=>{
-  var obj={};
-  for(var key in submission){
-    obj[key]=submission[key].value;
-  }
-  return obj;
+  return Object.keys(submission).reduce((aggr, key)=>{
+    aggr[key]=submission[key].value
+    return aggr
+  }, {})
 }
 const Projects=(props)=>{
     return (

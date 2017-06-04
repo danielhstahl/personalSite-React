@@ -1,22 +1,22 @@
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 const jsonp=(url, callback)=> {
-    var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+    const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
     window[callbackName] = function(data) {
         delete window[callbackName];
         document.body.removeChild(script);
         callback(data);
     };
 
-    var script = document.createElement('script');
+    let script = document.createElement('script');
     script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
     document.body.appendChild(script);
 }
 
 
 
-export default class StockPrice extends Component{
+export default class StockPrice extends PureComponent{
     constructor(props){
         super(props);
         this.state={
