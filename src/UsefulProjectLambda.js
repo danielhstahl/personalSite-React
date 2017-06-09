@@ -1,3 +1,4 @@
+import axios from 'axios';
 export const onTypeTextField=(value, name)=>{
     return (prevState, props)=>{
         const field=Object.assign({}, prevState.fields[name], {value})
@@ -24,4 +25,21 @@ export const isPositiveInteger=(number)=>{
 }
 export const isPositiveNumber=(number)=>{
     return number.toString().match(/^[+]?([.]\d+|\d+([.]\d+)?)$/);
+}
+
+export const getLambda=(url, lambda, params, cb)=>{
+    axios.get(`${url}/${lambda}`, {params})
+    .then(response=>{
+        const vals=response.data;
+        cb(vals)
+        /*this.setState((prevState, props)=>{
+            return {
+                showProgress:false,
+                config:configFn(vals)
+            };
+        });*/
+    })
+    .catch(error=>{
+        console.log(error);
+    });
 }

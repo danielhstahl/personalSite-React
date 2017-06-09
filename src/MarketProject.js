@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import {GenericProject} from './GenericProject';
 import {CustomCard} from './CustomCard';
-import ReactHighcharts from 'react-highcharts';
-import CircularProgress from 'material-ui/CircularProgress';
-import Dialog from 'material-ui/Dialog';
+import ChartDialog from './ChartDialog'
 import {grey500} from 'material-ui/styles/colors';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import axios from 'axios';
-import {realValidation, checkValidation, isPositiveInteger, isPositiveNumber, onTypeTextField} from './UsefulProjectLambda.js';
+import {realValidation, checkValidation, isPositiveInteger, isPositiveNumber, onTypeTextField, getLambda} from './UsefulProjectLambda.js';
 const startingAsset=0;
 
 const standardFields={
@@ -286,11 +283,18 @@ const getSubFields=(value, obj)=>{
 const preDefinedDropDown=assets.map((val, index)=>{
     return(<MenuItem key={index} value={val.value} primaryText={val.label}/>);
 })
+const manageConfig=(vals)=>{
+    return Object.assign({}, config, {
+        xAxis:{
+            categories:vals.bins
+        },
+        series:[{color:grey500,  data:vals.count}]
+    })
+}
 export default class MarketProject extends Component{
     state={
-        showProgress:true,
         showDialog:false,
-        config:config,
+        config:null,
         selectedAsset:startingAsset,
         fields:getSubFields(startingAsset, assets).params
     };
@@ -298,29 +302,18 @@ export default class MarketProject extends Component{
         return nextState!==this.state
     }
     onMarketSubmit=()=>{
-        const myObj=Object.assign(this.props.filterSubmission(this.state.fields), {asset:this.state.selectedAsset})
-        axios.get(`${this.props.url}/marketRisk`, {params:myObj})
-        .then((response)=>{
-            const vals=response.data;
-            this.setState((prevState, props)=>{
-                return {
-                    showProgress:false,
-                    config:Object.assign({}, prevState.config, {
-                        xAxis:{
-                            categories:vals.bins
-                        },
-                        series:[{color:grey500,  data:vals.count}]
-                    })
-                };
-            });
+        const {filterSubmission, url}=this.props
+        const {fields, selectedAsset}=this.state
+        const params=Object.assign(filterSubmission(fields), {asset:selectedAsset})
+        getLambda(url, "marketRisk", params, (vals)=>{
+            this.setState({
+                config:manageConfig(vals),
+            })
         })
-        .catch( (error)=>{
-            console.log(error);
-        });
         this.handleOpen();
     }
     handleOpen = () => {
-        this.setState({showDialog: true});
+        this.setState({showDialog: true, config:null});
     };
     handleClose = () => {
         this.setState({showDialog: false});
@@ -334,11 +327,11 @@ export default class MarketProject extends Component{
         });
     }
     onTypeTextField=(value, name)=>{
-        console.log(value)
         this.setState(onTypeTextField(value, name));
     };
     render(){
-        const {fields, selectedAsset, showDialog, showProgress, config}=this.state
+        const {fields, selectedAsset, showDialog, config}=this.state
+        
         return(
             <CustomCard title="Market Risk" img={require("./assets/images/marketRisk.jpg")} >
                This project shows a Monte Carlo simulation (featuring C++ backend) for the distribution of a variety of assets.
@@ -352,15 +345,7 @@ export default class MarketProject extends Component{
                 </SelectField>
 
               </GenericProject>
-              <Dialog
-                modal={false}
-                open={showDialog}
-                onRequestClose={this.handleClose}
-                >
-                {showProgress?
-                    <CircularProgress size={80} thickness={5} />:
-                    <ReactHighcharts config={config}></ReactHighcharts>}
-                </Dialog>
+              <ChartDialog showDialog={showDialog} config={config} handleClose={this.handleClose}/>
             </CustomCard>
         );
     }

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import {GenericProject} from './GenericProject';
 import {CustomCard} from './CustomCard';
-import ReactHighcharts from 'react-highcharts';
-import CircularProgress from 'material-ui/CircularProgress';
-import Dialog from 'material-ui/Dialog';
+import ChartDialog from './ChartDialog'
 import {grey500} from 'material-ui/styles/colors';
-import axios from 'axios';
- import {realValidation, integerValidation, onTypeTextField} from './UsefulProjectLambda.js';
+ import {realValidation, integerValidation, onTypeTextField, getLambda} from './UsefulProjectLambda.js';
 
 /*These keys are the same keys in the c++ code!*/
 const fields={
@@ -71,40 +68,38 @@ const config={
     },
     series:[{
         data:[]
-    }]
+    }],
+    yAxis:{
+        min:0
+    }
     
 };
-
+const manageConfig=(vals)=>{
+    return Object.assign(config, {
+        series:[{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}]
+    })
+}
 export default class CreditProject extends Component{
     state={
-        showProgress:true,
         showDialog:false,
-        config:config,
+        config:null,
         fields:fields
     }
     shouldComponentUpdate(nextProps, nextState){
         return nextState!==this.state
     }
     onCreditSubmit=()=>{
-        axios.get(`${this.props.url}/creditRisk`, {params:this.props.filterSubmission(this.state.fields)})
-        .then((response)=>{
-            const vals=response.data;
-            this.setState((prevState, props)=>{
-                return {
-                    showProgress:false,
-                    config:Object.assign(prevState.config, {
-                        series:[{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}]
-                    })
-                };
-            });
+        const {filterSubmission, url}=this.props
+        const {fields}=this.state
+        getLambda(url, "creditRisk", filterSubmission(fields), (vals)=>{
+            this.setState({
+                config:manageConfig(vals)
+            })
         })
-        .catch( (error)=>{
-            console.log(error);
-        });
-        this.handleOpen();
+        this.handleOpen()
     }
     handleOpen = () => {
-        this.setState({showDialog: true});
+        this.setState({showDialog: true, showProgress:true});
     };
     handleClose = () => {
         this.setState({showDialog: false});
@@ -113,21 +108,12 @@ export default class CreditProject extends Component{
         this.setState(onTypeTextField(value, name));
     };
     render(){
+        const {fields, showDialog, config}=this.state
         return(
             <CustomCard title="Credit Risk" img={require("./assets/images/creditRisk.jpg")} >
                This project shows how to compute the distribution of a credit portfolio of defaultable assets with stochastic PD and LGD.  It includes full granularity and efficient computation.
-              <GenericProject fields={this.state.fields} onRun={this.onCreditSubmit} documentation={require("./assets/pdf/CreditRiskPaper.pdf")} callback={this.onTypeTextField} />
-              
-              
-              <Dialog
-                modal={false}
-                open={this.state.showDialog}
-                onRequestClose={this.handleClose}
-                >
-                {this.state.showProgress?
-                    <CircularProgress size={80} thickness={5} />:
-                    <ReactHighcharts config={this.state.config}></ReactHighcharts>}
-                </Dialog>
+              <GenericProject fields={fields} onRun={this.onCreditSubmit} documentation={require("./assets/pdf/CreditRiskPaper.pdf")} callback={this.onTypeTextField} />
+              <ChartDialog showDialog={showDialog} config={config} handleClose={this.handleClose}/>
             </CustomCard>
         );
     }

@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import {GenericProject} from './GenericProject';
 import {CustomCard} from './CustomCard';
-import ReactHighcharts from 'react-highcharts';
-import CircularProgress from 'material-ui/CircularProgress';
-import Dialog from 'material-ui/Dialog';
-//import update from 'immutability-helper';
+import ChartDialog from './ChartDialog'
 import {grey500} from 'material-ui/styles/colors';
-import axios from 'axios';
-import {realValidation, onTypeTextField} from './UsefulProjectLambda.js';
+import {realValidation, onTypeTextField, getLambda} from './UsefulProjectLambda.js';
 
 const fields={
     t:{
@@ -89,40 +85,40 @@ const config={
     },
     series:[{
         data:[]
-    }]
+    }],
+    yAxis:{
+        min:0
+    }
     
 };
+
+const manageConfig=(vals)=>{
+    return Object.assign({}, config, {
+        series:[{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}]
+    })
+}
 export default class OpsProject extends Component{
     
     state={
-        showProgress:true,
         showDialog:false,
-        config:config,
+        config:null,
         fields:fields
     }
     shouldComponentUpdate(nextProps, nextState){
         return nextState!==this.state
     }
     onOpsSubmit=()=>{
-        axios.get(`${this.props.url}/opsRisk`,  {params:this.props.filterSubmission(this.state.fields)})
-        .then((response)=>{
-            const vals=response.data;
-            this.setState((prevState, props)=>{
-                return {
-                    showProgress:false,
-                    config:Object.assign(prevState.config, {
-                        series:[{color:grey500,  pointStart:vals.xmin, pointInterval:vals.dx, data:vals.y}]
-                    })
-                };
-            });
+        const {url, filterSubmission}=this.props
+        const {fields}=this.state
+        getLambda(url, "opsRisk", filterSubmission(fields), (vals)=>{
+            this.setState({
+                config:manageConfig(vals)
+            })
         })
-        .catch((error)=>{
-            console.log(error);
-        });
         this.handleOpen();
     }
     handleOpen = () => {
-        this.setState({showDialog: true});
+        this.setState({showDialog: true, config:null});
     };
     handleClose = () => {
         this.setState({showDialog: false});
@@ -131,19 +127,12 @@ export default class OpsProject extends Component{
         this.setState(onTypeTextField(value, name));
     };
     render(){
+        const {fields,  showDialog,  config}=this.state
         return(
             <CustomCard title="Operational Risk" img={require("./assets/images/operationalRisk.jpg")} >
                This project significantly extends the standard LDA operational loss framework to include correlation between severity and frequency and auto-correlation in frequency. The distribution can be recovered practically instantly even for very long tailed severity distributions.
-               <GenericProject fields={this.state.fields} onRun={this.onOpsSubmit} documentation={require("./assets/pdf/OpsRiskPaper.pdf")} callback={this.onTypeTextField} />
-               <Dialog
-                modal={false}
-                open={this.state.showDialog}
-                onRequestClose={this.handleClose}
-                >
-                {this.state.showProgress?
-                    <CircularProgress size={80} thickness={5} />:
-                    <ReactHighcharts config={this.state.config}></ReactHighcharts>}
-                </Dialog>
+               <GenericProject fields={fields} onRun={this.onOpsSubmit} documentation={require("./assets/pdf/OpsRiskPaper.pdf")} callback={this.onTypeTextField} />
+               <ChartDialog showDialog={showDialog} config={config} handleClose={this.handleClose}/>
             </CustomCard>
         );
     }
