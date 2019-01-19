@@ -9,6 +9,7 @@ import Thoughts from './Thoughts';
 import Navs from './Navs';
 import './index.css';
 import { hashHistory, Router,  Route, IndexRoute} from 'react-router';
+import 'bootstrap/dist/css/bootstrap.css'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
