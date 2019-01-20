@@ -9,7 +9,7 @@ const Projects = () => (
       <StandardGridElement>
         <Card>
           <CardBody>
-            <CardTitle>Credit Risk</CardTitle>
+            <CardTitle className="lead">Credit Risk</CardTitle>
             <CreditProject />
           </CardBody>
         </Card>

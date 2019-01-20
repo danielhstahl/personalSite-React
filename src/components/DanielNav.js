@@ -17,18 +17,23 @@ import avatar from '../assets/images/avatar.png'
 const linkedIn =
   'https://www.linkedin.com/profile/view?id=AAIAAAYja3AB_fq6IhUtF5CBw1yjTHheP8YIooE&trk=nav_responsive_tab_profile'
 const github = 'https://github.com/phillyfan1138'
-const style = { paddingRight: 5 }
+const imgStyle = { paddingRight: 5, borderRadius: '50%' }
 const DanielNav = () => {
   const [isOpen, toggleOpen] = useState(false)
   return (
     <Navbar color="light" light expand="md">
-      <NavbarBrand tag={Link} to="/">
-        <img src={avatar} height={50} style={style} />
+      <NavbarBrand tag={Link} to="/home">
+        <img src={avatar} height={50} style={imgStyle} alt="" />
         Daniel Stahl
       </NavbarBrand>
       <NavbarToggler onClick={() => toggleOpen(!isOpen)} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/home" activeClassName="active">
+              Home
+            </NavLink>
+          </NavItem>
           <NavItem>
             <NavLink tag={RRNavLink} to="/research" activeClassName="active">
               Research
@@ -54,11 +59,11 @@ const DanielNav = () => {
               Connect
             </DropdownToggle>
             <DropdownMenu right>
-              <DropdownItem>
-                <a href={linkedIn}>Linked In</a>
+              <DropdownItem tag="a" href={linkedIn}>
+                LinkedIn
               </DropdownItem>
-              <DropdownItem>
-                <a href={github}>GitHub</a>
+              <DropdownItem tag="a" href={github}>
+                GitHub
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>

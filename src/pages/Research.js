@@ -25,7 +25,7 @@ const Research = () => (
         <Card>
           <CardImg top width="100%" src={creditRisk} alt="credit risk" />
           <CardBody>
-            <CardTitle>Credit Risk</CardTitle>
+            <CardTitle className="lead">Credit Risk</CardTitle>
             <CardText>
               This paper is published in the Journal of Credit Risk and pioneers
               efficient computation of the distribution of credit loss for large
@@ -36,6 +36,7 @@ const Research = () => (
               <a
                 href="http://www.risk.net/journal-of-credit-risk/technical-paper/2436463/loss-distributions-computational-efficiency-in-an-extended-framework"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 External Link
               </a>
@@ -47,7 +48,7 @@ const Research = () => (
         <Card>
           <CardImg top width="100%" src={operationalRisk} alt="credit risk" />
           <CardBody>
-            <CardTitle>Operational Risk</CardTitle>
+            <CardTitle className="lead">Operational Risk</CardTitle>
             <CardText>
               This paper is published in the Journal of Operational Risk and
               significantly extends the standard LDA operational loss framework
@@ -56,13 +57,14 @@ const Research = () => (
               practically instantly even for very long tailed severity
               distributions.
               <br />
-              <a href={OpsRiskPaper} target="_blank">
+              <a href={OpsRiskPaper} target="_blank" rel="noopener noreferrer">
                 Internal Link
               </a>
               <br />
               <a
                 href="http://www.risk.net/journal-of-operational-risk/technical-paper/2454227/operational-loss-with-correlated-frequency-and-severity-an-analytical-approach"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 External Link
               </a>
@@ -70,6 +72,7 @@ const Research = () => (
               <a
                 href="http://www.risk.net/risk/news/2455815/correlation-of-op-risk-losses-could-send-capital-soaring"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Interview with Risk.net
               </a>
@@ -86,12 +89,18 @@ const Research = () => (
             alt="credit risk"
           />
           <CardBody>
-            <CardTitle>Credit Risk Extensions (unpublished)</CardTitle>
+            <CardTitle className="lead">
+              Credit Risk Extensions (unpublished)
+            </CardTitle>
             <CardText>
               This paper describes in greater detail how to allocate risk to
               individual loans including marginal liquidity risk.
               <br />
-              <a href={CreditRiskExtensions} target="_blank">
+              <a
+                href={CreditRiskExtensions}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Internal Link
               </a>
             </CardText>
@@ -102,12 +111,12 @@ const Research = () => (
         <Card>
           <CardImg top width="100%" src={liquidity} alt="credit risk" />
           <CardBody>
-            <CardTitle>Liquidity Risk (unpublished)</CardTitle>
+            <CardTitle className="lead">Liquidity Risk (unpublished)</CardTitle>
             <CardText>
               This paper is a short description and proposal for managing
               liquidity risk.
               <br />
-              <a href={LiquidityRisk} target="_blank">
+              <a href={LiquidityRisk} target="_blank" rel="noopener noreferrer">
                 Internal Link
               </a>
             </CardText>

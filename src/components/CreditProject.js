@@ -13,10 +13,11 @@ const defaultFields = {
   uNum: 128
 }
 const onChangeHOF = (fields, setFields) => key => value =>
-  setFields({ ...fields, [key]: value })
+  setFields({ ...fields, [key]: value.target.value })
 const onSubmit = (fields, setChart) => e => {
   e.preventDefault()
-  getCreditRiskResults(fields).then(setChart)
+  console.log(fields)
+  //getCreditRiskResults(fields).then(setChart)
 }
 const getValueAndOnChangeHOF = (fields, onChange) => key => ({
   value: fields[key],
@@ -35,7 +36,13 @@ const CreditProject = () => {
           Number of Assets
         </Label>
         <Col md={8}>
-          <Input type="number" name="n" id="n" {...getValueAndOnChange('n')} />
+          <Input
+            type="number"
+            step="1"
+            name="n"
+            id="n"
+            {...getValueAndOnChange('n')}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -43,7 +50,13 @@ const CreditProject = () => {
           Time Horizon
         </Label>
         <Col md={8}>
-          <Input type="number" name="t" id="t" {...getValueAndOnChange('t')} />
+          <Input
+            type="number"
+            step="any"
+            name="t"
+            id="t"
+            {...getValueAndOnChange('t')}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -55,6 +68,7 @@ const CreditProject = () => {
             type="number"
             name="x0"
             id="x0"
+            step="any"
             {...getValueAndOnChange('x0')}
           />
         </Col>
@@ -68,6 +82,7 @@ const CreditProject = () => {
             type="number"
             name="alpha"
             id="alpha"
+            step="any"
             {...getValueAndOnChange('alpha')}
           />
         </Col>
@@ -81,6 +96,7 @@ const CreditProject = () => {
             type="number"
             name="sigma"
             id="sigma"
+            step="any"
             {...getValueAndOnChange('sigma')}
           />
         </Col>
@@ -90,7 +106,13 @@ const CreditProject = () => {
           q
         </Label>
         <Col md={8}>
-          <Input type="number" name="q" id="q" {...getValueAndOnChange('q')} />
+          <Input
+            type="number"
+            step="any"
+            name="q"
+            id="q"
+            {...getValueAndOnChange('q')}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -101,6 +123,7 @@ const CreditProject = () => {
           <Input
             type="number"
             name="lambda"
+            step="any"
             id="lambda"
             {...getValueAndOnChange('lambda')}
           />
@@ -114,6 +137,7 @@ const CreditProject = () => {
           <Input
             type="number"
             name="xNum"
+            step="1"
             id="xNum"
             {...getValueAndOnChange('xNum')}
           />
@@ -127,6 +151,7 @@ const CreditProject = () => {
           <Input
             type="number"
             name="uNum"
+            step="1"
             id="uNum"
             {...getValueAndOnChange('uNum')}
           />

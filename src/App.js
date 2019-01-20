@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import React from 'react'
 import Research from './pages/Research'
 import About from './pages/About'
@@ -21,14 +21,15 @@ const LogPageView = () => {
 export default () => (
   <Router>
     <>
-      <Route to="/" component={DanielNav} />
-      <Route to="/" component={LogPageView} />
+      <DanielNav />
+      <Route path="/" component={LogPageView} />
       <Switch>
-        <Route to="/research" component={Research} />
-        <Route to="/projects" component={Projects} />
-        <Route to="/thoughts" component={Thoughts} />
-        <Route to="/about" component={About} />
-        <Route to="/" component={Home} />
+        <Route path="/research" component={Research} />
+        <Route path="/projects" component={Projects} />
+        <Route path="/thoughts" component={Thoughts} />
+        <Route path="/about" component={About} />
+        <Route path="/home" component={Home} />
+        <Redirect from="/" to="/home" />
       </Switch>
     </>
   </Router>

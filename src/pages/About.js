@@ -26,7 +26,7 @@ const About = () => (
         <Card>
           <CardImg top width="100%" src={model} alt="modeling" />
           <CardBody>
-            <CardTitle>Mathematical Modeling</CardTitle>
+            <CardTitle className="lead">Mathematical Modeling</CardTitle>
             <CardText>
               I have created credit and operational economic capital models as
               can be seen in the <Link to="/research">research</Link> section of
@@ -35,7 +35,11 @@ const About = () => (
               <Link to="/projects">projects</Link> section. At a previous job I
               created the ALLL and economic capital models. The economic capital
               model used{' '}
-              <a href="http://arxiv.org/pdf/0708.2542.pdf" target="_blank">
+              <a
+                href="http://arxiv.org/pdf/0708.2542.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Euler's{' '}
               </a>{' '}
               method to allocate economic capital to each loan in the portfolio.
@@ -46,6 +50,7 @@ const About = () => (
               <a
                 href="https://github.com/realoptions/option_price_faas"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 option pricing models
               </a>
@@ -53,6 +58,7 @@ const About = () => (
               <a
                 href="https://github.com/phillyfan1138/hull_white_rust"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 market risk models
               </a>
@@ -60,6 +66,7 @@ const About = () => (
               <a
                 href="https://github.com/phillyfan1138/loan_ec"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 economic capital models
               </a>
@@ -72,7 +79,7 @@ const About = () => (
         <Card>
           <CardImg top width="100%" src={liquidity} alt="liquidity" />
           <CardBody>
-            <CardTitle>Liquidity Risk</CardTitle>
+            <CardTitle className="lead">Liquidity Risk</CardTitle>
             <CardText>
               One of the biggest risks to a financial institution is a lack of
               liquidity. A bank may be well capitalized, have good cash flow,
@@ -96,7 +103,7 @@ const About = () => (
         <Card>
           <CardImg top width="100%" src={sql} alt="sql" />
           <CardBody>
-            <CardTitle>Data</CardTitle>
+            <CardTitle className="lead">Data</CardTitle>
             <CardText>
               I have experience with big data solutions such as Hadoop and S3. I
               have also experimented with streaming solutions such as Kafka and
@@ -115,7 +122,7 @@ const About = () => (
         <Card>
           <CardImg top width="100%" src={crypto} alt="sql" />
           <CardBody>
-            <CardTitle>Fintech</CardTitle>
+            <CardTitle className="lead">Fintech</CardTitle>
             <CardText>
               I have a strong interest in blockchain technology and
               cryptocurrencies. Financial instutions will be forced by
@@ -127,7 +134,11 @@ const About = () => (
               FinTech course and was one of the four capstones (out of over 300)
               who were picked by the course advisors. The code used in the
               capstone is available on the{' '}
-              <a href="https://github.com/skyPet" target="_blank">
+              <a
+                href="https://github.com/skyPet"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 SkyPet
               </a>{' '}
               repository.
@@ -139,13 +150,17 @@ const About = () => (
         <Card>
           <CardImg top width="100%" src={code} alt="code" />
           <CardBody>
-            <CardTitle>Programming</CardTitle>
+            <CardTitle className="lead">Programming</CardTitle>
             <CardText>
               I have created applications in Java, C++, Python, Rust, and
               HTML/Javascript including NodeJS. Some of these applications are
               available on <Link to="/research">this site</Link> while others
               are available on my{' '}
-              <a href="https://github.com/phillyfan1138/" target="_blank">
+              <a
+                href="https://github.com/phillyfan1138/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {' '}
                 github
               </a>{' '}
@@ -153,6 +168,7 @@ const About = () => (
               <a
                 href="https://github.com/phillyfan1138/binomial_tree_rust"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 automatic recombining tree class for any single dimensional
                 stochastic differential equation
@@ -161,15 +177,24 @@ const About = () => (
               <a
                 href="https://github.com/phillyfan1138/DuneClient"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 interface
               </a>{' '}
               between{' '}
-              <a href="http://emby.media/" target="_blank">
+              <a
+                href="http://emby.media/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 emby
               </a>{' '}
               and the{' '}
-              <a href="http://www.dune-hd-usa.com/" target="_blank">
+              <a
+                href="http://www.dune-hd-usa.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Dune Media Player
               </a>
               . Additionally I have a working knowledge of SAS, VBA, and VB.net.
@@ -181,7 +206,7 @@ const About = () => (
         <Card>
           <CardImg top width="100%" src={passion} alt="passion" />
           <CardBody>
-            <CardTitle>Passions</CardTitle>
+            <CardTitle className="lead">Passions</CardTitle>
             <CardText>
               I have a goal of creating a parsimonious economic capital model
               that is both actionable and accurate. Actionable models have
@@ -196,11 +221,15 @@ const About = () => (
               characteristic functions to efficiently blend market, operational,
               credit risk, and liquidity risk while retaining accuracy. I have
               written two papers which demonstrate this technique for{' '}
-              <a href={CreditRiskPaper} target="_blank">
+              <a
+                href={CreditRiskPaper}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 credit risk
               </a>{' '}
               and{' '}
-              <a href={OpsRiskPaper} target="_blank">
+              <a href={OpsRiskPaper} target="_blank" rel="noopener noreferrer">
                 operational risk
               </a>
               .

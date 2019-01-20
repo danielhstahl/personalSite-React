@@ -8,7 +8,9 @@ const Thoughts = () => (
       <StandardGridElement>
         <Card>
           <CardBody>
-            <CardTitle>Thoughts on model development</CardTitle>
+            <CardTitle className="lead">
+              Thoughts on model development
+            </CardTitle>
             <CardText>
               Model development should follow similar process to software
               application development. Application development separates the
@@ -38,7 +40,11 @@ const Thoughts = () => (
               Data should always flow into the model automatically. This can
               done through web-sockets or REST hooks. This is often used with
               external data like{' '}
-              <a href="https://research.stlouisfed.org/fred2/" target="_blank">
+              <a
+                href="https://research.stlouisfed.org/fred2/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 FRED
               </a>
               . Data can also flow through by calling data directly from a
@@ -55,7 +61,7 @@ const Thoughts = () => (
       <StandardGridElement>
         <Card>
           <CardBody>
-            <CardTitle>How to develop a model</CardTitle>
+            <CardTitle className="lead">How to develop a model</CardTitle>
             <CardText>
               Consider the process to be modeled. What constraints are there?
               How precise does the model have to be? What is the process which
@@ -64,6 +70,7 @@ const Thoughts = () => (
               <a
                 href="http://www.occ.treas.gov/news-issuances/bulletins/2012/bulletin-2012-25a-Market-Risk.pdf"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Market Risk Rule
               </a>{' '}
@@ -82,6 +89,7 @@ const Thoughts = () => (
               <a
                 href="https://en.wikipedia.org/wiki/Embarrassingly_parallel"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 embarrassingly parallel
               </a>{' '}
@@ -113,12 +121,13 @@ const Thoughts = () => (
       <StandardGridElement>
         <Card>
           <CardBody>
-            <CardTitle>Model Risk</CardTitle>
+            <CardTitle className="lead">Model Risk</CardTitle>
             <CardText>
               Emanuel Derman (of{' '}
               <a
                 href="http://www.emanuelderman.com/media/faj-one_factor_model.pdf"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Black-Derman-Toy
               </a>{' '}
@@ -127,6 +136,7 @@ const Thoughts = () => (
               <a
                 href="http://www.emanuelderman.com/media/gs-model_risk.pdf"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 His now classic paper on model risk
               </a>{' '}
@@ -136,6 +146,7 @@ const Thoughts = () => (
               <a
                 href="http://www.federalreserve.gov/bankinforeg/srletters/sr1107a1.pdf"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 SR 11-7
               </a>
