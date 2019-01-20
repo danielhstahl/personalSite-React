@@ -6,8 +6,7 @@ import {
   CardBody,
   CardTitle,
   Container,
-  Row,
-  Col
+  Row
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import model from '../assets/images/model.jpg'
@@ -18,16 +17,12 @@ import code from '../assets/images/code.jpg'
 import passion from '../assets/images/passion.jpg'
 import CreditRiskPaper from '../assets/pdf/CreditRiskPaper.pdf'
 import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
-const StandardSize = ({ children }) => (
-  <Col xs={12} sm={6}>
-    {children}
-  </Col>
-)
+import StandardGridElement from '../components/StandardGridElement'
 
 const About = () => (
   <Container>
     <Row>
-      <StandardSize>
+      <StandardGridElement>
         <Card>
           <CardImg top width="100%" src={model} alt="modeling" />
           <CardBody>
@@ -40,29 +35,40 @@ const About = () => (
               <Link to="/projects">projects</Link> section. At a previous job I
               created the ALLL and economic capital models. The economic capital
               model used{' '}
-              <a href="http://arxiv.org/pdf/0708.2542.pdf">Euler's </a> method
-              to allocate economic capital to each loan in the portfolio. Each
-              of these models was written in Java and had a GUI which allowed
-              non-technical users to price loans and analyze risk. Currently, I
-              am building out a library of models in the programming language
-              Rust. I have{' '}
-              <a href="https://github.com/realoptions/option_price_faas">
+              <a href="http://arxiv.org/pdf/0708.2542.pdf" target="_blank">
+                Euler's{' '}
+              </a>{' '}
+              method to allocate economic capital to each loan in the portfolio.
+              Each of these models was written in Java and had a GUI which
+              allowed non-technical users to price loans and analyze risk.
+              Currently, I am building out a library of models in the
+              programming language Rust. I have{' '}
+              <a
+                href="https://github.com/realoptions/option_price_faas"
+                target="_blank"
+              >
                 option pricing models
               </a>
               ,{' '}
-              <a href="https://github.com/phillyfan1138/hull_white_rust">
+              <a
+                href="https://github.com/phillyfan1138/hull_white_rust"
+                target="_blank"
+              >
                 market risk models
               </a>
               , and{' '}
-              <a href="https://github.com/phillyfan1138/loan_ec">
+              <a
+                href="https://github.com/phillyfan1138/loan_ec"
+                target="_blank"
+              >
                 economic capital models
               </a>
               .
             </CardText>
           </CardBody>
         </Card>
-      </StandardSize>
-      <StandardSize>
+      </StandardGridElement>
+      <StandardGridElement>
         <Card>
           <CardImg top width="100%" src={liquidity} alt="liquidity" />
           <CardBody>
@@ -85,8 +91,8 @@ const About = () => (
             </CardText>
           </CardBody>
         </Card>
-      </StandardSize>
-      <StandardSize>
+      </StandardGridElement>
+      <StandardGridElement>
         <Card>
           <CardImg top width="100%" src={sql} alt="sql" />
           <CardBody>
@@ -104,8 +110,8 @@ const About = () => (
             </CardText>
           </CardBody>
         </Card>
-      </StandardSize>
-      <StandardSize>
+      </StandardGridElement>
+      <StandardGridElement>
         <Card>
           <CardImg top width="100%" src={crypto} alt="sql" />
           <CardBody>
@@ -121,12 +127,15 @@ const About = () => (
               FinTech course and was one of the four capstones (out of over 300)
               who were picked by the course advisors. The code used in the
               capstone is available on the{' '}
-              <a href="https://github.com/skyPet">SkyPet</a> repository.
+              <a href="https://github.com/skyPet" target="_blank">
+                SkyPet
+              </a>{' '}
+              repository.
             </CardText>
           </CardBody>
         </Card>
-      </StandardSize>
-      <StandardSize>
+      </StandardGridElement>
+      <StandardGridElement>
         <Card>
           <CardImg top width="100%" src={code} alt="code" />
           <CardBody>
@@ -136,24 +145,39 @@ const About = () => (
               HTML/Javascript including NodeJS. Some of these applications are
               available on <Link to="/research">this site</Link> while others
               are available on my{' '}
-              <a href="https://github.com/phillyfan1138/"> github</a> page.
-              These applications range from an{' '}
-              <a href="https://github.com/phillyfan1138/binomial_tree_rust">
+              <a href="https://github.com/phillyfan1138/" target="_blank">
+                {' '}
+                github
+              </a>{' '}
+              page. These applications range from an{' '}
+              <a
+                href="https://github.com/phillyfan1138/binomial_tree_rust"
+                target="_blank"
+              >
                 automatic recombining tree class for any single dimensional
                 stochastic differential equation
               </a>{' '}
               to creating an{' '}
-              <a href="https://github.com/phillyfan1138/DuneClient">
+              <a
+                href="https://github.com/phillyfan1138/DuneClient"
+                target="_blank"
+              >
                 interface
               </a>{' '}
-              between <a href="http://emby.media/">emby</a> and the{' '}
-              <a href="http://www.dune-hd-usa.com/">Dune Media Player</a>.
-              Additionally I have a working knowledge of SAS, VBA, and VB.net.
+              between{' '}
+              <a href="http://emby.media/" target="_blank">
+                emby
+              </a>{' '}
+              and the{' '}
+              <a href="http://www.dune-hd-usa.com/" target="_blank">
+                Dune Media Player
+              </a>
+              . Additionally I have a working knowledge of SAS, VBA, and VB.net.
             </CardText>
           </CardBody>
         </Card>
-      </StandardSize>
-      <StandardSize>
+      </StandardGridElement>
+      <StandardGridElement>
         <Card>
           <CardImg top width="100%" src={passion} alt="passion" />
           <CardBody>
@@ -172,12 +196,18 @@ const About = () => (
               characteristic functions to efficiently blend market, operational,
               credit risk, and liquidity risk while retaining accuracy. I have
               written two papers which demonstrate this technique for{' '}
-              <a href={CreditRiskPaper}>credit risk</a> and{' '}
-              <a href={OpsRiskPaper}>operational risk</a>.
+              <a href={CreditRiskPaper} target="_blank">
+                credit risk
+              </a>{' '}
+              and{' '}
+              <a href={OpsRiskPaper} target="_blank">
+                operational risk
+              </a>
+              .
             </CardText>
           </CardBody>
         </Card>
-      </StandardSize>
+      </StandardGridElement>
     </Row>
   </Container>
 )
