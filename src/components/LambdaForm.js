@@ -23,18 +23,18 @@ export const onSubmitHOF = (setChart, setShowChart, setIsLoading) => (
     .then(() => setIsLoading(false))
 }
 
-const LambdaForm = ({ children, chartComponent }) => {
+const LambdaForm = ({ children, chartComponent, ...rest }) => {
   const [chart, setChart] = useState({})
   const [showChart, setShowChart] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const onSubmit = onSubmitHOF(setChart, setShowChart, setIsLoading)
-  const chartCInst = () => chartComponent({ data: chart })
+  const chartCInst = () => chartComponent({ data: chart, ...rest })
   return (
     <>
       <Flip open={showChart} onClose={() => setShowChart(false)}>
         {chartCInst}
       </Flip>
-      {showChart || children({ onSubmit, isLoading })}
+      {children({ onSubmit, isLoading, isVisible: !showChart })}
     </>
   )
 }

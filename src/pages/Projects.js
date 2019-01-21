@@ -3,24 +3,89 @@ import { Card, CardBody, CardTitle, Container, Row } from 'reactstrap'
 import CreditProject from '../components/CreditProject'
 import LambdaForm from '../components/LambdaForm'
 import StandardGridElement from '../components/StandardGridElement'
-const FakeChart = () => null
-const Projects = () => (
-  <Container>
-    <Row>
-      <StandardGridElement>
-        <Card>
-          <CardBody>
-            <CardTitle className="lead">Credit Risk</CardTitle>
-            <LambdaForm chartComponent={FakeChart}>
-              {({ onSubmit, isLoading }) => (
-                <CreditProject onSubmit={onSubmit} isLoading={isLoading} />
-              )}
-            </LambdaForm>
-          </CardBody>
-        </Card>
-      </StandardGridElement>
-    </Row>
-  </Container>
-)
+import DensityChart from '../components/DensityChart'
+import OpsProject from '../components/OpsProject'
+import MarketProject from '../components/MarketProject'
+import CreditRiskPaper from '../assets/pdf/CreditRiskPaper.pdf'
+import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
+import MarketRiskPaper from '../assets/pdf/MarketRiskDocumentation.pdf'
+
+//const FakeChart = () => null
+const Projects = () => {
+  const style = getComputedStyle(document.body)
+  const theme = {
+    primary: style.getPropertyValue('--primary'),
+    secondary: style.getPropertyValue('--secondary')
+  }
+  return (
+    <Container>
+      <Row>
+        <StandardGridElement>
+          <Card>
+            <CardBody>
+              <CardTitle>
+                <span className="lead">Credit Risk</span>
+                <a className="float-right" href={CreditRiskPaper}>
+                  Documentation
+                </a>
+              </CardTitle>
+              <LambdaForm chartComponent={DensityChart} color={theme.primary}>
+                {({ onSubmit, isLoading, isVisible }) => (
+                  <CreditProject
+                    onSubmit={onSubmit}
+                    isLoading={isLoading}
+                    isVisible={isVisible}
+                  />
+                )}
+              </LambdaForm>
+            </CardBody>
+          </Card>
+        </StandardGridElement>
+        <StandardGridElement>
+          <Card>
+            <CardBody>
+              <CardTitle>
+                <span className="lead">Operational Risk</span>
+                <a className="float-right" href={OpsRiskPaper}>
+                  Documentation
+                </a>
+              </CardTitle>
+              <LambdaForm chartComponent={DensityChart} color={theme.primary}>
+                {({ onSubmit, isLoading, isVisible }) => (
+                  <OpsProject
+                    onSubmit={onSubmit}
+                    isLoading={isLoading}
+                    isVisible={isVisible}
+                  />
+                )}
+              </LambdaForm>
+            </CardBody>
+          </Card>
+        </StandardGridElement>
+        <StandardGridElement>
+          <Card>
+            <CardBody>
+              <CardTitle>
+                <span className="lead">Market Risk</span>
+                <a className="float-right" href={MarketRiskPaper}>
+                  Documentation
+                </a>
+              </CardTitle>
+              <LambdaForm chartComponent={DensityChart} color={theme.primary}>
+                {({ onSubmit, isLoading, isVisible }) => (
+                  <MarketProject
+                    onSubmit={onSubmit}
+                    isLoading={isLoading}
+                    isVisible={isVisible}
+                  />
+                )}
+              </LambdaForm>
+            </CardBody>
+          </Card>
+        </StandardGridElement>
+      </Row>
+    </Container>
+  )
+}
 
 export default Projects

@@ -31,6 +31,7 @@ describe('functionality', () => {
     const inputToComponent = mockComponent.mock.calls[0][0]
     expect(inputToComponent.onSubmit).toBeDefined()
     expect(inputToComponent.isLoading).toBeDefined()
+    expect(inputToComponent.isVisible).toBeDefined()
   })
   it('isLoading is false by default', () => {
     const mockComponent = jest.fn(() => null)
@@ -40,6 +41,7 @@ describe('functionality', () => {
     const inputToComponent = mockComponent.mock.calls[0][0]
     expect(inputToComponent.onSubmit).toBeDefined()
     expect(inputToComponent.isLoading).toEqual(false)
+    expect(inputToComponent.isVisible).toEqual(true)
   })
   it('chart is not called by default', () => {
     const mockComponent = jest.fn(() => null)
@@ -47,8 +49,6 @@ describe('functionality', () => {
     const lform = mount(
       <LambdaForm chartComponent={mockChart}>{mockComponent}</LambdaForm>
     )
-    //const inputToComponent1=mockComponent.mock.calls[0][0]
-    //const mockFetch=jest.fn(()=>Promise.resolve())
     expect(mockChart.mock.calls.length).toEqual(0)
   })
   it('shows chart when submit is called', () => {
