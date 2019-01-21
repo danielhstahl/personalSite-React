@@ -14,9 +14,9 @@ const defaultFields = {
 }
 const onChangeHOF = (fields, setFields) => key => value =>
   setFields({ ...fields, [key]: value.target.value })
+
 const onSubmit = (fields, setChart) => e => {
   e.preventDefault()
-  console.log(fields)
   //getCreditRiskResults(fields).then(setChart)
 }
 const getValueAndOnChangeHOF = (fields, onChange) => key => ({

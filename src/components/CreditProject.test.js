@@ -98,21 +98,20 @@ describe('functionality', () => {
       .first()
     expect(uNum.props().value).toEqual(128)
   })
-  it('updates fields on change', done => {
+  it('updates fields on change', () => {
     const project = mount(
       <Router>
         <CreditProject />
       </Router>
     )
-    const n = project
-      .find(Input)
-      .findWhere(v => v.props().id === 'n')
-      .first()
-    n.props().onChange(5)
+    const n = project.find('#n').first()
+    n.props().onChange({ target: { value: 5 } })
     project.update()
-    setTimeout(() => {
-      expect(n.props().value).toEqual(5)
-      done()
-    }, 30)
+    expect(
+      project
+        .find('#n')
+        .first()
+        .props().value
+    ).toEqual(5)
   })
 })
