@@ -16,7 +16,7 @@ const defaultFields = {
   rho: 0.9,
   numODE: 128,
   xNum: 1024,
-  uNum: 128
+  uNum: 256
 }
 
 const { size, offset } = formOffset
@@ -28,7 +28,7 @@ const OpsProject = ({ onSubmit, isLoading, isVisible }) => {
     <Form onSubmit={onSubmit(fields, getOpsRiskResults)}>
       <FormGroup row>
         <Label for="t" md={offset}>
-          Number of Assets
+          Time Horizon
         </Label>
         <Col md={size}>
           <Input
@@ -55,8 +55,8 @@ const OpsProject = ({ onSubmit, isLoading, isVisible }) => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="v0" md={offset}>
-          a
+        <Label for="a" md={offset}>
+          Speed
         </Label>
         <Col md={size}>
           <Input
@@ -70,7 +70,7 @@ const OpsProject = ({ onSubmit, isLoading, isVisible }) => {
       </FormGroup>
       <FormGroup row>
         <Label for="sigma" md={offset}>
-          Systemic Volatility
+          Volatility
         </Label>
         <Col md={size}>
           <Input

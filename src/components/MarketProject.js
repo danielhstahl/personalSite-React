@@ -77,7 +77,7 @@ const MarketProject = ({ onSubmit, isLoading, isVisible }) => {
           </Input>
         </Col>
         <Label for="n" md={offset}>
-          Number of Assets
+          Number of Simulations
         </Label>
         <Col md={size}>
           <Input
@@ -90,50 +90,22 @@ const MarketProject = ({ onSubmit, isLoading, isVisible }) => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="t" md={offset}>
-          Time Horizon
+        <Label for="r0" md={offset}>
+          Short Rate
         </Label>
         <Col md={size}>
           <Input
             type="number"
             step="any"
-            name="t"
-            id="t"
-            {...getValueAndOnChange('t')}
-          />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="x0" md={offset}>
-          X0
-        </Label>
-        <Col md={size}>
-          <Input
-            type="number"
-            name="x0"
-            id="x0"
-            step="any"
-            {...getValueAndOnChange('x0')}
-          />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="alpha" md={offset}>
-          Systemic Drift
-        </Label>
-        <Col md={size}>
-          <Input
-            type="number"
-            name="alpha"
-            id="alpha"
-            step="any"
-            {...getValueAndOnChange('alpha')}
+            name="r0"
+            id="r0"
+            {...getValueAndOnChange('r0')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
         <Label for="sigma" md={offset}>
-          Systemic Volatility
+          Volatility
         </Label>
         <Col md={size}>
           <Input
@@ -146,58 +118,58 @@ const MarketProject = ({ onSubmit, isLoading, isVisible }) => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="q" md={offset}>
-          q
+        <Label for="a" md={offset}>
+          Mean Reversion
         </Label>
         <Col md={size}>
           <Input
             type="number"
+            name="a"
+            id="a"
             step="any"
-            name="q"
-            id="q"
-            {...getValueAndOnChange('q')}
+            {...getValueAndOnChange('a')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="lambda" md={offset}>
-          lambda
+        <Label for="b" md={offset}>
+          Long Run Average
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="lambda"
+            name="b"
+            id="b"
             step="any"
-            id="lambda"
-            {...getValueAndOnChange('lambda')}
+            {...getValueAndOnChange('b')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="xNum" md={offset}>
-          Steps in X
+        <Label for="t" md={offset}>
+          Simulate to (in days)
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="xNum"
             step="1"
-            id="xNum"
-            {...getValueAndOnChange('xNum')}
+            name="t"
+            id="t"
+            {...getValueAndOnChange('t')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="uNum" md={offset}>
-          Steps in U
+        <Label for="T" md={offset}>
+          Maturity (years)
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="uNum"
-            step="1"
-            id="uNum"
-            {...getValueAndOnChange('uNum')}
+            name="T"
+            step="any"
+            id="T"
+            {...getValueAndOnChange('T')}
           />
         </Col>
       </FormGroup>
