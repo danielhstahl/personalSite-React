@@ -8,7 +8,7 @@ describe('render', () => {
   it('renders', () => {
     const project = mount(
       <Router>
-        <CreditProject />
+        <CreditProject onSubmit={() => {}} isLoading={false} />
       </Router>
     )
     expect(project).toBeDefined()
@@ -18,7 +18,7 @@ describe('functionality', () => {
   it('has form fields', () => {
     const project = mount(
       <Router>
-        <CreditProject />
+        <CreditProject onSubmit={() => {}} isLoading={false} />
       </Router>
     )
     const n = project
@@ -49,7 +49,7 @@ describe('functionality', () => {
   it('has defaults for form', () => {
     const project = mount(
       <Router>
-        <CreditProject />
+        <CreditProject onSubmit={() => {}} isLoading={false} />
       </Router>
     )
     const n = project
@@ -101,7 +101,7 @@ describe('functionality', () => {
   it('updates fields on change', () => {
     const project = mount(
       <Router>
-        <CreditProject />
+        <CreditProject onSubmit={() => {}} isLoading={false} />
       </Router>
     )
     const n = project.find('#n').first()

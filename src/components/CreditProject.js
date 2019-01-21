@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
-import { Label, Input, Form, FormGroup, Col, Button } from 'reactstrap'
+import { Label, Input, Form, FormGroup, Col } from 'reactstrap'
 import { getCreditRiskResults } from '../utils/service'
+import LoadingButton from './LoadingButton'
+import { onChangeHOF, getValueAndOnChangeHOF, formOffset } from '../utils/form'
+import PropTypes from 'prop-types'
 const defaultFields = {
   n: 100000,
   t: 1,
@@ -12,30 +15,19 @@ const defaultFields = {
   xNum: 1024,
   uNum: 128
 }
-const onChangeHOF = (fields, setFields) => key => value =>
-  setFields({ ...fields, [key]: value.target.value })
 
-const onSubmit = (fields, setChart) => e => {
-  e.preventDefault()
-  //getCreditRiskResults(fields).then(setChart)
-}
-const getValueAndOnChangeHOF = (fields, onChange) => key => ({
-  value: fields[key],
-  onChange: onChange(key)
-})
-const offset = { size: 10, offset: 2 }
-const CreditProject = () => {
+const { size, offset } = formOffset
+const CreditProject = ({ onSubmit, isLoading }) => {
   const [fields, setFields] = useState(defaultFields)
-  const [chart, setChart] = useState({})
   const onChange = onChangeHOF(fields, setFields)
   const getValueAndOnChange = getValueAndOnChangeHOF(fields, onChange)
   return (
-    <Form onSubmit={onSubmit(fields, setChart)}>
+    <Form onSubmit={onSubmit(fields, getCreditRiskResults)}>
       <FormGroup row>
-        <Label for="n" md={4}>
+        <Label for="n" md={offset}>
           Number of Assets
         </Label>
-        <Col md={8}>
+        <Col md={size}>
           <Input
             type="number"
             step="1"
@@ -46,10 +38,10 @@ const CreditProject = () => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="t" md={4}>
+        <Label for="t" md={offset}>
           Time Horizon
         </Label>
-        <Col md={8}>
+        <Col md={size}>
           <Input
             type="number"
             step="any"
@@ -60,10 +52,10 @@ const CreditProject = () => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="x0" md={4}>
+        <Label for="x0" md={offset}>
           X0
         </Label>
-        <Col md={8}>
+        <Col md={size}>
           <Input
             type="number"
             name="x0"
@@ -74,10 +66,10 @@ const CreditProject = () => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="alpha" md={4}>
+        <Label for="alpha" md={offset}>
           Systemic Drift
         </Label>
-        <Col md={8}>
+        <Col md={size}>
           <Input
             type="number"
             name="alpha"
@@ -88,10 +80,10 @@ const CreditProject = () => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="sigma" md={4}>
+        <Label for="sigma" md={offset}>
           Systemic Volatility
         </Label>
-        <Col md={8}>
+        <Col md={size}>
           <Input
             type="number"
             name="sigma"
@@ -102,10 +94,10 @@ const CreditProject = () => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="q" md={4}>
+        <Label for="q" md={offset}>
           q
         </Label>
-        <Col md={8}>
+        <Col md={size}>
           <Input
             type="number"
             step="any"
@@ -116,10 +108,10 @@ const CreditProject = () => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="lambda" md={4}>
+        <Label for="lambda" md={offset}>
           lambda
         </Label>
-        <Col md={8}>
+        <Col md={size}>
           <Input
             type="number"
             name="lambda"
@@ -130,10 +122,10 @@ const CreditProject = () => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="xNum" md={4}>
+        <Label for="xNum" md={offset}>
           Steps in X
         </Label>
-        <Col md={8}>
+        <Col md={size}>
           <Input
             type="number"
             name="xNum"
@@ -144,10 +136,10 @@ const CreditProject = () => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="uNum" md={4}>
+        <Label for="uNum" md={offset}>
           Steps in U
         </Label>
-        <Col md={8}>
+        <Col md={size}>
           <Input
             type="number"
             name="uNum"
@@ -157,10 +149,14 @@ const CreditProject = () => {
           />
         </Col>
       </FormGroup>
-      <FormGroup check row md={offset}>
-        <Button>Submit</Button>
+      <FormGroup check row md={formOffset}>
+        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
       </FormGroup>
     </Form>
   )
+}
+CreditProject.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 }
 export default CreditProject

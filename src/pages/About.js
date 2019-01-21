@@ -18,6 +18,7 @@ import passion from '../assets/images/passion.jpg'
 import CreditRiskPaper from '../assets/pdf/CreditRiskPaper.pdf'
 import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
 import StandardGridElement from '../components/StandardGridElement'
+import { RESEARCH, PROJECTS } from '../constants/routes'
 
 const About = () => (
   <Container>
@@ -29,10 +30,10 @@ const About = () => (
             <CardTitle className="lead">Mathematical Modeling</CardTitle>
             <CardText>
               I have created credit and operational economic capital models as
-              can be seen in the <Link to="/research">research</Link> section of
+              can be seen in the <Link to={RESEARCH}>research</Link> section of
               this site. I also have created ad-hoc projects (including a full
               market risk model) some of which can be found in the{' '}
-              <Link to="/projects">projects</Link> section. At a previous job I
+              <Link to={PROJECTS}>projects</Link> section. At a previous job I
               created the ALLL and economic capital models. The economic capital
               model used{' '}
               <a
@@ -94,7 +95,7 @@ const About = () => (
               paper presents a short description of the causes and recent
               impacts of liquidity crisis as well as proposals for managing
               liquidity risk. These papers can be found in the{' '}
-              <Link to="/research">research</Link> section of this site.
+              <Link to={RESEARCH}>research</Link> section of this site.
             </CardText>
           </CardBody>
         </Card>
@@ -154,8 +155,8 @@ const About = () => (
             <CardText>
               I have created applications in Java, C++, Python, Rust, and
               HTML/Javascript including NodeJS. Some of these applications are
-              available on <Link to="/research">this site</Link> while others
-              are available on my{' '}
+              available on <Link to={RESEARCH}>this site</Link> while others are
+              available on my{' '}
               <a
                 href="https://github.com/phillyfan1138/"
                 target="_blank"

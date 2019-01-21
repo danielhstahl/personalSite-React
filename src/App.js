@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 import DanielNav from './components/DanielNav'
 import ReactGA from 'react-ga'
+import { HOME, RESEARCH, PROJECTS, ABOUT, THOUGHTS } from './constants/routes'
 
 if (process.env.NODE_ENV === 'production') {
   ReactGA.initialize('UA-73388166-2')
@@ -24,12 +25,12 @@ export default () => (
       <DanielNav />
       <Route path="/" component={LogPageView} />
       <Switch>
-        <Route path="/research" component={Research} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/thoughts" component={Thoughts} />
-        <Route path="/about" component={About} />
-        <Route path="/home" component={Home} />
-        <Redirect from="/" to="/home" />
+        <Route path={RESEARCH} component={Research} />
+        <Route path={PROJECTS} component={Projects} />
+        <Route path={THOUGHTS} component={Thoughts} />
+        <Route path={ABOUT} component={About} />
+        <Route path={HOME} component={Home} />
+        <Redirect from="/" to={HOME} />
       </Switch>
     </>
   </Router>
