@@ -3,7 +3,7 @@ import { Button, Progress } from 'reactstrap'
 import PropTypes from 'prop-types'
 const LoadingButton = ({ children, isLoading, color, ...rest }) =>
   isLoading ? (
-    <Progress animated progress="100%" color={color} />
+    <Progress animated value="100" color={color} />
   ) : (
     <Button {...rest} color={color}>
       {children}

@@ -34,7 +34,7 @@ const LambdaForm = ({ children, chartComponent }) => {
       <Flip open={showChart} onClose={() => setShowChart(false)}>
         {chartCInst}
       </Flip>
-      {children({ onSubmit, isLoading })}
+      {showChart || children({ onSubmit, isLoading })}
     </>
   )
 }

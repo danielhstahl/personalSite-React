@@ -52,7 +52,7 @@ describe('functionality', () => {
     expect(mockChart.mock.calls.length).toEqual(0)
   })
   it('shows chart when submit is called', () => {
-    const mockComponent = jest.fn(() => null)
+    const mockComponent = jest.fn(() => <div>Hello World</div>)
     const mockChart = jest.fn(() => null)
     const lform = mount(
       <LambdaForm chartComponent={mockChart}>{mockComponent}</LambdaForm>
@@ -69,6 +69,10 @@ describe('functionality', () => {
       })
       .then(() => {
         return expect(mockChart.mock.calls[0][0].data).toEqual('world')
+      })
+      .then(() => {
+        const div = lform.find('div')
+        return expect(div.length).toEqual(0)
       })
   })
 })
