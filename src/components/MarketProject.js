@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Label, Input, Form, FormGroup, Col } from 'reactstrap'
-import { getCreditRiskResults } from '../utils/service'
+//import { getCreditRiskResults } from '../utils/service'
 import LoadingButton from './LoadingButton'
 import { onChangeHOF, getValueAndOnChangeHOF, formOffset } from '../utils/form'
 import PropTypes from 'prop-types'
@@ -52,7 +52,7 @@ const MarketProject = ({ onSubmit, isLoading, isVisible }) => {
   const onChange = onChangeHOF(fields, setFields)
   const getValueAndOnChange = getValueAndOnChangeHOF(fields, onChange)
   return !isVisible ? null : (
-    <Form onSubmit={onSubmit(fields, getCreditRiskResults)}>
+    <Form onSubmit={onSubmit(fields, () => {})}>
       <FormGroup row>
         <Label for="n" md={offset}>
           Select an Asset

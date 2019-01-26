@@ -6,7 +6,6 @@ import {
   VictoryContainer
 } from 'victory'
 import { CONTAINER_STYLE, DEFAULT_ANIMATE_STYLE } from '../constants/charts'
-import { convertDataToXY } from '../utils/charts'
 import PropTypes from 'prop-types'
 const DensityChart = ({
   data,
@@ -21,17 +20,18 @@ const DensityChart = ({
     <VictoryAxis dependentAxis tickFormat={() => ''} />
     <VictoryLine
       style={{ data: { stroke: color } }}
-      data={convertDataToXY(data)}
+      data={data}
       interpolation="natural"
+      x="at_point"
+      y="density"
     />
   </VictoryChart>
 )
 DensityChart.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      dx: PropTypes.number.isRequired,
-      xmin: PropTypes.number.isRequired,
-      y: PropTypes.number.isRequired
+      density: PropTypes.number.isRequired,
+      at_point: PropTypes.number.isRequired
     })
   ).isRequired,
   color: PropTypes.string

@@ -6,17 +6,15 @@ import { onChangeHOF, getValueAndOnChangeHOF, formOffset } from '../utils/form'
 import PropTypes from 'prop-types'
 const defaultFields = {
   t: 1,
-  v0: 1,
   a: 0.1,
   sigma: 0.3,
   lambda: 100,
-  alphaStable: 1.1,
-  muStable: 1300,
-  cStable: 100,
-  rho: 0.9,
-  numODE: 128,
-  xNum: 1024,
-  uNum: 256
+  alpha: 1.1,
+  mu: 1300,
+  c: 100,
+  correlation: 0.9,
+  numOde: 128,
+  numU: 256
 }
 
 const { size, offset } = formOffset
@@ -37,20 +35,6 @@ const OpsProject = ({ onSubmit, isLoading, isVisible }) => {
             name="t"
             id="t"
             {...getValueAndOnChange('t')}
-          />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="v0" md={offset}>
-          X0
-        </Label>
-        <Col md={size}>
-          <Input
-            type="number"
-            name="v0"
-            id="v0"
-            step="any"
-            {...getValueAndOnChange('v0')}
           />
         </Col>
       </FormGroup>
@@ -97,100 +81,86 @@ const OpsProject = ({ onSubmit, isLoading, isVisible }) => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="alphaStable" md={offset}>
+        <Label for="alpha" md={offset}>
           alpha
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="alphaStable"
+            name="alpha"
             step="any"
-            id="alphaStable"
-            {...getValueAndOnChange('alphaStable')}
+            id="alpha"
+            {...getValueAndOnChange('alpha')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="muStable" md={offset}>
+        <Label for="mu" md={offset}>
           Shift (Stable)
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="muStable"
+            name="mu"
             step="any"
-            id="muStable"
-            {...getValueAndOnChange('muStable')}
+            id="mu"
+            {...getValueAndOnChange('mu')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="cStable" md={offset}>
+        <Label for="c" md={offset}>
           Scale (Stable)
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="cStable"
+            name="c"
             step="any"
-            id="cStable"
-            {...getValueAndOnChange('cStable')}
+            id="c"
+            {...getValueAndOnChange('c')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="rho" md={offset}>
+        <Label for="correlation" md={offset}>
           Correlation
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="rho"
+            name="correlation"
             step="any"
-            id="rho"
-            {...getValueAndOnChange('rho')}
+            id="correlation"
+            {...getValueAndOnChange('correlation')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="numODE" md={offset}>
+        <Label for="numOde" md={offset}>
           Steps in ODE
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="numODE"
+            name="numOde"
             step="1"
-            id="numODE"
-            {...getValueAndOnChange('numODE')}
+            id="numOde"
+            {...getValueAndOnChange('numOde')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="xNum" md={offset}>
-          Steps in X
-        </Label>
-        <Col md={size}>
-          <Input
-            type="number"
-            name="xNum"
-            step="1"
-            id="xNum"
-            {...getValueAndOnChange('xNum')}
-          />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="uNum" md={offset}>
+        <Label for="numU" md={offset}>
           Steps in U
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="uNum"
+            name="numU"
             step="1"
-            id="uNum"
-            {...getValueAndOnChange('uNum')}
+            id="numU"
+            {...getValueAndOnChange('numU')}
           />
         </Col>
       </FormGroup>

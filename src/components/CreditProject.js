@@ -5,15 +5,12 @@ import LoadingButton from './LoadingButton'
 import { onChangeHOF, getValueAndOnChangeHOF, formOffset } from '../utils/form'
 import PropTypes from 'prop-types'
 const defaultFields = {
-  n: 100000,
-  t: 1,
-  x0: 1,
-  alpha: 0.1,
-  sigma: 0.3,
   q: 0.05,
   lambda: 0.05,
-  xNum: 1024,
-  uNum: 128
+  numU: 128,
+  pd: 0.02,
+  numLoans: 100000,
+  volatility: 0.5
 }
 
 const { size, offset } = formOffset
@@ -31,65 +28,37 @@ const CreditProject = ({ onSubmit, isLoading, isVisible }) => {
           <Input
             type="number"
             step="1"
-            name="n"
-            id="n"
-            {...getValueAndOnChange('n')}
+            name="numLoans"
+            id="numLoans"
+            {...getValueAndOnChange('numLoans')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="t" md={offset}>
-          Time Horizon
+        <Label for="pd" md={offset}>
+          Probability of Default
         </Label>
         <Col md={size}>
           <Input
             type="number"
             step="any"
-            name="t"
-            id="t"
-            {...getValueAndOnChange('t')}
+            name="pd"
+            id="pd"
+            {...getValueAndOnChange('pd')}
           />
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="x0" md={offset}>
-          X0
+        <Label for="volatility" md={offset}>
+          Volatility
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="x0"
-            id="x0"
+            name="volatility"
+            id="volatility"
             step="any"
-            {...getValueAndOnChange('x0')}
-          />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="alpha" md={offset}>
-          Systemic Drift
-        </Label>
-        <Col md={size}>
-          <Input
-            type="number"
-            name="alpha"
-            id="alpha"
-            step="any"
-            {...getValueAndOnChange('alpha')}
-          />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="sigma" md={offset}>
-          Systemic Volatility
-        </Label>
-        <Col md={size}>
-          <Input
-            type="number"
-            name="sigma"
-            id="sigma"
-            step="any"
-            {...getValueAndOnChange('sigma')}
+            {...getValueAndOnChange('volatility')}
           />
         </Col>
       </FormGroup>
@@ -122,30 +91,16 @@ const CreditProject = ({ onSubmit, isLoading, isVisible }) => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Label for="xNum" md={offset}>
-          Steps in X
-        </Label>
-        <Col md={size}>
-          <Input
-            type="number"
-            name="xNum"
-            step="1"
-            id="xNum"
-            {...getValueAndOnChange('xNum')}
-          />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="uNum" md={offset}>
+        <Label for="numU" md={offset}>
           Steps in U
         </Label>
         <Col md={size}>
           <Input
             type="number"
-            name="uNum"
+            name="numU"
             step="1"
-            id="uNum"
-            {...getValueAndOnChange('uNum')}
+            id="numU"
+            {...getValueAndOnChange('numU')}
           />
         </Col>
       </FormGroup>
