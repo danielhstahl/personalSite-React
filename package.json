@@ -37,7 +37,7 @@
   },
   "swagger_urls":[
     "https://cdn.jsdelivr.net/gh/phillyfan1138/credit_faas@v4/docs/openapi_merged.yml",
-    "https://cdn.jsdelivr.net/gh/phillyfan1138/ops_faas@v3/docs/openapi_merged.yml"
+    "https://cdn.jsdelivr.net/gh/phillyfan1138/ops_faas@v5/docs/openapi_merged.yml"
   ],
   "eslintConfig": {
     "extends": "react-app"
