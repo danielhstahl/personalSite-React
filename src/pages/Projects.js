@@ -1,12 +1,12 @@
 import React from 'react'
 import { Card, CardBody, CardTitle, Container, Row } from 'reactstrap'
-//import CreditProject from '../components/CreditProject'
 import CreditProject from '../components/generatedComponents/Credit_Risk_Demo'
+import OpsProject from '../components/generatedComponents/Ops_Risk_Demo'
+import MarketProject from '../components/generatedComponents/Market_Risk_Demo'
 import LambdaForm from '../components/LambdaForm'
 import StandardGridElement from '../components/StandardGridElement'
 import DensityChart from '../components/DensityChart'
-import OpsProject from '../components/OpsProject'
-import MarketProject from '../components/MarketProject'
+import HistogramChart from '../components/HistogramChart'
 import CreditRiskPaper from '../assets/pdf/CreditRiskPaper.pdf'
 import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
 import MarketRiskPaper from '../assets/pdf/MarketRiskDocumentation.pdf'
@@ -71,7 +71,7 @@ const Projects = () => {
                   Documentation
                 </a>
               </CardTitle>
-              <LambdaForm chartComponent={DensityChart} color={theme.primary}>
+              <LambdaForm chartComponent={HistogramChart} color={theme.primary}>
                 {({ onSubmit, isLoading, isVisible }) => (
                   <MarketProject
                     onSubmit={onSubmit}

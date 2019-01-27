@@ -3,3 +3,12 @@ export const DEFAULT_ANIMATE_STYLE = {
   duration: 0.0,
   onLoad: { duration: 500 }
 }
+
+export const X_AXIS_STYLE = {
+  tickLabels: {
+    angle: 90,
+    padding: 10,
+    verticalAnchor: 'middle',
+    textAnchor: 'start'
+  }
+}

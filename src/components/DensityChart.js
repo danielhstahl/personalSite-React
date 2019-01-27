@@ -5,8 +5,13 @@ import {
   VictoryAxis,
   VictoryContainer
 } from 'victory'
-import { CONTAINER_STYLE, DEFAULT_ANIMATE_STYLE } from '../constants/charts'
+import {
+  CONTAINER_STYLE,
+  DEFAULT_ANIMATE_STYLE,
+  X_AXIS_STYLE
+} from '../constants/charts'
 import PropTypes from 'prop-types'
+const chartPadding = { bottom: 70 }
 const DensityChart = ({
   data,
   color,
@@ -14,10 +19,10 @@ const DensityChart = ({
 }) => (
   <VictoryChart
     animate={animateStyle}
+    padding={chartPadding}
     containerComponent={<VictoryContainer style={CONTAINER_STYLE} />}
   >
-    <VictoryAxis tickFormat={() => ''} />
-    <VictoryAxis dependentAxis tickFormat={() => ''} />
+    <VictoryAxis style={X_AXIS_STYLE} />
     <VictoryLine
       style={{ data: { stroke: color } }}
       data={data}
