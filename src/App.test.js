@@ -1,8 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-});
+import React from 'react'
+import { mount } from 'enzyme'
+import App from './App'
+jest.mock('react-ga')
+describe('render', () => {
+  it('renders', () => {
+    const app = mount(<App />)
+    expect(app).toBeDefined()
+  })
+})
