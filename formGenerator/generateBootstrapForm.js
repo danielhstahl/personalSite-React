@@ -1,6 +1,7 @@
 const YAML = require('js-yaml')
 const fs = require('fs')
 const https = require('https')
+const {swagger_urls}=require('../package.json')
 const getAsString = url =>
   new Promise((res, rej) => {
     https
@@ -21,10 +22,7 @@ const getAsString = url =>
 
 const capitalizeFirst = string =>
   string.charAt(0).toUpperCase() + string.slice(1)
-const urls = [
-  'https://cdn.jsdelivr.net/gh/phillyfan1138/credit_faas@v4/docs/openapi_merged.yml'
-  //"https://cdn.jsdelivr.net/gh/phillyfan1138/ops_faas@v3/docs/openapi_merged.yml",
-]
+
 const topOfForm = `
 import React, { useState } from 'react'
 import { Label, Input, Form, FormGroup, Col } from 'reactstrap'
@@ -147,7 +145,7 @@ const ${componentName}=({onSubmit, isLoading})=>{
 }
 
 Promise.all(
-  urls.map(url =>
+  swagger_urls.map(url =>
     getAsString(url)
       .then(createProject)
       .then(({ project, projectName }) => {
