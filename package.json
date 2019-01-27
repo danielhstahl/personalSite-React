@@ -61,6 +61,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
+      "!src/components/generatedComponents/*",
       "!src/setupTests.js",
       "!src/serviceWorker.js",
       "!src/index.js"
