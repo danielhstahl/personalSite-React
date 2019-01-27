@@ -263,7 +263,7 @@ const defaultFieldsBondcall = {
   b: 0.05,
   sigma: 0.05,
   maturity: 1,
-  underlying_maturity: 1.25,
+  underlyingMaturity: 1.25,
   strike: 0.97
 }
 const Bondcall = ({ onSubmit, isLoading }) => {
@@ -370,16 +370,16 @@ const Bondcall = ({ onSubmit, isLoading }) => {
       </FormGroup>
 
       <FormGroup row>
-        <Label for="underlying_maturity" md={offset}>
+        <Label for="underlyingMaturity" md={offset}>
           Maturity of underlying bond (years)
         </Label>
         <Col md={size}>
           <Input
             type="number"
             step="any"
-            name="underlying_maturity"
-            id="underlying_maturity"
-            {...getValueAndOnChange('underlying_maturity')}
+            name="underlyingMaturity"
+            id="underlyingMaturity"
+            {...getValueAndOnChange('underlyingMaturity')}
           />
         </Col>
       </FormGroup>
@@ -410,7 +410,7 @@ const defaultFieldsBondput = {
   b: 0.05,
   sigma: 0.05,
   maturity: 1,
-  underlying_maturity: 1.25,
+  underlyingMaturity: 1.25,
   strike: 0.97
 }
 const Bondput = ({ onSubmit, isLoading }) => {
@@ -517,16 +517,16 @@ const Bondput = ({ onSubmit, isLoading }) => {
       </FormGroup>
 
       <FormGroup row>
-        <Label for="underlying_maturity" md={offset}>
+        <Label for="underlyingMaturity" md={offset}>
           Maturity of underlying bond (years)
         </Label>
         <Col md={size}>
           <Input
             type="number"
             step="any"
-            name="underlying_maturity"
-            id="underlying_maturity"
-            {...getValueAndOnChange('underlying_maturity')}
+            name="underlyingMaturity"
+            id="underlyingMaturity"
+            {...getValueAndOnChange('underlyingMaturity')}
           />
         </Col>
       </FormGroup>
@@ -705,7 +705,7 @@ const defaultFieldsSwap = {
   sigma: 0.05,
   maturity: 1,
   tenor: 0.25,
-  swap_rate: 0.02
+  swapRate: 0.02
 }
 const Swap = ({ onSubmit, isLoading }) => {
   const [fields, setFields] = useState(defaultFieldsSwap)
@@ -826,16 +826,16 @@ const Swap = ({ onSubmit, isLoading }) => {
       </FormGroup>
 
       <FormGroup row>
-        <Label for="swap_rate" md={offset}>
+        <Label for="swapRate" md={offset}>
           Swap rate
         </Label>
         <Col md={size}>
           <Input
             type="number"
             step="any"
-            name="swap_rate"
-            id="swap_rate"
-            {...getValueAndOnChange('swap_rate')}
+            name="swapRate"
+            id="swapRate"
+            {...getValueAndOnChange('swapRate')}
           />
         </Col>
       </FormGroup>
@@ -852,7 +852,8 @@ const defaultFieldsSwaption = {
   sigma: 0.05,
   maturity: 1,
   tenor: 0.25,
-  swap_rate: 0.02
+  swapTenor: 5,
+  swapRate: 0.02
 }
 const Swaption = ({ onSubmit, isLoading }) => {
   const [fields, setFields] = useState(defaultFieldsSwaption)
@@ -973,16 +974,31 @@ const Swaption = ({ onSubmit, isLoading }) => {
       </FormGroup>
 
       <FormGroup row>
-        <Label for="swap_rate" md={offset}>
+        <Label for="swapTenor" md={offset}>
+          Swap tenor (years)
+        </Label>
+        <Col md={size}>
+          <Input
+            type="number"
+            step="any"
+            name="swapTenor"
+            id="swapTenor"
+            {...getValueAndOnChange('swapTenor')}
+          />
+        </Col>
+      </FormGroup>
+
+      <FormGroup row>
+        <Label for="swapRate" md={offset}>
           Swap rate
         </Label>
         <Col md={size}>
           <Input
             type="number"
             step="any"
-            name="swap_rate"
-            id="swap_rate"
-            {...getValueAndOnChange('swap_rate')}
+            name="swapRate"
+            id="swapRate"
+            {...getValueAndOnChange('swapRate')}
           />
         </Col>
       </FormGroup>
@@ -999,7 +1015,8 @@ const defaultFieldsAmericanswaption = {
   sigma: 0.05,
   maturity: 1,
   tenor: 0.25,
-  swap_rate: 0.02
+  swapTenor: 5,
+  swapRate: 0.02
 }
 const Americanswaption = ({ onSubmit, isLoading }) => {
   const [fields, setFields] = useState(defaultFieldsAmericanswaption)
@@ -1120,16 +1137,31 @@ const Americanswaption = ({ onSubmit, isLoading }) => {
       </FormGroup>
 
       <FormGroup row>
-        <Label for="swap_rate" md={offset}>
+        <Label for="swapTenor" md={offset}>
+          Swap tenor (years)
+        </Label>
+        <Col md={size}>
+          <Input
+            type="number"
+            step="any"
+            name="swapTenor"
+            id="swapTenor"
+            {...getValueAndOnChange('swapTenor')}
+          />
+        </Col>
+      </FormGroup>
+
+      <FormGroup row>
+        <Label for="swapRate" md={offset}>
           Swap rate
         </Label>
         <Col md={size}>
           <Input
             type="number"
             step="any"
-            name="swap_rate"
-            id="swap_rate"
-            {...getValueAndOnChange('swap_rate')}
+            name="swapRate"
+            id="swapRate"
+            {...getValueAndOnChange('swapRate')}
           />
         </Col>
       </FormGroup>
