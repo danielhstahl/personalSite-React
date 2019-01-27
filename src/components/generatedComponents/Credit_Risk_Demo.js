@@ -121,9 +121,7 @@ const Density = ({ onSubmit, isLoading }) => {
         </Col>
       </FormGroup>
 
-      <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-      </FormGroup>
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
   )
 }
@@ -137,15 +135,17 @@ export default ({ onSubmit, isLoading, isVisible }) => {
         <Label for="selectEndpoint" md={offset}>
           Select Endpoint
         </Label>
-        <Input
-          type="select"
-          name="select"
-          id="endpoint"
-          value={selectedEndpoint}
-          onChange={e => setEndpoint(e.target.value)}
-        >
-          <option value="/v1/credit/density">Density</option>
-        </Input>
+        <Col md={size}>
+          <Input
+            type="select"
+            name="selectEndpoint"
+            id="selectEndpoint"
+            value={selectedEndpoint}
+            onChange={e => setEndpoint(e.target.value)}
+          >
+            <option value="/v1/credit/density">Density</option>
+          </Input>
+        </Col>
       </FormGroup>
       {React.createElement(objSelect[selectedEndpoint], {
         onSubmit,

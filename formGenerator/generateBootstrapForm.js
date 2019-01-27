@@ -67,21 +67,23 @@ export default ({ onSubmit, isLoading, isVisible })=>{
             <Label for="selectEndpoint" md={offset}>
                 Select Endpoint
             </Label>
-            <Input
-                type="select"
-                name="select"
-                id="endpoint"
-                value={selectedEndpoint}
-                onChange={e=>setEndpoint(e.target.value)}
-            >
-                ${endpoints.reduce(
-                  (aggr, v) =>
-                    aggr +
-                    `
-                <option value='${v}'>${getName[v]}</option>`,
-                  ``
-                )}
-            </Input>
+            <Col md={size}>
+              <Input
+                  type="select"
+                  name="selectEndpoint"
+                  id="selectEndpoint"
+                  value={selectedEndpoint}
+                  onChange={e=>setEndpoint(e.target.value)}
+              >
+                  ${endpoints.reduce(
+                    (aggr, v) =>
+                      aggr +
+                      `
+                  <option value='${v}'>${getName[v]}</option>`,
+                    ``
+                  )}
+              </Input>
+            </Col>
         </FormGroup>
         {React.createElement(objSelect[selectedEndpoint],{onSubmit, isLoading})}
         </>
@@ -135,9 +137,8 @@ const ${componentName}=({onSubmit, isLoading})=>{
       )
     }, component) +
     `
-    <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-    </FormGroup>
+    
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
     )
 }`

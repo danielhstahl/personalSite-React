@@ -121,9 +121,7 @@ const Bond = ({ onSubmit, isLoading }) => {
         </Col>
       </FormGroup>
 
-      <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-      </FormGroup>
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
   )
 }
@@ -254,9 +252,7 @@ const Edf = ({ onSubmit, isLoading }) => {
         </Col>
       </FormGroup>
 
-      <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-      </FormGroup>
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
   )
 }
@@ -403,9 +399,7 @@ const Bondcall = ({ onSubmit, isLoading }) => {
         </Col>
       </FormGroup>
 
-      <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-      </FormGroup>
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
   )
 }
@@ -552,9 +546,7 @@ const Bondput = ({ onSubmit, isLoading }) => {
         </Col>
       </FormGroup>
 
-      <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-      </FormGroup>
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
   )
 }
@@ -701,9 +693,7 @@ const Caplet = ({ onSubmit, isLoading }) => {
         </Col>
       </FormGroup>
 
-      <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-      </FormGroup>
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
   )
 }
@@ -850,9 +840,7 @@ const Swap = ({ onSubmit, isLoading }) => {
         </Col>
       </FormGroup>
 
-      <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-      </FormGroup>
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
   )
 }
@@ -999,9 +987,7 @@ const Swaption = ({ onSubmit, isLoading }) => {
         </Col>
       </FormGroup>
 
-      <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-      </FormGroup>
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
   )
 }
@@ -1148,9 +1134,7 @@ const Americanswaption = ({ onSubmit, isLoading }) => {
         </Col>
       </FormGroup>
 
-      <FormGroup check row md={formOffset}>
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
-      </FormGroup>
+      <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
     </Form>
   )
 }
@@ -1182,24 +1166,26 @@ export default ({ onSubmit, isLoading, isVisible }) => {
         <Label for="selectEndpoint" md={offset}>
           Select Endpoint
         </Label>
-        <Input
-          type="select"
-          name="select"
-          id="endpoint"
-          value={selectedEndpoint}
-          onChange={e => setEndpoint(e.target.value)}
-        >
-          <option value="/v1/market/histogram/bond">Bond</option>
-          <option value="/v1/market/histogram/edf">Edf</option>
-          <option value="/v1/market/histogram/bondcall">Bondcall</option>
-          <option value="/v1/market/histogram/bondput">Bondput</option>
-          <option value="/v1/market/histogram/caplet">Caplet</option>
-          <option value="/v1/market/histogram/swap">Swap</option>
-          <option value="/v1/market/histogram/swaption">Swaption</option>
-          <option value="/v1/market/histogram/americanswaption">
-            Americanswaption
-          </option>
-        </Input>
+        <Col md={size}>
+          <Input
+            type="select"
+            name="selectEndpoint"
+            id="selectEndpoint"
+            value={selectedEndpoint}
+            onChange={e => setEndpoint(e.target.value)}
+          >
+            <option value="/v1/market/histogram/bond">Bond</option>
+            <option value="/v1/market/histogram/edf">Edf</option>
+            <option value="/v1/market/histogram/bondcall">Bondcall</option>
+            <option value="/v1/market/histogram/bondput">Bondput</option>
+            <option value="/v1/market/histogram/caplet">Caplet</option>
+            <option value="/v1/market/histogram/swap">Swap</option>
+            <option value="/v1/market/histogram/swaption">Swaption</option>
+            <option value="/v1/market/histogram/americanswaption">
+              Americanswaption
+            </option>
+          </Input>
+        </Col>
       </FormGroup>
       {React.createElement(objSelect[selectedEndpoint], {
         onSubmit,
