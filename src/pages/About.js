@@ -174,30 +174,30 @@ const About = () => (
                 automatic recombining tree class for any single dimensional
                 stochastic differential equation
               </a>{' '}
-              to creating an{' '}
+              to creating a{' '}
               <a
-                href="https://github.com/phillyfan1138/DuneClient"
+                href="https://github.com/phillyfan1138/onkyo-yatse-plugin"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                interface
+                plugin
               </a>{' '}
-              between{' '}
+              for{' '}
               <a
-                href="http://emby.media/"
+                href="https://yatse.tv/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                emby
+                Yatse
               </a>{' '}
-              and the{' '}
+              which is available at the{' '}
               <a
-                href="http://www.dune-hd-usa.com/"
+                href="https://play.google.com/store/apps/details?id=com.danielhstahl.plugin.avreceiver.onkyo"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Dune Media Player
-              </a>
+                Google app store
+              </a>{' '}
               . Additionally I have a working knowledge of SAS, VBA, and VB.net.
             </CardText>
           </CardBody>
