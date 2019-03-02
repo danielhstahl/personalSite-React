@@ -42,9 +42,10 @@ const Home = () => (
               >
                 Regions
               </a>{' '}
-              in model risk. I have a masters degree in mathematical finance
-              from the University of North Carolina Charlotte. Previously I have
-              worked at{' '}
+              as the model platform manager in the Data and Analytics office. I
+              have a masters degree in mathematical finance from the University
+              of North Carolina Charlotte. Previously I have worked as a Model
+              Risk Manager at Regions, at{' '}
               <a
                 href="http://glsllc.com"
                 target="_blank"
@@ -53,7 +54,7 @@ const Home = () => (
                 GLS
               </a>{' '}
               in portfolio analytics, as an internal auditor in quantitative
-              analysis at BB&T, and as a model developer and risk analyst at
+              analytics at BB&T, and as a model developer and risk analyst at
               Uwharrie Capital Corp. I currently reside in Birmingham, AL.
             </CardText>
           </CardBody>
