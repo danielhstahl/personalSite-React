@@ -8,14 +8,14 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "gh-pages": "^2.0.1",
     "husky": "^1.3.1",
-    "js-yaml": "^3.12.1",
+    "js-yaml": "^3.13.1",
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.3",
     "prop-types": "^15.6.2",
     "react-scripts": "2.1.3"
   },
   "dependencies": {
-    "bootstrap": "^4.2.1",
+    "bootstrap": "^4.3.1",
     "react": "16.8.0-alpha.1",
     "react-dom": "16.8.0-alpha.1",
     "react-ga": "^2.5.6",
@@ -35,7 +35,7 @@
       "git add"
     ]
   },
-  "swagger_urls":[
+  "swagger_urls": [
     "https://cdn.jsdelivr.net/gh/phillyfan1138/credit_faas@v4/docs/openapi_merged.yml",
     "https://cdn.jsdelivr.net/gh/phillyfan1138/ops_faas@v5/docs/openapi_merged.yml",
     "https://cdn.jsdelivr.net/gh/phillyfan1138/market_faas@v3/docs/openapi_merged.yml"
@@ -56,7 +56,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "generate_forms":"node ./formGenerator/generateBootstrapForm"
+    "generate_forms": "node ./formGenerator/generateBootstrapForm"
   },
   "jest": {
     "collectCoverageFrom": [
