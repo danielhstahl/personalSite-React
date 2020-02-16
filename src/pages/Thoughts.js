@@ -9,51 +9,45 @@ const Thoughts = () => (
         <Card>
           <CardBody>
             <CardTitle className="lead">
-              Thoughts on model development
+              Thoughts on Model Development
             </CardTitle>
             <CardText>
-              Model development should follow similar process to software
-              application development. Application development separates the
-              GUI, the programming logic, and the database. Models are typically
-              going to be embedded in the programming logic section. In modern
-              web applications the GUI is handled almost exclusively on the
-              client side while the server is responsible for application logic
-              and database communication. For example, this site has all routes,
-              links, and visual content on the client. The server is responsible
-              for numerical implementations of the models.
+              Models require robust DevOps automation and declarability even more
+              than traditional software.  Models have a number of additional inherent
+              complexities which makes the discipline, automation, and transparency
+              of DevOps practices practically a requirement.  These additional
+              complexities include:
+              <ul>
+                <li>Long running and computationally intense training</li>
+                <li>Data dependence at both at train and scoring</li>
+                <li>Deterioration of performance over time</li>
+              </ul>
               <br />
-              GUI development for models should allow all important model
-              features to be easily altered. Data should never be a thought for
-              the end user and should be automatically loaded. As an example,
-              CCAR uses a variety of scenarios over a fixed time frame defined
-              by the Federal Reserve. However, the board of directors may want
-              to consider different scenarios or a different time frame. During
-              the board meeting they should be allowed to manipulate the model
-              using any scenario they can imagine and see the results on the
-              bank's income and balance sheet.
+              In order to address these complexities, it is important to have a
+              mental model for model development.  Fortunately, many aspects
+              of the software development lifecycle apply to model development
+              as well.  For example, model training is akin to software compilation
+              for software engineers.  Software goes through a cycle where it is
+              versioned in a source control system (typically Git), tested using a
+              continuous integration (CI) tool, and then compiled or built into a binary
+              or package.  A common example in the Java world is to build and release
+              a jar file.  In model development, software is written to train a model,
+              tested using CI tools (both code testing and potentially statistical
+              tests), and an artifact is deployed (the "trained" model).  This trained
+              model, much like a jar file in Java, should be versioned so that consuming
+              applications can choose the appropriate model from the model's history.
               <br />
-              GUI development for models should also consider transparency. What
-              parts of the model are the most critical? What is the biggest
-              assumption or trade-off used in developing the model? These parts
-              should be able to be monitored through the GUI.
-              <br />
-              Data should always flow into the model automatically. This can
-              done through web-sockets or REST hooks. This is often used with
-              external data like{' '}
-              <a
-                href="https://research.stlouisfed.org/fred2/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                FRED
-              </a>
-              . Data can also flow through by calling data directly from a
-              database. The database should be created in such a way that data
-              types are guaranteed. For example, primary and foreign keys should
-              be enforced, data should be labeled "not null" where appropriate.
-              During development the data environment should be investigated so
-              that no surprises show up after the model has been placed in
-              production.
+              Unfortunately, while compilation in the software world is typically quick
+              (seconds or minutes), model training can take hours to days.  Hence new
+              tooling and thought processes must be used for model training.  But here
+              again, concepts from extreme programming can be used.  For example, much of
+              the model development time is spent on data manipulations and model
+              experimentation.  Before starting model development, transformations and
+              statistical tests/requirements can be created which the model must pass
+              in order to be appropriate for deployment.  By using Test Driven
+              Development, much of the logic can be tested prior to training and
+              model selection can be performed and automated as part of the training
+              process.
             </CardText>
           </CardBody>
         </Card>
@@ -165,8 +159,8 @@ const Thoughts = () => (
               <br />
               Fundamental models posit a view of the word and then try to find
               solutions given such a view. Derman's example of such a model is
-              the Black-Scholes model. I may disagree with him slightly here: I
-              think the risk-neutral pricing paradigm that arose from the
+              the Black-Scholes model. I disagree with him slightly here: the
+              risk-neutral pricing paradigm that arose from the
               Black-Scholes is more fundamental and practical. In many
               situations fundamental models don't even require "estimates" or
               "predictions" in the traditional sense: they provide KPIs through
