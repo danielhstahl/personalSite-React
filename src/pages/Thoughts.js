@@ -9,45 +9,44 @@ const Thoughts = () => (
         <Card>
           <CardBody>
             <CardTitle className="lead">
-              Thoughts on Model Development
+              Thoughts on model development
             </CardTitle>
             <CardText>
-              Models require robust DevOps automation and declarability even more
-              than traditional software.  Models have a number of additional inherent
-              complexities which makes the discipline, automation, and transparency
-              of DevOps practices practically a requirement.  These additional
-              complexities include:
-              <ul>
-                <li>Long running and computationally intense training</li>
-                <li>Data dependence at both at train and scoring</li>
-                <li>Deterioration of performance over time</li>
-              </ul>
+              Models require robust DevOps automation and declarability even
+              more than traditional software. Models have a number of additional
+              inherent complexities which makes the discipline, automation, and
+              transparency of DevOps practices practically a requirement. These
+              additional complexities include long running and computationally
+              intense training, data dependence at both at train and scoring,
+              and deterioration of performance over time.
               <br />
               In order to address these complexities, it is important to have a
-              mental model for model development.  Fortunately, many aspects
-              of the software development lifecycle apply to model development
-              as well.  For example, model training is akin to software compilation
-              for software engineers.  Software goes through a cycle where it is
-              versioned in a source control system (typically Git), tested using a
-              continuous integration (CI) tool, and then compiled or built into a binary
-              or package.  A common example in the Java world is to build and release
-              a jar file.  In model development, software is written to train a model,
-              tested using CI tools (both code testing and potentially statistical
-              tests), and an artifact is deployed (the "trained" model).  This trained
-              model, much like a jar file in Java, should be versioned so that consuming
-              applications can choose the appropriate model from the model's history.
+              mental model for model development. Fortunately, many aspects of
+              the software development lifecycle apply to model development as
+              well. For example, model training is akin to software compilation
+              for software engineers. Software goes through a cycle where it is
+              versioned in a source control system (typically Git), tested using
+              a continuous integration (CI) tool, and then compiled or built
+              into a binary or package. A common example in the Java world is to
+              build and release a jar file. In model development, software is
+              written to train a model, tested using CI tools (both code testing
+              and potentially statistical tests), and an artifact is deployed
+              (the "trained" model). This trained model, much like a jar file in
+              Java, should be versioned so that consuming applications can
+              choose the appropriate model from the model's history.
               <br />
-              Unfortunately, while compilation in the software world is typically quick
-              (seconds or minutes), model training can take hours to days.  Hence new
-              tooling and thought processes must be used for model training.  But here
-              again, concepts from extreme programming can be used.  For example, much of
-              the model development time is spent on data manipulations and model
-              experimentation.  Before starting model development, transformations and
-              statistical tests/requirements can be created which the model must pass
-              in order to be appropriate for deployment.  By using Test Driven
-              Development, much of the logic can be tested prior to training and
-              model selection can be performed and automated as part of the training
-              process.
+              Unfortunately, while compilation in the software world is
+              typically quick (seconds or minutes), model training can take
+              hours to days. Hence new tooling and thought processes must be
+              used for model training. But here again, concepts from extreme
+              programming can be used. For example, much of the model
+              development time is spent on data manipulations and model
+              experimentation. Before starting model development,
+              transformations and statistical tests/requirements can be created
+              which the model must pass in order to be appropriate for
+              deployment. By using Test Driven Development, much of the logic
+              can be tested prior to training and model selection can be
+              performed and automated as part of the training process.
             </CardText>
           </CardBody>
         </Card>
@@ -160,13 +159,13 @@ const Thoughts = () => (
               Fundamental models posit a view of the word and then try to find
               solutions given such a view. Derman's example of such a model is
               the Black-Scholes model. I disagree with him slightly here: the
-              risk-neutral pricing paradigm that arose from the
-              Black-Scholes is more fundamental and practical. In many
-              situations fundamental models don't even require "estimates" or
-              "predictions" in the traditional sense: they provide KPIs through
-              which decisions can be made. For example, in the Black Scholes
-              model implied volatility can be used as a risk metric. Similarly
-              the implied "delta" can be used to hedge market exposure.
+              risk-neutral pricing paradigm that arose from the Black-Scholes is
+              more fundamental and practical. In many situations fundamental
+              models don't even require "estimates" or "predictions" in the
+              traditional sense: they provide KPIs through which decisions can
+              be made. For example, in the Black Scholes model implied
+              volatility can be used as a risk metric. Similarly the implied
+              "delta" can be used to hedge market exposure.
               <br />
               Phenomenological models are good analogies or descriptions that
               may lack the detail or precision to be considered a fundamental
