@@ -12,6 +12,7 @@ jobs:
       run: |
         npm ci
         npm test -- --coverage
+        npm run get_pdf
         npm run build
         bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
       env:

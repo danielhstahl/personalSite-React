@@ -40,6 +40,24 @@
     "https://cdn.jsdelivr.net/gh/phillyfan1138/ops_faas@v5/docs/openapi_merged.yml",
     "https://cdn.jsdelivr.net/gh/phillyfan1138/market_faas@v3/docs/openapi_merged.yml"
   ],
+  "pdf_urls": [
+    {
+      "url": "https://github.com/phillyfan1138/CreditRiskPaper/releases/download/0.1.0/main.pdf",
+      "name": "CreditRiskPaper"
+    },
+    {
+      "url": "https://github.com/phillyfan1138/OpsRiskPaper/releases/download/0.1.0/main.pdf",
+      "name": "OpsRiskPaper"
+    },
+    {
+      "url": "https://github.com/phillyfan1138/PaperMarketRisk/releases/download/0.1.0/MarketRiskDocumentation.pdf",
+      "name": "MarketRiskDocumentation"
+    },
+    {
+      "url": "https://github.com/phillyfan1138/CreditRiskExtensions/releases/download/0.1.0/main.pdf",
+      "name": "CreditRiskExtensions"
+    }
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -56,7 +74,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "generate_forms": "node ./formGenerator/generateBootstrapForm"
+    "generate_forms": "node ./scripts/generateBootstrapForm",
+    "get_pdf": "node ./scripts/downloadPdf"
   },
   "jest": {
     "collectCoverageFrom": [
