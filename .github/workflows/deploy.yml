@@ -14,8 +14,8 @@ jobs:
     - name: Build
       run: |
         npm ci
-        npm test
         npm run get_pdf
+        npm test
         npm run build
       env:
         CI: true
