@@ -42,10 +42,10 @@ const Home = () => (
               >
                 Regions
               </a>{' '}
-              as the model platform manager in the Data and Analytics office. I
-              have a masters degree in mathematical finance from the University
-              of North Carolina Charlotte. Previously I have worked as a Model
-              Risk Manager at Regions, at{' '}
+              as the head of data and analytics platforms in the Data and
+              Analytics office. I have a masters degree in mathematical finance
+              from the University of North Carolina Charlotte. Previously I have
+              worked as a Model Risk Manager at Regions, at{' '}
               <a
                 href="http://glsllc.com"
                 target="_blank"
