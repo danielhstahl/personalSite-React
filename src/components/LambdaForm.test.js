@@ -2,6 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import LambdaForm, { onSubmitHOF } from './LambdaForm'
 import { Button } from 'reactstrap'
+import { act } from 'react-dom/test-utils'
 const Chart = () => <div />
 describe('render', () => {
   it('renders', () => {
@@ -61,7 +62,10 @@ describe('functionality', () => {
     const inputToComponent1 = mockComponent.mock.calls[0][0]
     const mockFetch = jest.fn(() => Promise.resolve('world'))
     return inputToComponent1
-      .onSubmit({ field1: '5' }, mockFetch)({ preventDefault: () => {} })
+      .onSubmit(
+        { field1: '5' },
+        mockFetch
+      )({ preventDefault: () => {} })
       .then(() => {
         return lform.update()
       })
@@ -86,9 +90,14 @@ describe('onSubmitHOF', () => {
     const setChart = jest.fn()
     const setShowChart = jest.fn()
     const setIsLoading = jest.fn()
-    return onSubmitHOF(setChart, setShowChart, setIsLoading)(fields, fetchData)(
-      e
-    )
+    return onSubmitHOF(
+      setChart,
+      setShowChart,
+      setIsLoading
+    )(
+      fields,
+      fetchData
+    )(e)
       .then(() => {
         return expect(fetchData.mock.calls.length).toEqual(1)
       })
@@ -103,9 +112,14 @@ describe('onSubmitHOF', () => {
     const setChart = jest.fn()
     const setShowChart = jest.fn()
     const setIsLoading = jest.fn()
-    return onSubmitHOF(setChart, setShowChart, setIsLoading)(fields, fetchData)(
-      e
-    )
+    return onSubmitHOF(
+      setChart,
+      setShowChart,
+      setIsLoading
+    )(
+      fields,
+      fetchData
+    )(e)
       .then(() => {
         return expect(setIsLoading.mock.calls.length).toEqual(2)
       })
@@ -123,9 +137,14 @@ describe('onSubmitHOF', () => {
     const setChart = jest.fn()
     const setShowChart = jest.fn()
     const setIsLoading = jest.fn()
-    return onSubmitHOF(setChart, setShowChart, setIsLoading)(fields, fetchData)(
-      e
-    )
+    return onSubmitHOF(
+      setChart,
+      setShowChart,
+      setIsLoading
+    )(
+      fields,
+      fetchData
+    )(e)
       .then(() => {
         return expect(setShowChart.mock.calls.length).toEqual(1)
       })
@@ -140,9 +159,14 @@ describe('onSubmitHOF', () => {
     const setChart = jest.fn()
     const setShowChart = jest.fn()
     const setIsLoading = jest.fn()
-    return onSubmitHOF(setChart, setShowChart, setIsLoading)(fields, fetchData)(
-      e
-    )
+    return onSubmitHOF(
+      setChart,
+      setShowChart,
+      setIsLoading
+    )(
+      fields,
+      fetchData
+    )(e)
       .then(() => {
         return expect(setChart.mock.calls.length).toEqual(1)
       })

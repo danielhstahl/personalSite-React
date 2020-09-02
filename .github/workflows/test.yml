@@ -12,7 +12,7 @@ jobs:
       run: |
         npm ci
         npm run get_pdf
-        npm test -- --coverage
+        SKIP_PREFLIGHT_CHECK=true npm test -- --coverage
         npm run build
         bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
       env:

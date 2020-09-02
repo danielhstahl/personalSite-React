@@ -36,7 +36,7 @@ describe('functionality', () => {
         {() => 'hello'}
       </Flip>
     )
-    expect(flip.text()).toBeNull()
+    expect(flip.text()).toEqual('')
   })
   it('does not show close button when closed', () => {
     const flip = mount(
