@@ -93,7 +93,8 @@
       "!src/components/generatedComponents/*",
       "!src/setupTests.js",
       "!src/serviceWorker.js",
-      "!src/index.js"
+      "!src/index.js",
+      "!*.stories.js"
     ]
   }
 }
