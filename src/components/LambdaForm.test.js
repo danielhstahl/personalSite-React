@@ -2,7 +2,6 @@ import React from 'react'
 import { mount } from 'enzyme'
 import LambdaForm, { onSubmitHOF } from './LambdaForm'
 import { Button } from 'reactstrap'
-import { act } from 'react-dom/test-utils'
 const Chart = () => <div />
 describe('render', () => {
   it('renders', () => {
