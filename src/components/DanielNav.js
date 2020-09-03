@@ -14,7 +14,13 @@ import {
 import React, { useState } from 'react'
 import { NavLink as RRNavLink, Link } from 'react-router-dom'
 import avatar from '../assets/images/avatar.png'
-import { HOME, RESEARCH, PROJECTS, ABOUT, THOUGHTS } from '../constants/routes'
+import {
+  HOME,
+  RESEARCH,
+  PROJECTS,
+  ABOUT,
+  PERSPECTIVES
+} from '../constants/routes'
 const linkedIn =
   'https://www.linkedin.com/profile/view?id=AAIAAAYja3AB_fq6IhUtF5CBw1yjTHheP8YIooE&trk=nav_responsive_tab_profile'
 const github = 'https://github.com/phillyfan1138'
@@ -46,8 +52,8 @@ const DanielNav = () => {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink tag={RRNavLink} to={THOUGHTS} activeClassName="active">
-              Thoughts
+            <NavLink tag={RRNavLink} to={PERSPECTIVES} activeClassName="active">
+              Perspectives
             </NavLink>
           </NavItem>
           <NavItem>

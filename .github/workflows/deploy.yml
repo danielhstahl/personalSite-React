@@ -15,10 +15,11 @@ jobs:
       run: |
         npm ci
         npm run get_pdf
-        npm test
-        npm run build
+        SKIP_PREFLIGHT_CHECK=true npm test
+        SKIP_PREFLIGHT_CHECK=true npm run build
       env:
         CI: true
+        SKIP_PREFLIGHT_CHECK: true
     - name: Deploy pages
       uses: JamesIves/github-pages-deploy-action@master
       env: 
