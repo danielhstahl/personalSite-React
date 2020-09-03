@@ -48,7 +48,7 @@ describe('functionality', () => {
         <DanielNav />
       </Router>
     )
-    const thoughts = nav.find(Link).findWhere(v => v.text() === 'Thoughts')
+    const thoughts = nav.find(Link).findWhere(v => v.text() === 'Perspectives')
     expect(thoughts.length).toBeGreaterThan(0)
   })
   it('has link to about', () => {
