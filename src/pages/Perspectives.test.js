@@ -1,13 +1,13 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { MemoryRouter as Router } from 'react-router-dom'
-import Thoughts from './Thoughts'
+import Perspectives from './Perspectives'
 import { CardTitle } from 'reactstrap'
 describe('render', () => {
   it('renders', () => {
     const thoughts = mount(
       <Router>
-        <Thoughts />
+        <Perspectives />
       </Router>
     )
     expect(thoughts).toBeDefined()
@@ -17,7 +17,7 @@ describe('functionality', () => {
   it('has model development card', () => {
     const thoughts = mount(
       <Router>
-        <Thoughts />
+        <Perspectives />
       </Router>
     )
     expect(
@@ -29,7 +29,7 @@ describe('functionality', () => {
   it('has develop model card', () => {
     const thoughts = mount(
       <Router>
-        <Thoughts />
+        <Perspectives />
       </Router>
     )
     expect(
@@ -41,7 +41,7 @@ describe('functionality', () => {
   it('has model risk card', () => {
     const thoughts = mount(
       <Router>
-        <Thoughts />
+        <Perspectives />
       </Router>
     )
     expect(
