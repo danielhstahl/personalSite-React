@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/static/css/main.26e14f15.chunk.css",
+    "main.js": "/static/js/main.8b762493.chunk.js",
+    "main.js.map": "/static/js/main.8b762493.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.11af3dc4.js",
+    "runtime-main.js.map": "/static/js/runtime-main.11af3dc4.js.map",
+    "static/css/2.80dce9aa.chunk.css": "/static/css/2.80dce9aa.chunk.css",
+    "static/js/2.2fc7d6d5.chunk.js": "/static/js/2.2fc7d6d5.chunk.js",
+    "static/js/2.2fc7d6d5.chunk.js.map": "/static/js/2.2fc7d6d5.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a762d6e12e0e56309fcf550efcd70705.js": "/precache-manifest.a762d6e12e0e56309fcf550efcd70705.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.80dce9aa.chunk.css.map": "/static/css/2.80dce9aa.chunk.css.map",
+    "static/css/main.26e14f15.chunk.css.map": "/static/css/main.26e14f15.chunk.css.map",
+    "static/js/2.2fc7d6d5.chunk.js.LICENSE.txt": "/static/js/2.2fc7d6d5.chunk.js.LICENSE.txt",
+    "static/media/CreditRiskExtensions.pdf": "/static/media/CreditRiskExtensions.4c84a74f.pdf",
+    "static/media/CreditRiskPaper.pdf": "/static/media/CreditRiskPaper.73438ae3.pdf",
+    "static/media/LiquidityRisk.pdf": "/static/media/LiquidityRisk.28f1acca.pdf",
+    "static/media/MarketRiskDocumentation.pdf": "/static/media/MarketRiskDocumentation.8fb22f7f.pdf",
+    "static/media/OpsRiskPaper.pdf": "/static/media/OpsRiskPaper.9e0cbee4.pdf",
+    "static/media/SingaporeSkyline-small.jpg": "/static/media/SingaporeSkyline-small.ee03d0f9.jpg",
+    "static/media/avatar.png": "/static/media/avatar.0b3e48d4.png",
+    "static/media/backgroundsmall.jpg": "/static/media/backgroundsmall.d4df4573.jpg",
+    "static/media/code.jpg": "/static/media/code.7c404e5e.jpg",
+    "static/media/creditRisk.jpg": "/static/media/creditRisk.9a1e0e79.jpg",
+    "static/media/creditRiskExtensions.jpg": "/static/media/creditRiskExtensions.bf30da3f.jpg",
+    "static/media/crypto.jpg": "/static/media/crypto.81ee2e9c.jpg",
+    "static/media/liquidity.jpg": "/static/media/liquidity.dec0082c.jpg",
+    "static/media/model.jpg": "/static/media/model.a0d04c9e.jpg",
+    "static/media/operationalRisk.jpg": "/static/media/operationalRisk.5dd4e1a7.jpg",
+    "static/media/passion.jpg": "/static/media/passion.b534660b.jpg",
+    "static/media/sql.jpg": "/static/media/sql.f3f28deb.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.11af3dc4.js",
+    "static/css/2.80dce9aa.chunk.css",
+    "static/js/2.2fc7d6d5.chunk.js",
+    "static/css/main.26e14f15.chunk.css",
+    "static/js/main.8b762493.chunk.js"
+  ]
+}
