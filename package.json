@@ -2,7 +2,7 @@
   "name": "personal_site_react",
   "version": "0.0.2",
   "private": true,
-  "homepage": "https://phillyfan1138.github.io",
+  "homepage": "https://danielhstahl.github.io",
   "devDependencies": {
     "@babel/core": "^7.11.5",
     "@storybook/addon-actions": "^6.0.21",
@@ -44,25 +44,25 @@
     ]
   },
   "swagger_urls": [
-    "https://cdn.jsdelivr.net/gh/phillyfan1138/credit_faas@v4/docs/openapi_merged.yml",
-    "https://cdn.jsdelivr.net/gh/phillyfan1138/ops_faas@v5/docs/openapi_merged.yml",
-    "https://cdn.jsdelivr.net/gh/phillyfan1138/market_faas@v3/docs/openapi_merged.yml"
+    "https://cdn.jsdelivr.net/gh/danielhstahl/credit_faas@v0.1.0/docs/openapi_merged.yml",
+    "https://cdn.jsdelivr.net/gh/danielhstahl/ops_faas@v0.1.0/docs/openapi_merged.yml",
+    "https://cdn.jsdelivr.net/gh/danielhstahl/market_faas@v0.1.0/docs/openapi_merged.yml"
   ],
   "pdf_urls": [
     {
-      "url": "https://github.com/phillyfan1138/CreditRiskPaper/releases/download/0.1.0/main.pdf",
+      "url": "https://github.com/danielhstahl/CreditRiskPaper/releases/download/0.1.0/main.pdf",
       "name": "CreditRiskPaper"
     },
     {
-      "url": "https://github.com/phillyfan1138/OpsRiskPaper/releases/download/0.1.0/main.pdf",
+      "url": "https://github.com/danielhstahl/OpsRiskPaper/releases/download/0.1.0/main.pdf",
       "name": "OpsRiskPaper"
     },
     {
-      "url": "https://github.com/phillyfan1138/PaperMarketRisk/releases/download/0.1.0/MarketRiskDocumentation.pdf",
+      "url": "https://github.com/danielhstahl/PaperMarketRisk/releases/download/0.1.0/MarketRiskDocumentation.pdf",
       "name": "MarketRiskDocumentation"
     },
     {
-      "url": "https://github.com/phillyfan1138/CreditRiskExtensions/releases/download/0.1.0/main.pdf",
+      "url": "https://github.com/danielhstahl/CreditRiskExtensions/releases/download/0.1.0/main.pdf",
       "name": "CreditRiskExtensions"
     }
   ],
