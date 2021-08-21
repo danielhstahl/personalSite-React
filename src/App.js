@@ -25,7 +25,7 @@ const LogPageView = () => {
   }
   return null
 }
-export default () => (
+const App = () => (
   <Router>
     <>
       <DanielNav />
@@ -41,3 +41,4 @@ export default () => (
     </>
   </Router>
 )
+export default App

@@ -1,49 +1,49 @@
 import React from 'react'
-import { mount } from 'enzyme'
 import Flip from './Flip'
-import { Button } from 'reactstrap'
+import { render, screen } from '@testing-library/react';
 describe('render', () => {
   it('renders', () => {
-    const flip = mount(
-      <Flip open={true} onClose={() => {}}>
-        {() => 'hello'}
-      </Flip>
-    )
-    expect(flip).toBeDefined()
+
+    render(<Flip open={true} onClose={() => { }}>
+      {() => 'hello'}
+    </Flip>)
   })
 })
 describe('functionality', () => {
   it('shows close button when open', () => {
-    const flip = mount(
-      <Flip open={true} onClose={() => {}}>
-        {() => 'hello'}
-      </Flip>
-    )
-    const button = flip.find(Button)
-    expect(button.props().close).toEqual(true)
+    render(<Flip open={true} onClose={() => { }}>
+      {() => 'hello'}
+    </Flip>)
+    const button = screen.getByRole("button");
+    expect(button).toBeInTheDocument();
+
   })
   it('shows children when open', () => {
-    const flip = mount(
-      <Flip open={true} onClose={() => {}}>
-        {() => 'hello'}
-      </Flip>
-    )
-    expect(flip.text()).toContain('hello')
+    render(<Flip open={true} onClose={() => { }}>
+      {() => 'hello'}
+    </Flip>)
+
+    const button = screen.getByRole("button");
+    expect(button).toBeInTheDocument();
+    const child = screen.getByText("hello")
+    expect(child).toBeInTheDocument();
+
+
   })
   it('does not show children when closed', () => {
-    const flip = mount(
-      <Flip open={false} onClose={() => {}}>
-        {() => 'hello'}
-      </Flip>
-    )
-    expect(flip.text()).toEqual('')
+    render(<Flip open={false} onClose={() => { }}>
+      {() => 'hello'}
+    </Flip>)
+    const child = screen.queryByText("hello")
+    expect(child).not.toBeInTheDocument();
+
   })
   it('does not show close button when closed', () => {
-    const flip = mount(
-      <Flip open={false} onClose={() => {}}>
-        {() => 'hello'}
-      </Flip>
-    )
-    expect(flip.find(Button).length).toEqual(0)
+    render(<Flip open={false} onClose={() => { }}>
+      {() => 'hello'}
+    </Flip>)
+    const button = screen.queryByRole("button");
+    expect(button).not.toBeInTheDocument();
+
   })
 })

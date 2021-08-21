@@ -1,10 +1,11 @@
 import React from 'react'
-import { mount } from 'enzyme'
 import App from './App'
 jest.mock('react-ga')
+import { render, screen } from '@testing-library/react';
+
 describe('render', () => {
   it('renders', () => {
-    const app = mount(<App />)
-    expect(app).toBeDefined()
+    render(<App />)
+
   })
 })
