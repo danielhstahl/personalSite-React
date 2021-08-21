@@ -1,15 +1,15 @@
 import React from 'react'
-import { mount } from 'enzyme'
 import StandardGridElement from './StandardGridElement'
+import { render, screen } from '@testing-library/react';
 describe('render', () => {
   it('renders', () => {
-    const element = mount(<StandardGridElement>hello</StandardGridElement>)
-    expect(element).toBeDefined()
+    render(<StandardGridElement>hello</StandardGridElement>)
   })
 })
 describe('functionality', () => {
   it('shows children when given children', () => {
-    const element = mount(<StandardGridElement>hello</StandardGridElement>)
-    expect(element.text()).toEqual('hello')
+    render(<StandardGridElement>hello</StandardGridElement>)
+    const element = screen.getByText("hello");
+    expect(element).toBeInTheDocument();
   })
 })

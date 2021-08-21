@@ -1,7 +1,7 @@
 const YAML = require('js-yaml')
 const fs = require('fs')
 const https = require('https')
-const {swagger_urls}=require('../package.json')
+const { swagger_urls } = require('../package.json')
 const getAsString = url =>
   new Promise((res, rej) => {
     https
@@ -59,7 +59,7 @@ ${topOfForm}
 ${components}
 const objSelect=${objSelect}
 const endpoints=${JSON.stringify(endpoints)}
-export default ({ onSubmit, isLoading, isVisible })=>{
+const DHSForm = ({ onSubmit, isLoading, isVisible }) => {
     const [selectedEndpoint, setEndpoint] = useState(endpoints[0])
     return !isVisible ? null : (
         <>
@@ -76,12 +76,12 @@ export default ({ onSubmit, isLoading, isVisible })=>{
                   onChange={e=>setEndpoint(e.target.value)}
               >
                   ${endpoints.reduce(
-                    (aggr, v) =>
-                      aggr +
-                      `
+    (aggr, v) =>
+      aggr +
+      `
                   <option value='${v}'>${getName[v]}</option>`,
-                    ``
-                  )}
+    ``
+  )}
               </Input>
             </Col>
         </FormGroup>
@@ -89,6 +89,7 @@ export default ({ onSubmit, isLoading, isVisible })=>{
         </>
     )
 }
+export default DHSForm
 `
   return { project, projectName: root.info.title.split(' ').join('_') }
 }

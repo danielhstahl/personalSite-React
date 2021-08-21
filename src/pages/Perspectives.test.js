@@ -1,51 +1,40 @@
 import React from 'react'
-import { mount } from 'enzyme'
 import { MemoryRouter as Router } from 'react-router-dom'
 import Perspectives from './Perspectives'
-import { CardTitle } from 'reactstrap'
+import { render, screen } from '@testing-library/react';
+
 describe('render', () => {
   it('renders', () => {
-    const thoughts = mount(
-      <Router>
-        <Perspectives />
-      </Router>
-    )
-    expect(thoughts).toBeDefined()
+    render(<Router>
+      <Perspectives />
+    </Router>)
+
   })
 })
 describe('functionality', () => {
   it('has model development card', () => {
-    const thoughts = mount(
-      <Router>
-        <Perspectives />
-      </Router>
-    )
-    expect(
-      thoughts
-        .find(CardTitle)
-        .findWhere(v => v.text() === 'Thoughts on model development').length
-    ).toBeGreaterThan(0)
+
+    render(<Router>
+      <Perspectives />
+    </Router>)
+    const card = screen.getByText("Thoughts on model development");
+    expect(card).toBeInTheDocument();
+
   })
   it('has develop model card', () => {
-    const thoughts = mount(
-      <Router>
-        <Perspectives />
-      </Router>
-    )
-    expect(
-      thoughts
-        .find(CardTitle)
-        .findWhere(v => v.text() === 'How to develop a model').length
-    ).toBeGreaterThan(0)
+    render(<Router>
+      <Perspectives />
+    </Router>)
+    const card = screen.getByText("How to develop a model");
+    expect(card).toBeInTheDocument();
+
   })
   it('has model risk card', () => {
-    const thoughts = mount(
-      <Router>
-        <Perspectives />
-      </Router>
-    )
-    expect(
-      thoughts.find(CardTitle).findWhere(v => v.text() === 'Model Risk').length
-    ).toBeGreaterThan(0)
+    render(<Router>
+      <Perspectives />
+    </Router>)
+    const card = screen.getByText("Model Risk");
+    expect(card).toBeInTheDocument();
+
   })
 })

@@ -28,8 +28,8 @@ const imgStyle = { paddingRight: 5, borderRadius: '50%' }
 const DanielNav = () => {
   const [isOpen, toggleOpen] = useState(false)
   return (
-    <Navbar color="light" light expand="md">
-      <NavbarBrand tag={Link} to={HOME}>
+    <Navbar color="light" light expand="md" style={{ padding: 16 }}>
+      <NavbarBrand tag={Link} to={HOME} >
         <img src={avatar} height={50} style={imgStyle} alt="" />
         Daniel Stahl
       </NavbarBrand>

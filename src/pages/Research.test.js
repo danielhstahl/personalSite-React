@@ -1,63 +1,46 @@
 import React from 'react'
-import { mount } from 'enzyme'
 import { MemoryRouter as Router } from 'react-router-dom'
 import Research from './Research'
-import { CardTitle } from 'reactstrap'
+import { render, screen } from '@testing-library/react';
 describe('render', () => {
   it('renders', () => {
-    const research = mount(
-      <Router>
-        <Research />
-      </Router>
-    )
-    expect(research).toBeDefined()
+    render(<Router>
+      <Research />
+    </Router>)
+
   })
 })
 describe('functionality', () => {
   it('has credit risk card', () => {
-    const research = mount(
-      <Router>
-        <Research />
-      </Router>
-    )
-    expect(
-      research.find(CardTitle).findWhere(v => v.text() === 'Credit Risk').length
-    ).toBeGreaterThan(0)
+    render(<Router>
+      <Research />
+    </Router>)
+    const card = screen.getByText("Credit Risk");
+    expect(card).toBeInTheDocument();
+
   })
   it('has operational risk card', () => {
-    const research = mount(
-      <Router>
-        <Research />
-      </Router>
-    )
-    expect(
-      research.find(CardTitle).findWhere(v => v.text() === 'Operational Risk')
-        .length
-    ).toBeGreaterThan(0)
+    render(<Router>
+      <Research />
+    </Router>)
+    const card = screen.getByText("Operational Risk");
+    expect(card).toBeInTheDocument();
+
   })
   it('has credit risk extensions card', () => {
-    const research = mount(
-      <Router>
-        <Research />
-      </Router>
-    )
-    expect(
-      research
-        .find(CardTitle)
-        .findWhere(v => v.text() === 'Credit Risk Extensions (unpublished)')
-        .length
-    ).toBeGreaterThan(0)
+    render(<Router>
+      <Research />
+    </Router>)
+    const card = screen.getByText("Credit Risk Extensions (unpublished)");
+    expect(card).toBeInTheDocument();
+
   })
   it('has liquidity risk card', () => {
-    const research = mount(
-      <Router>
-        <Research />
-      </Router>
-    )
-    expect(
-      research
-        .find(CardTitle)
-        .findWhere(v => v.text() === 'Liquidity Risk (unpublished)').length
-    ).toBeGreaterThan(0)
+    render(<Router>
+      <Research />
+    </Router>)
+    const card = screen.getByText("Liquidity Risk (unpublished)");
+    expect(card).toBeInTheDocument();
+
   })
 })

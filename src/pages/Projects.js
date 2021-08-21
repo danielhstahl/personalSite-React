@@ -25,7 +25,7 @@ const Projects = () => {
             <CardBody>
               <CardTitle>
                 <span className="lead">Credit Risk</span>
-                <a className="float-right" href={CreditRiskPaper}>
+                <a color="secondary" className="float-right text-secondary" href={CreditRiskPaper}>
                   Documentation
                 </a>
               </CardTitle>
@@ -46,7 +46,7 @@ const Projects = () => {
             <CardBody>
               <CardTitle>
                 <span className="lead">Operational Risk</span>
-                <a className="float-right" href={OpsRiskPaper}>
+                <a color="secondary" className="float-right text-secondary" href={OpsRiskPaper}>
                   Documentation
                 </a>
               </CardTitle>
@@ -67,7 +67,7 @@ const Projects = () => {
             <CardBody>
               <CardTitle>
                 <span className="lead">Market Risk</span>
-                <a className="float-right" href={MarketRiskPaper}>
+                <a className="float-right text-secondary" href={MarketRiskPaper}>
                   Documentation
                 </a>
               </CardTitle>
