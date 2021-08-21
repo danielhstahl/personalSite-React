@@ -22,7 +22,7 @@ jobs:
         SKIP_PREFLIGHT_CHECK: true
     - name: Deploy pages
       uses: JamesIves/github-pages-deploy-action@4.1.4
-      env: 
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
+      with: 
+        # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        branch: gh-pages
+        folder: build
