@@ -14,7 +14,12 @@ jobs:
         npm run get_pdf
         npm test -- --coverage
         npm run build
-        bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
       env:
         CI: true
         SKIP_PREFLIGHT_CHECK: true
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: "./coverage/lcov.info"
+      

@@ -1,11 +1,11 @@
-| [Linux][lin-link] |  [Codecov][cov-link]  |
-| :---------------: | :-------------------: |
-| ![lin-badge]      | ![cov-badge]          |
+| [Linux][lin-link] |  [Coveralls][cov-link]  |
+| :---------------: |  :-------------------:  |
+| ![lin-badge]      |  ![cov-badge]           |
 
-[lin-badge]: https://github.com/phillyfan1138/personalSite-React/workflows/test/badge.svg
-[lin-link]:  https://github.com/phillyfan1138/personalSite-React/actions
-[cov-badge]: https://codecov.io/gh/phillyfan1138/personalSite-React/branch/master/graph/badge.svg
-[cov-link]:  https://codecov.io/gh/phillyfan1138/personalSite-React
+[lin-badge]: https://github.com/danielhstahl/personalSite-React/workflows/test/badge.svg
+[lin-link]:  https://github.com/danielhstahl/personalSite-React/actions
+[cov-badge]: https://coveralls.io/repos/github/danielhstahl/personalSite-React/badge.svg?branch=master
+[cov-link]:  https://coveralls.io/repos/github/danielhstahl/personalSite-React
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

@@ -15,8 +15,8 @@ jobs:
       run: |
         npm ci
         npm run get_pdf
-        SKIP_PREFLIGHT_CHECK=true npm test
-        SKIP_PREFLIGHT_CHECK=true npm run build
+        npm test
+        npm run build
       env:
         CI: true
         SKIP_PREFLIGHT_CHECK: true
