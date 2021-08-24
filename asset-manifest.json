@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.33386744.chunk.css",
-    "main.js": "/static/js/main.05fb8b06.chunk.js",
-    "main.js.map": "/static/js/main.05fb8b06.chunk.js.map",
+    "main.js": "/static/js/main.28d30ad3.chunk.js",
+    "main.js.map": "/static/js/main.28d30ad3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.432b09e5.js",
     "runtime-main.js.map": "/static/js/runtime-main.432b09e5.js.map",
     "static/css/2.569a08a5.chunk.css": "/static/css/2.569a08a5.chunk.css",
@@ -16,7 +16,7 @@
     "static/media/CreditRiskPaper.70b3d751.pdf": "/static/media/CreditRiskPaper.70b3d751.pdf",
     "static/media/LiquidityRisk.4fff26a4.pdf": "/static/media/LiquidityRisk.4fff26a4.pdf",
     "static/media/MarketRiskDocumentation.79f342a9.pdf": "/static/media/MarketRiskDocumentation.79f342a9.pdf",
-    "static/media/OpsRiskPaper.802d2a4a.pdf": "/static/media/OpsRiskPaper.802d2a4a.pdf",
+    "static/media/OpsRiskPaper.11fca58e.pdf": "/static/media/OpsRiskPaper.11fca58e.pdf",
     "static/media/SingaporeSkyline-small.3fe16f9d.jpg": "/static/media/SingaporeSkyline-small.3fe16f9d.jpg",
     "static/media/avatar.d88c56f0.png": "/static/media/avatar.d88c56f0.png",
     "static/media/backgroundsmall.4b5e1b90.jpg": "/static/media/backgroundsmall.4b5e1b90.jpg",
@@ -35,6 +35,6 @@
     "static/css/2.569a08a5.chunk.css",
     "static/js/2.789870f3.chunk.js",
     "static/css/main.33386744.chunk.css",
-    "static/js/main.05fb8b06.chunk.js"
+    "static/js/main.28d30ad3.chunk.js"
   ]
 }
