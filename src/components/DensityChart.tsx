@@ -10,15 +10,24 @@ import {
   DEFAULT_ANIMATE_STYLE,
   X_AXIS_STYLE
 } from '../constants/charts'
-import PropTypes from 'prop-types'
+import { ChartInput } from './LambdaForm'
+export interface DensityData {
+  density: number,
+  at_point: number
+}
+/*interface Props {
+  data: DensityData[],
+  color: string
+}*/
+//import PropTypes from 'prop-types'
 const chartPadding = { bottom: 70 }
 const DensityChart = ({
   data,
   color,
-  animateStyle = DEFAULT_ANIMATE_STYLE
-}) => (
+  //animateStyle = DEFAULT_ANIMATE_STYLE
+}: ChartInput<DensityData[]>) => (
   <VictoryChart
-    animate={animateStyle}
+    animate={DEFAULT_ANIMATE_STYLE}
     padding={chartPadding}
     containerComponent={<VictoryContainer style={CONTAINER_STYLE} />}
   >
@@ -32,13 +41,5 @@ const DensityChart = ({
     />
   </VictoryChart>
 )
-DensityChart.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      density: PropTypes.number.isRequired,
-      at_point: PropTypes.number.isRequired
-    })
-  ).isRequired,
-  color: PropTypes.string
-}
+
 export default DensityChart
