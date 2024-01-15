@@ -44,39 +44,39 @@ const CreditRiskForm = ({ onSubmit, isLoading, isVisible }: ChildProps<DensityDa
             label="Lambda"
             name="lambda"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={0.1} />
         </Form.Item>
 
         <Form.Item<CreditInputType>
             label="q"
             name="q"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={0.1} />
         </Form.Item>
 
         <Form.Item<CreditInputType>
             label="Steps in U"
             name="numU"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={1} />
         </Form.Item>
         <Form.Item<CreditInputType>
             label="Probability of default"
             name="pd"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={0.01} />
         </Form.Item>
         <Form.Item<CreditInputType>
             label="Number of loans"
             name="numLoans"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={10} step={1000} />
         </Form.Item>
         <Form.Item<CreditInputType>
             label="Volatility"
             name="volatility"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={0.01} />
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: LABEL_COL.span, span: WRAPPER_COL.span }}>

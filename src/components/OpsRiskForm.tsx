@@ -52,69 +52,69 @@ const OpsRiskForm = ({ onSubmit, isLoading, isVisible }: ChildProps<DensityData[
             label="Time Horizon"
             name="t"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={0.25} />
         </Form.Item>
         <Form.Item<OpsInputType>
             label="Steps in U"
             name="numU"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={1} />
         </Form.Item>
 
         <Form.Item<OpsInputType>
             label="Steps in ODE"
             name="numOde"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={1} />
         </Form.Item>
 
         <Form.Item<OpsInputType>
             label="Speed"
             name="a"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={0.01} />
         </Form.Item>
 
         <Form.Item<OpsInputType>
             label="Volatility"
             name="sigma"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={0.01} />
         </Form.Item>
 
         <Form.Item<OpsInputType>
             label="Jump Frequency"
             name="lambda"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={1} />
         </Form.Item>
 
         <Form.Item<OpsInputType>
             label="Correlation"
             name="correlation"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={-1} max={1} step={0.1} />
         </Form.Item>
 
         <Form.Item<OpsInputType>
             label="Alpha"
             name="alpha"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={0.1} />
         </Form.Item>
 
         <Form.Item<OpsInputType>
             label="Shift (Stable)"
             name="mu"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={1} />
         </Form.Item>
 
         <Form.Item<OpsInputType>
             label="Scale (Stable)"
             name="c"
         >
-            <InputNumber style={INPUT_NUMBER_STYLE} />
+            <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={1} />
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: LABEL_COL.span, span: WRAPPER_COL.span }}>

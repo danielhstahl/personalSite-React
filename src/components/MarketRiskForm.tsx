@@ -56,6 +56,19 @@ const FIELD_LABELS = {
     strike: "Strike",
     swapRate: "Swap rate"
 }
+const STEP_SIZE = {
+    t: 1,
+    r0: 0.01,
+    a: 0.01,
+    b: 0.01,
+    sigma: 0.01,
+    maturity: 0.25,
+    tenor: 0.05,
+    swapTenor: 0.25,
+    underlyingMaturity: 0.25,
+    strike: 0.01,
+    swapRate: 0.01,
+}
 
 const DEFAULT_FIELDS_BOND: Bond = {
     "t": 10,
@@ -135,7 +148,7 @@ function generateForm<T>(
                 label={FIELD_LABELS[key]}
                 name={key}
             >
-                <InputNumber style={INPUT_NUMBER_STYLE} />
+                <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={STEP_SIZE[key]} />
             </Form.Item>
         )}
         <Form.Item wrapperCol={{ offset: LABEL_COL.span, span: WRAPPER_COL.span }}>
