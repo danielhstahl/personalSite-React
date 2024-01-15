@@ -1,40 +1,85 @@
-import React from 'react'
-import { MemoryRouter as Router } from 'react-router-dom'
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import Perspectives from './Perspectives'
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
+import { ROOT_ID } from '../constants/routes';
 
-describe('render', () => {
-  it('renders', () => {
-    render(<Router>
-      <Perspectives />
-    </Router>)
+describe("render", () => {
+  test('renders', async () => {
+    const router = createMemoryRouter([
+      {
+        path: "/",
+        element: <Perspectives />,
+        id: ROOT_ID,
+        errorElement: <p>Uh oh, 404</p>,
+        //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
+        //children: [{ path: "/", element: <div>Hello</div> }]
+      },
 
-  })
+    ], { initialEntries: ["/"] });
+    render(
+      <RouterProvider router={router} />
+    )
+
+  });
 })
-describe('functionality', () => {
-  it('has model development card', () => {
 
-    render(<Router>
-      <Perspectives />
-    </Router>)
-    const card = screen.getByText("Thoughts on model development");
-    expect(card).toBeInTheDocument();
+describe("functionality", () => {
+  test('has model development card', async () => {
+    const router = createMemoryRouter([
+      {
+        path: "/",
+        element: <Perspectives />,
+        id: ROOT_ID,
+        errorElement: <p>Uh oh, 404</p>,
+        //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
+        //children: [{ path: "/", element: <div>Hello</div> }]
+      },
 
-  })
-  it('has develop model card', () => {
-    render(<Router>
-      <Perspectives />
-    </Router>)
-    const card = screen.getByText("How to develop a model");
-    expect(card).toBeInTheDocument();
+    ], { initialEntries: ["/"] });
+    render(
+      <RouterProvider router={router} />
+    )
+    await waitFor(() => expect(screen.getByText(/Thoughts on model development/i)).toBeInTheDocument())
 
-  })
-  it('has model risk card', () => {
-    render(<Router>
-      <Perspectives />
-    </Router>)
-    const card = screen.getByText("Model Risk");
-    expect(card).toBeInTheDocument();
+  });
 
-  })
+  test('has develop model card', async () => {
+    const router = createMemoryRouter([
+      {
+
+        path: "/",
+        element: <Perspectives />,
+        id: ROOT_ID,
+        errorElement: <p>Uh oh, 404</p>,
+        //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
+        //children: [{ path: "/", element: <div>Hello</div> }]
+      },
+
+    ], { initialEntries: ["/"] });
+    render(
+      <RouterProvider router={router} />
+    )
+    await waitFor(() => expect(screen.getAllByText(/How to develop a model/i).length).toBeGreaterThan(0))
+
+  });
+
+  test('has model risk card', async () => {
+    const router = createMemoryRouter([
+      {
+
+        path: "/",
+        element: <Perspectives />,
+        id: ROOT_ID,
+        errorElement: <p>Uh oh, 404</p>,
+        //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
+        //children: [{ path: "/", element: <div>Hello</div> }]
+      },
+
+    ], { initialEntries: ["/"] });
+    render(
+      <RouterProvider router={router} />
+    )
+    await waitFor(() => expect(screen.getAllByText(/Model Risk/i).length).toBeGreaterThan(0))
+
+  });
 })

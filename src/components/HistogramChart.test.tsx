@@ -7,6 +7,7 @@ describe('render', () => {
   it('renders', () => {
     render(<HistogramChart
       data={{ '0-1': 4, '2-3': 5 }}
+      color="blue"
     />)
 
   })

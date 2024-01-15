@@ -1,11 +1,24 @@
-import React from 'react'
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import App from './App'
-jest.mock('react-ga')
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { ROOT_ID } from './constants/routes';
 
-describe('render', () => {
-  it('renders', () => {
-    render(<App />)
+describe("render", () => {
+  test('renders', async () => {
+    const router = createMemoryRouter([
+      {
+        path: "/",
+        element: <App />,
+        id: ROOT_ID,
+        errorElement: <p>Uh oh, 404</p>,
+        //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
+        //children: [{ path: "/", element: <div>Hello</div> }]
+      },
 
-  })
+    ], { initialEntries: ["/"] });
+    render(
+      <RouterProvider router={router} />
+    )
+
+  });
 })

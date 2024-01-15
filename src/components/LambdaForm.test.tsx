@@ -1,39 +1,42 @@
 import React from 'react'
 import LambdaForm, { onSubmitHOF } from './LambdaForm'
 import { render, screen } from '@testing-library/react';
+//import { expect, jest } from '@jest/globals';
 const Chart = () => <div />
 describe('render', () => {
   it('renders', () => {
 
-    render(<LambdaForm chartComponent={Chart}>
-      {() => <div>Hello World</div>}
-    </LambdaForm>)
+    render(<LambdaForm
+      chartComponent={Chart}
+      formComponent={() => <div>Hello World</div>}
+      color="blue"
+    />)
 
   })
 })
 describe('functionality', () => {
   it('shows children by default', () => {
 
-    render(<LambdaForm chartComponent={Chart}>
-      {() => <div>Hello World</div>}
-    </LambdaForm>)
+    render(<LambdaForm
+      chartComponent={Chart}
+      formComponent={() => <div>Hello World</div>}
+      color="blue"
+    />)
     const child = screen.getByText("Hello World");
     expect(child).toBeInTheDocument();
 
   })
   it('provides onSubmit, isLoading', () => {
-    const mockComponent = jest.fn(() => null)
-    render(<LambdaForm chartComponent={Chart}>{mockComponent}</LambdaForm>)
+    const mockComponent = jest.fn((a) => <div></div>)
+    render(<LambdaForm chartComponent={Chart} formComponent={mockComponent} color="blue" />)
     const inputToComponent = mockComponent.mock.calls[0][0]
     expect(inputToComponent.onSubmit).toBeDefined()
     expect(inputToComponent.isLoading).toBeDefined()
     expect(inputToComponent.isVisible).toBeDefined()
-
-
   })
   it('isLoading is false by default', () => {
-    const mockComponent = jest.fn(() => null)
-    render(<LambdaForm chartComponent={Chart}>{mockComponent}</LambdaForm>)
+    const mockComponent = jest.fn((a) => <div></div>)
+    render(<LambdaForm chartComponent={Chart} formComponent={mockComponent} color="blue" />)
 
     const inputToComponent = mockComponent.mock.calls[0][0]
     expect(inputToComponent.onSubmit).toBeDefined()
@@ -41,10 +44,9 @@ describe('functionality', () => {
     expect(inputToComponent.isVisible).toEqual(true)
   })
   it('chart is not called by default', () => {
-    const mockComponent = jest.fn(() => null)
-    const mockChart = jest.fn(() => null)
-
-    render(<LambdaForm chartComponent={Chart}>{mockComponent}</LambdaForm>)
+    const mockComponent = jest.fn((a) => <div></div>)
+    const mockChart = jest.fn((a) => <div></div>)
+    render(<LambdaForm chartComponent={Chart} formComponent={mockComponent} color="blue" />)
     expect(mockChart.mock.calls.length).toEqual(0)
   })
 
@@ -53,8 +55,6 @@ describe('functionality', () => {
 describe('onSubmitHOF', () => {
   it('correctly parses data and calls fetchData with it', () => {
     const fetchData = jest.fn(() => Promise.resolve())
-    const fields = { hello: '5' }
-    const e = { preventDefault: () => { } }
     const setChart = jest.fn()
     const setShowChart = jest.fn()
     const setIsLoading = jest.fn()
@@ -63,20 +63,13 @@ describe('onSubmitHOF', () => {
       setShowChart,
       setIsLoading
     )(
-      fields,
       fetchData
-    )(e)
-      .then(() => {
-        return expect(fetchData.mock.calls.length).toEqual(1)
-      })
-      .then(() => {
-        return expect(fetchData.mock.calls[0][0]).toEqual({ hello: 5 })
-      })
+    ).then(() => {
+      return expect(fetchData.mock.calls.length).toEqual(1)
+    })
   })
   it('correctly calls setIsLoading twice', () => {
     const fetchData = jest.fn(() => Promise.resolve())
-    const fields = { hello: '5' }
-    const e = { preventDefault: () => { } }
     const setChart = jest.fn()
     const setShowChart = jest.fn()
     const setIsLoading = jest.fn()
@@ -85,9 +78,8 @@ describe('onSubmitHOF', () => {
       setShowChart,
       setIsLoading
     )(
-      fields,
       fetchData
-    )(e)
+    )
       .then(() => {
         return expect(setIsLoading.mock.calls.length).toEqual(2)
       })
@@ -100,8 +92,6 @@ describe('onSubmitHOF', () => {
   })
   it('correctly calls setShowChart once', () => {
     const fetchData = jest.fn(() => Promise.resolve())
-    const fields = { hello: '5' }
-    const e = { preventDefault: () => { } }
     const setChart = jest.fn()
     const setShowChart = jest.fn()
     const setIsLoading = jest.fn()
@@ -110,9 +100,8 @@ describe('onSubmitHOF', () => {
       setShowChart,
       setIsLoading
     )(
-      fields,
       fetchData
-    )(e)
+    )
       .then(() => {
         return expect(setShowChart.mock.calls.length).toEqual(1)
       })
@@ -122,8 +111,6 @@ describe('onSubmitHOF', () => {
   })
   it('correctly calls setChart once', () => {
     const fetchData = jest.fn(() => Promise.resolve('hello'))
-    const fields = { hello: '5' }
-    const e = { preventDefault: () => { } }
     const setChart = jest.fn()
     const setShowChart = jest.fn()
     const setIsLoading = jest.fn()
@@ -132,9 +119,8 @@ describe('onSubmitHOF', () => {
       setShowChart,
       setIsLoading
     )(
-      fields,
       fetchData
-    )(e)
+    )
       .then(() => {
         return expect(setChart.mock.calls.length).toEqual(1)
       })

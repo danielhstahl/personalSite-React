@@ -15,11 +15,7 @@ export interface DensityData {
   density: number,
   at_point: number
 }
-/*interface Props {
-  data: DensityData[],
-  color: string
-}*/
-//import PropTypes from 'prop-types'
+
 const chartPadding = { bottom: 70 }
 const DensityChart = ({
   data,
