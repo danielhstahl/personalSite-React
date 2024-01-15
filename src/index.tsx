@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App, { loader, MenuItems } from './App';
+import App, { loader, MENU_ITEMS } from './App';
 import reportWebVitals from './reportWebVitals';
 import {
     createBrowserRouter,
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         id: ROOT_ID,
         errorElement: <p>Uh oh, 404</p>,
         loader,
-        children: MenuItems.map(({ key, element }) => ({ path: key, element }))
+        children: MENU_ITEMS.map(({ key, element }) => ({ path: key, element }))
     },
 
 ]);

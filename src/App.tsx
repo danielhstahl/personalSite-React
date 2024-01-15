@@ -16,6 +16,7 @@ import { DownOutlined } from '@ant-design/icons'
 import avatar from './assets/images/avatar.png'
 import type { MenuProps } from 'antd';
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { ItemType } from 'antd/es/menu/hooks/useItems'
 const { Header, Content } = Layout;
 
 
@@ -59,7 +60,7 @@ const items: MenuProps['items'] = [
   },
 ];
 
-export const MenuItems = [
+export const MENU_ITEMS: MenuItem[] = [
   { key: HOME, label: "Home", element: <Home /> },
   { key: RESEARCH, label: "Research", element: <Research /> },
   { key: PROJECTS, label: "Projects", element: <Projects /> },
@@ -72,7 +73,17 @@ export const MenuItems = [
     </Space>, children: items, theme: "light"
   }
 ]
+interface MenuItem {
+  key: string;
+  label: string | JSX.Element;
+  children?: ItemType[];
+  element?: JSX.Element;
+  theme?: string;
+}
 
+const isKeyInRoute = (key: string, menu_items: MenuItem[]) => {
+  return menu_items.find(v => v.key === key) ? true : false
+}
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -87,9 +98,11 @@ const App: React.FC = () => {
             style={{ flex: 1, minWidth: 0 }}
             theme="dark"
             mode="horizontal"
-            onClick={({ key }) => navigate(key)}
+            onClick={({ key }) => {
+              isKeyInRoute(key, MENU_ITEMS) && navigate(key)
+            }}
             selectedKeys={[location.pathname]}
-            items={MenuItems.map(({ key, label, children, theme }) => ({ key, label, children, theme }))}
+            items={MENU_ITEMS.map(({ key, label, children, theme }) => ({ key, label, children, theme }))}
           />
         </Space>
       </Header>
