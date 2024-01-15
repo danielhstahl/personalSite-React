@@ -1,16 +1,19 @@
 import React from 'react'
 import singapore from '../assets/images/SingaporeSkyline-small.jpg'
 import background from '../assets/images/backgroundsmall.jpg'
+import { imageStyle } from '../utils/image'
 import { Card, Col, Row } from 'antd';
 const { Meta } = Card;
+const IMAGE_HEIGHT = "400px"
+const IMAGE_STYLE = imageStyle(IMAGE_HEIGHT)
 const Home = () => (
   <Row gutter={16}>
     <Col xs={24} md={12}>
       <Card
         hoverable
         cover={
-          <div style={{ overflow: "hidden", height: "400px" }}>
-            <img alt="Singapore" src={singapore} />
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="Singapore" src={singapore} style={IMAGE_STYLE} />
           </div>
         }
       >
@@ -25,8 +28,8 @@ const Home = () => (
       <Card
         hoverable
         cover={
-          <div style={{ overflow: "hidden", height: "400px" }}>
-            <img alt="Background" src={background} />
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="Background" src={background} style={IMAGE_STYLE} />
           </div>
         }
       >
@@ -56,6 +59,6 @@ const Home = () => (
         </p>
       </Card>
     </Col>
-  </Row>
+  </Row >
 )
 export default Home

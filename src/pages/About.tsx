@@ -10,14 +10,18 @@ import CreditRiskPaper from '../assets/pdf/CreditRiskPaper.pdf'
 import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
 import { RESEARCH, PROJECTS } from '../constants/routes'
 import { Card, Col, Row } from 'antd';
+import { imageStyle } from '../utils/image'
 const { Meta } = Card;
 const IMAGE_HEIGHT = "300px"
+const IMAGE_STYLE = imageStyle(IMAGE_HEIGHT)
 const About = () => (
   <Row gutter={[16, 16]}>
-    <Col xs={24} sm={12}>
+    <Col xs={24} sm={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="modeling" src={model} /></div>}
+        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+          <img alt="modeling" src={model} style={IMAGE_STYLE} />
+        </div>}
       >
         <Meta title="Mathematical Modeling" /><p>
           I have created credit and operational economic capital models as
@@ -67,10 +71,12 @@ const About = () => (
       </Card>
 
     </Col>
-    <Col xs={24} sm={12}>
+    <Col xs={24} sm={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="liquidity" src={liquidity} /></div>}
+        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+          <img alt="liquidity" src={liquidity} style={IMAGE_STYLE} />
+        </div>}
       >
         <Meta title="Liquidity Risk" /><p>
           One of the biggest risks to a financial institution is a lack of
@@ -91,24 +97,31 @@ const About = () => (
       </Card>
 
     </Col>
-    <Col xs={24} sm={12}>
+    <Col xs={24} sm={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="sql" src={sql} /></div>}
+        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+          <img alt="sql" src={sql} style={IMAGE_STYLE} />
+        </div>}
       >
         <Meta title="Data" /><p>
           I lead teams that implement large scale big data solutions using Hadoop, S3, Snowflake, and Kafka.  Large scale problems which require highly parallel
-          algorithms running on multiple computers has appealed to me as a
-          way to conveniently scale models which must be run on large
-          datasets.
+          algorithms running on distributed compute are an exciting challenge.  Spark, Dask, and Ray are exciting abstractions to simplify this complex challenge.
+          While the technical aspects of running complex algorithms on large data sets present an interesting problem, perhaps even more difficult is identifying
+          the right abstractions for enabling broad-based consumption of these highly sophisticated solutions.  We use data contracts, subscription patterns, and
+          event-based architecture to streamline and simplify our data pipelines; enabling both the technical data engineering business
+          analyst personas.
         </p>
       </Card>
 
     </Col>
-    <Col xs={24} sm={12}>
+    <Col xs={24} sm={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="crypto" src={crypto} /></div>}
+        cover={
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="crypto" src={crypto} style={IMAGE_STYLE} />
+          </div>}
       >
         <Meta title="Fintech" /><p>
           I have a strong interest in blockchain technology and
@@ -132,10 +145,13 @@ const About = () => (
         </p>
       </Card>
     </Col>
-    <Col xs={24} sm={12}>
+    <Col xs={24} sm={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="code" src={code} /></div>}
+        cover={
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="code" src={code} style={IMAGE_STYLE} />
+          </div>}
       >
         <Meta title="Programming" /><p>
           I have created applications in Java, C++, Python, Rust, and
@@ -188,10 +204,13 @@ const About = () => (
 
     </Col>
 
-    <Col xs={24} sm={12}>
+    <Col xs={24} sm={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="passion" src={passion} /></div>}
+        cover={
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="passion" src={passion} style={IMAGE_STYLE} />
+          </div>}
       >
         <Meta title="Passions" /><p>
           I have a goal of creating a parsimonious economic capital model

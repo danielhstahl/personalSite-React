@@ -1,5 +1,4 @@
 import React from 'react'
-
 import creditRisk from '../assets/images/creditRisk.jpg'
 import liquidity from '../assets/images/liquidity.jpg'
 import operationalRisk from '../assets/images/operationalRisk.jpg'
@@ -9,15 +8,21 @@ import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
 import CreditRiskExtensions from '../assets/pdf/CreditRiskExtensions.pdf'
 import LiquidityRisk from '../assets/pdf/LiquidityRisk.pdf'
 import { Card, Col, Row } from 'antd';
+import { imageStyle } from '../utils/image'
 const { Meta } = Card;
 
 const IMAGE_HEIGHT = "200px"
+const IMAGE_STYLE = imageStyle(IMAGE_HEIGHT)
 const Research = () => (
   <Row gutter={[16, 16]}>
     <Col xs={24} md={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="credit risk" src={creditRisk} /></div>}
+        cover={
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="credit risk" src={creditRisk} style={IMAGE_STYLE} />
+          </div>
+        }
       >
         <Meta title="Credit Risk" /><p>
           This paper is published in the Journal of Credit Risk and pioneers
@@ -40,7 +45,10 @@ const Research = () => (
     <Col xs={24} md={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="operational risk" src={operationalRisk} /></div>}
+        cover={
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="operational risk" src={operationalRisk} style={IMAGE_STYLE} />
+          </div>}
       >
         <Meta title="Operational Risk" /><p>
           This paper is published in the Journal of Operational Risk and
@@ -76,7 +84,10 @@ const Research = () => (
     <Col xs={24} md={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="credit risk" src={creditRiskExtensions} /></div>}
+        cover={
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="credit risk" src={creditRiskExtensions} style={IMAGE_STYLE} />
+          </div>}
       >
         <Meta title="Credit Risk Extensions (unpublished)" /><p>
           This paper describes in greater detail how to allocate risk to
@@ -96,7 +107,10 @@ const Research = () => (
     <Col xs={24} md={12} xl={8}>
       <Card
         hoverable
-        cover={<div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}><img alt="liquidity risk" src={liquidity} /></div>}
+        cover={
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="liquidity risk" src={liquidity} style={IMAGE_STYLE} />
+          </div>}
       >
         <Meta title="Liquidity Risk (unpublished)" /><p>
           This paper is a short description and proposal for managing

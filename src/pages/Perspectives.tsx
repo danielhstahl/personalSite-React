@@ -1,8 +1,20 @@
 import React from 'react'
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row, Alert } from 'antd';
 const { Meta } = Card;
 const Thoughts = () => (
-  <Row gutter={16}>
+  <Row gutter={[16, 16]}>
+    <Col xs={24}>
+      <Alert
+        message="I've moved to Medium!"
+        description={
+          <>For up-to-date technical discussions and perspectives, please see my <a href="https://medium.com/@danstahl1138"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Medium</a> blog.</>}
+        type="success"
+        showIcon
+      />
+    </Col>
     <Col xs={24} sm={12}>
       <Card
         hoverable

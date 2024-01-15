@@ -48,8 +48,17 @@ const items: MenuProps['items'] = [
         Github
       </a>
     )
-  }
+  },
+  {
+    key: '3',
+    label: (
+      <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@danstahl1138">
+        Medium
+      </a>
+    )
+  },
 ];
+
 export const MenuItems = [
   { key: HOME, label: "Home", element: <Home /> },
   { key: RESEARCH, label: "Research", element: <Research /> },
