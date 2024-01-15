@@ -1,4 +1,4 @@
-export const HOME = '/home'
+export const HOME = '/'
 export const RESEARCH = '/research'
 export const ABOUT = '/about'
 export const PROJECTS = '/projects'
