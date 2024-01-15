@@ -1,6 +1,6 @@
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import App from './App'
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { ROOT_ID } from './constants/routes';
 
 describe("render", () => {
@@ -16,9 +16,9 @@ describe("render", () => {
       },
 
     ], { initialEntries: ["/"] });
-    render(
-      <RouterProvider router={router} />
+    await waitFor(() => render(
+      <RouterProvider router={router} />)
     )
+  })
 
-  });
-})
+});
