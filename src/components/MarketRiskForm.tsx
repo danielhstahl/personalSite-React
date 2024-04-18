@@ -38,7 +38,7 @@ interface Swap extends BaseMarketInput {
 
 interface Swaption extends BaseMarketInput {
     tenor: number;
-    swapTenor: number;
+    numSwapPayments: number;
     swapRate: number;
 }
 
@@ -51,8 +51,8 @@ const FIELD_LABELS = {
     sigma: "Volatility of rate",
     maturity: "Maturity (years)",
     tenor: "Floating tenor (years)",
-    swapTenor: "Swap tenor (years)",
-    underlyingMaturity: "Maturity of Underlying (years)",
+    numSwapPayments: "Number of swap payments of the underlying",
+    underlyingMaturity: "Maturity of underlying (years)",
     strike: "Strike",
     swapRate: "Swap rate"
 }
@@ -64,7 +64,7 @@ const STEP_SIZE = {
     sigma: 0.01,
     maturity: 0.25,
     tenor: 0.05,
-    swapTenor: 0.25,
+    numSwapPayments: 1,
     underlyingMaturity: 0.25,
     strike: 0.01,
     swapRate: 0.01,
@@ -100,8 +100,8 @@ const DEFAULT_FIELDS_BOND_CALL: BondOption = {
 const DEFAULT_FIELDS_BOND_PUT: BondOption = { "t": 10, "r0": 0.04, "a": 0.3, "b": 0.05, "sigma": 0.05, "maturity": 1, "underlyingMaturity": 1.25, "strike": 0.97 }
 const DEFAULT_FIELDS_CAPLET: Caplet = { "t": 10, "r0": 0.04, "a": 0.3, "b": 0.05, "sigma": 0.05, "maturity": 1, "tenor": 0.25, "strike": 0.02 }
 const DEFAULT_FIELDS_SWAP: Swap = { "t": 10, "r0": 0.04, "a": 0.3, "b": 0.05, "sigma": 0.05, "maturity": 1, "tenor": 0.25, "swapRate": 0.02 }
-const DEFAULT_FIELDS_SWAPTION: Swaption = { "t": 10, "r0": 0.04, "a": 0.3, "b": 0.05, "sigma": 0.05, "maturity": 1, "tenor": 0.25, "swapTenor": 5, "swapRate": 0.02 }
-const DEFAULT_FIELDS_AMERICAN_SWAPTION: Swaption = { "t": 10, "r0": 0.04, "a": 0.3, "b": 0.05, "sigma": 0.05, "maturity": 1, "tenor": 0.25, "swapTenor": 5, "swapRate": 0.02 }
+const DEFAULT_FIELDS_SWAPTION: Swaption = { "t": 10, "r0": 0.04, "a": 0.3, "b": 0.05, "sigma": 0.05, "maturity": 1, "tenor": 0.25, "numSwapPayments": 16, "swapRate": 0.02 }
+const DEFAULT_FIELDS_AMERICAN_SWAPTION: Swaption = { "t": 10, "r0": 0.04, "a": 0.3, "b": 0.05, "sigma": 0.05, "maturity": 1, "tenor": 0.25, "numSwapPayments": 16, "swapRate": 0.02 }
 
 interface FormEndpoints {
     defaultFields: Bond | EDF | Caplet | BondOption | Swap | Swaption,
