@@ -1,12 +1,14 @@
 import React from 'react'
 import creditRisk from '../assets/images/creditRisk.jpg'
 import liquidity from '../assets/images/liquidity.jpg'
+import expectedUtility from '../assets/images/expectedUtility.jpg'
 import operationalRisk from '../assets/images/operationalRisk.jpg'
 import creditRiskExtensions from '../assets/images/creditRiskExtensions.jpg'
 import CreditRiskPaper from '../assets/pdf/CreditRiskPaper.pdf'
 import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
 import CreditRiskExtensions from '../assets/pdf/CreditRiskExtensions.pdf'
 import LiquidityRisk from '../assets/pdf/LiquidityRisk.pdf'
+import ExpectedUtility from '../assets/pdf/ExpectedUtility.pdf'
 import { Card, Col, Row } from 'antd';
 import { imageStyle } from '../utils/image'
 const { Meta } = Card;
@@ -117,6 +119,24 @@ const Research = () => (
           liquidity risk.
           <br />
           <a href={LiquidityRisk} target="_blank" rel="noopener noreferrer">
+            Internal Link
+          </a>
+
+        </p>
+      </Card>
+    </Col>
+    <Col xs={24} md={12} xl={8}>
+      <Card
+        hoverable
+        cover={
+          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+            <img alt="expected utility" src={expectedUtility} style={IMAGE_STYLE} />
+          </div>}
+      >
+        <Meta title="Utility under Uncertainty (unpublished)" /><p>
+          This paper shows that utility has an expectation representation even if not all of von Nuemann-Morgenstern's axioms are met.  This resolves Allais' paradox.
+          <br />
+          <a href={ExpectedUtility} target="_blank" rel="noopener noreferrer">
             Internal Link
           </a>
 
