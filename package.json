@@ -39,9 +39,9 @@
     ]
   },
   "swagger_urls": [
-    "https://cdn.jsdelivr.net/gh/danielhstahl/credit_faas@v0.0.1/docs/openapi_merged.yml",
-    "https://cdn.jsdelivr.net/gh/danielhstahl/ops_faas@v0.0.1/docs/openapi_merged.yml",
-    "https://cdn.jsdelivr.net/gh/danielhstahl/market_faas@v0.0.1/docs/openapi_merged.yml"
+    "https://cdn.jsdelivr.net/gh/danielhstahl/credit_faas@v0.0.16/docs/openapi_merged.yml",
+    "https://cdn.jsdelivr.net/gh/danielhstahl/ops_faas@v0.0.17/docs/openapi_merged.yml",
+    "https://cdn.jsdelivr.net/gh/danielhstahl/market_faas@v0.0.19/docs/openapi_merged.yml"
   ],
   "pdf_urls": [
     {
@@ -59,6 +59,10 @@
     {
       "url": "https://github.com/danielhstahl/CreditRiskExtensions/releases/download/0.1.0/main.pdf",
       "name": "CreditRiskExtensions"
+    },
+    {
+      "url": "https://github.com/danielhstahl/ProspectTheory/releases/download/1.1.2/main.pdf",
+      "name": "ExpectedUtility"
     }
   ],
   "eslintConfig": {
