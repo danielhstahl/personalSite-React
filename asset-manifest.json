@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.9960584d.css",
-    "main.js": "/static/js/main.b37c11ba.js",
+    "main.js": "/static/js/main.23db0e1f.js",
     "static/js/453.4a565b78.chunk.js": "/static/js/453.4a565b78.chunk.js",
     "static/media/sql.jpg": "/static/media/sql.44d563f530fb5c7be7c2.jpg",
     "static/media/passion.jpg": "/static/media/passion.82b2a10acb002d345465.jpg",
     "static/media/SingaporeSkyline-small.jpg": "/static/media/SingaporeSkyline-small.3fe16f9ddbe04bfa3a2b.jpg",
     "static/media/backgroundsmall.jpg": "/static/media/backgroundsmall.4b5e1b904bd62d1db80b.jpg",
     "static/media/crypto.jpg": "/static/media/crypto.19aa7a4650b24e7cbe4c.jpg",
-    "static/media/OpsRiskPaper.pdf": "/static/media/OpsRiskPaper.9ffacf44fe68e25a5102.pdf",
+    "static/media/OpsRiskPaper.pdf": "/static/media/OpsRiskPaper.81fbcedb619ee1d97bd7.pdf",
     "static/media/model.jpg": "/static/media/model.592c370e75d61cea7b2d.jpg",
     "static/media/expectedUtility.jpg": "/static/media/expectedUtility.93e98df0857463aee26f.jpg",
     "static/media/CreditRiskExtensions.pdf": "/static/media/CreditRiskExtensions.470646972d4b3aa67ae1.pdf",
@@ -24,11 +24,11 @@
     "static/media/avatar.png": "/static/media/avatar.d88c56f0b74fbc923937.png",
     "index.html": "/index.html",
     "main.9960584d.css.map": "/static/css/main.9960584d.css.map",
-    "main.b37c11ba.js.map": "/static/js/main.b37c11ba.js.map",
+    "main.23db0e1f.js.map": "/static/js/main.23db0e1f.js.map",
     "453.4a565b78.chunk.js.map": "/static/js/453.4a565b78.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9960584d.css",
-    "static/js/main.b37c11ba.js"
+    "static/js/main.23db0e1f.js"
   ]
 }
