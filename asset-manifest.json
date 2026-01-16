@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.9960584d.css",
-    "main.js": "/static/js/main.0b36d48a.js",
+    "main.js": "/static/js/main.c2e376de.js",
     "static/js/453.4a565b78.chunk.js": "/static/js/453.4a565b78.chunk.js",
     "static/media/sql.jpg": "/static/media/sql.44d563f530fb5c7be7c2.jpg",
     "static/media/passion.jpg": "/static/media/passion.82b2a10acb002d345465.jpg",
@@ -14,7 +14,7 @@
     "static/media/CreditRiskExtensions.pdf": "/static/media/CreditRiskExtensions.470646972d4b3aa67ae1.pdf",
     "static/media/CreditRiskPaper.pdf": "/static/media/CreditRiskPaper.70b3d7513fe5ba21bcd2.pdf",
     "static/media/code.jpg": "/static/media/code.31be10502b17214ab4fd.jpg",
-    "static/media/ExpectedUtility.pdf": "/static/media/ExpectedUtility.6cc0f83f95f582a45bf9.pdf",
+    "static/media/ExpectedUtility.pdf": "/static/media/ExpectedUtility.294019c4f7442d98442a.pdf",
     "static/media/MarketRiskDocumentation.pdf": "/static/media/MarketRiskDocumentation.a6639d9af92a41603acf.pdf",
     "static/media/creditRiskExtensions.jpg": "/static/media/creditRiskExtensions.c3ec5a0d6176f7d8c151.jpg",
     "static/media/liquidity.jpg": "/static/media/liquidity.415c69d34ec561aea6a3.jpg",
@@ -24,11 +24,11 @@
     "static/media/avatar.png": "/static/media/avatar.d88c56f0b74fbc923937.png",
     "index.html": "/index.html",
     "main.9960584d.css.map": "/static/css/main.9960584d.css.map",
-    "main.0b36d48a.js.map": "/static/js/main.0b36d48a.js.map",
+    "main.c2e376de.js.map": "/static/js/main.c2e376de.js.map",
     "453.4a565b78.chunk.js.map": "/static/js/453.4a565b78.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9960584d.css",
-    "static/js/main.0b36d48a.js"
+    "static/js/main.c2e376de.js"
   ]
 }
