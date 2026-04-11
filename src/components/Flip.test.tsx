@@ -1,49 +1,51 @@
-import React from 'react'
-import Flip from './Flip'
-import { render, screen } from '@testing-library/react';
-describe('render', () => {
-  it('renders', () => {
-
-    render(<Flip open={true} onClose={() => { }}>
-      {() => 'hello'}
-    </Flip>)
-  })
-})
-describe('functionality', () => {
-  it('shows close button when open', () => {
-    render(<Flip open={true} onClose={() => { }}>
-      {() => 'hello'}
-    </Flip>)
-    const button = screen.getByRole("button");
-    expect(button).toBeInTheDocument();
-
-  })
-  it('shows children when open', () => {
-    render(<Flip open={true} onClose={() => { }}>
-      {() => 'hello'}
-    </Flip>)
-
-    const button = screen.getByRole("button");
-    expect(button).toBeInTheDocument();
-    const child = screen.getByText("hello")
-    expect(child).toBeInTheDocument();
+import React from "react";
+import Flip from "./Flip";
+import { render } from "vitest-browser-react";
+import { page } from "vitest/browser";
 
 
-  })
-  it('does not show children when closed', () => {
-    render(<Flip open={false} onClose={() => { }}>
-      {() => 'hello'}
-    </Flip>)
-    const child = screen.queryByText("hello")
-    expect(child).not.toBeInTheDocument();
+describe("render", () => {
+  it("renders", async () => {
+    render(
+      <Flip open={true} onClose={() => {}}>
+        {() => "hello"}
+      </Flip>,
+    );
+  });
+});
+describe("functionality", () => {
+  it("shows close button when open", async () => {
+    render(
+      <Flip open={true} onClose={() => {}}>
+        {() => "hello"}
+      </Flip>,
+    );
+    await expect.element(page.getByRole("button")).toBeInTheDocument();
+  });
+  it("shows children when open", async () => {
+    render(
+      <Flip open={true} onClose={() => {}}>
+        {() => "hello"}
+      </Flip>,
+    );
 
-  })
-  it('does not show close button when closed', () => {
-    render(<Flip open={false} onClose={() => { }}>
-      {() => 'hello'}
-    </Flip>)
-    const button = screen.queryByRole("button");
-    expect(button).not.toBeInTheDocument();
-
-  })
-})
+    await expect.element(page.getByRole("button")).toBeInTheDocument();
+    await expect.element(page.getByText("hello")).toBeInTheDocument();
+  });
+  it("does not show children when closed", async () => {
+    render(
+      <Flip open={false} onClose={() => {}}>
+        {() => "hello"}
+      </Flip>,
+    );
+    await expect.element(page.getByText("hello")).not.toBeInTheDocument();
+  });
+  it("does not show close button when closed", async () => {
+    render(
+      <Flip open={false} onClose={() => {}}>
+        {() => "hello"}
+      </Flip>,
+    );
+    await expect.element(page.getByRole("button")).not.toBeInTheDocument();
+  });
+});
