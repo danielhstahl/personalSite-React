@@ -75,9 +75,9 @@ export const MENU_ITEMS: MenuItem[] = [
 ]
 interface MenuItem {
   key: string;
-  label: string | JSX.Element;
+  label: string | React.ReactNode;
   children?: ItemType[];
-  element?: JSX.Element;
+  element?: React.ReactNode;
   theme?: string;
 }
 
