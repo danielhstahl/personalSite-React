@@ -1,22 +1,9 @@
 import React from 'react'
-import Research from './pages/Research'
-import About from './pages/About'
-import Perspectives from './pages/Perspectives'
-import Home from './pages/Home'
-import Projects from './pages/Projects'
-import {
-  HOME,
-  RESEARCH,
-  PROJECTS,
-  ABOUT,
-  PERSPECTIVES,
-} from './constants/routes'
 import { Avatar, Space, Layout, Menu } from 'antd'
-import { DownOutlined } from '@ant-design/icons'
 import avatar from './assets/images/avatar.png'
-import type { MenuProps } from 'antd'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
-import { ItemType } from 'antd/es/menu/interface'
+import { MENU_ITEMS } from './constants/menu'
+import type { MenuItem } from './constants/menu'
 const { Header, Content } = Layout
 
 export const loader = () => {
@@ -26,75 +13,6 @@ export const loader = () => {
       'Content-Type': 'application/json',
     },
   })
-}
-
-export const CHAT_ROUTE = '/chat'
-export const CONTEXT_ROUTE = '/context'
-export const PROMPT_ROUTE = '/prompt'
-
-const items: MenuProps['items'] = [
-  {
-    key: '1',
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.linkedin.com/profile/view?id=AAIAAAYja3AB_fq6IhUtF5CBw1yjTHheP8YIooE&trk=nav_responsive_tab_profile"
-      >
-        LinkedIn
-      </a>
-    ),
-  },
-  {
-    key: '2',
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://github.com/danielhstahl"
-      >
-        Github
-      </a>
-    ),
-  },
-  {
-    key: '3',
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://medium.com/@danstahl1138"
-      >
-        Medium
-      </a>
-    ),
-  },
-]
-
-export const MENU_ITEMS: MenuItem[] = [
-  { key: HOME, label: 'Home', element: <Home /> },
-  { key: RESEARCH, label: 'Research', element: <Research /> },
-  { key: PROJECTS, label: 'Projects', element: <Projects /> },
-  { key: PERSPECTIVES, label: 'Perspectives', element: <Perspectives /> },
-  { key: ABOUT, label: 'About', element: <About /> },
-  {
-    key: 'connect',
-    label: (
-      <Space>
-        Connect
-        <DownOutlined />
-      </Space>
-    ),
-    children: items,
-    theme: 'light',
-  },
-]
-interface MenuItem {
-  key: string
-  label: string | React.ReactNode
-  children?: ItemType[]
-  element?: React.ReactNode
-  theme?: string
 }
 
 const isKeyInRoute = (key: string, menu_items: MenuItem[]) => {

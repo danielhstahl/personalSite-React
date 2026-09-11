@@ -36,17 +36,12 @@ interface Props<T> {
   chartComponent: (_: ChartInput<T>) => React.ReactElement
   color: string
 }
-function LambdaForm<T>({
-  formComponent,
-  chartComponent,
-  color,
-  ...rest
-}: Props<T>) {
+function LambdaForm<T>({ formComponent, chartComponent, color }: Props<T>) {
   const [chart, setChart] = useState<T>()
   const [showChart, setShowChart] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const onSubmit = onSubmitHOF<T>(setChart, setShowChart, setIsLoading)
-  const chartCInst = () => chartComponent({ data: chart, color, ...rest })
+  const chartCInst = () => chartComponent({ data: chart, color })
   return (
     <>
       <Flip open={showChart} onClose={() => setShowChart(false)}>
