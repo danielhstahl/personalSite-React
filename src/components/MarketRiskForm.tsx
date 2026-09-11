@@ -4,6 +4,7 @@ import { ChildProps } from './LambdaForm'
 import { HistogramData } from './HistogramChart'
 import { getData } from '../utils/service'
 import { INPUT_NUMBER_STYLE, LABEL_COL, WRAPPER_COL } from '../constants/forms'
+import { API_BASE_URLS, apiUrl } from '../constants/api'
 const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo)
 }
@@ -265,7 +266,7 @@ const MarketRiskForm = ({
       defaultFields,
       onSubmit,
       isLoading,
-      `https://4mf1valfp4.execute-api.us-east-1.amazonaws.com/prd${endpoint}`,
+      apiUrl(API_BASE_URLS.market, endpoint),
     )
   return (
     <Space

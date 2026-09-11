@@ -3,6 +3,7 @@ import { ChildProps } from './LambdaForm'
 import { DensityData } from './DensityChart'
 import { getData } from '../utils/service'
 import { INPUT_NUMBER_STYLE, LABEL_COL, WRAPPER_COL } from '../constants/forms'
+import { CREDIT_DENSITY_URL } from '../constants/api'
 
 const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo)
@@ -40,14 +41,7 @@ const CreditRiskForm = ({
     labelCol={LABEL_COL}
     wrapperCol={WRAPPER_COL}
     initialValues={defaultFieldsDensity}
-    onFinish={(fields) =>
-      onSubmit(() =>
-        getData(
-          fields,
-          'https://5qsvissse9.execute-api.us-east-1.amazonaws.com/prd/v1/credit/density',
-        ),
-      )
-    }
+    onFinish={(fields) => onSubmit(() => getData(fields, CREDIT_DENSITY_URL))}
     onFinishFailed={onFinishFailed}
     autoComplete="off"
   >

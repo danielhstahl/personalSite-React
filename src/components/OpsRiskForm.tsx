@@ -3,6 +3,7 @@ import { ChildProps } from './LambdaForm'
 import { DensityData } from './DensityChart'
 import { getData } from '../utils/service'
 import { INPUT_NUMBER_STYLE, LABEL_COL, WRAPPER_COL } from '../constants/forms'
+import { OPS_DENSITY_URL } from '../constants/api'
 
 const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo)
@@ -48,14 +49,7 @@ const OpsRiskForm = ({
       labelCol={LABEL_COL}
       wrapperCol={WRAPPER_COL}
       initialValues={defaultFieldsDensity}
-      onFinish={(fields) =>
-        onSubmit(() =>
-          getData(
-            fields,
-            'https://e43exqgwxl.execute-api.us-east-1.amazonaws.com/prd/v1/ops/density',
-          ),
-        )
-      }
+      onFinish={(fields) => onSubmit(() => getData(fields, OPS_DENSITY_URL))}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
