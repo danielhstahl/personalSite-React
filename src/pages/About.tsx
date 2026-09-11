@@ -9,23 +9,19 @@ import passion from '../assets/images/passion.jpg'
 import CreditRiskPaper from '../assets/pdf/CreditRiskPaper.pdf'
 import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
 import { RESEARCH, PROJECTS } from '../constants/routes'
-import { Card, Col, Row } from 'antd'
-import { imageStyle } from '../utils/image'
-const { Meta } = Card
+import { Col, Row } from 'antd'
+import { ImageCard } from '../components/Cards'
+
 const IMAGE_HEIGHT = '300px'
-const IMAGE_STYLE = imageStyle(IMAGE_HEIGHT)
 const About = () => (
   <Row gutter={[16, 16]}>
     <Col xs={24} sm={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img alt="modeling" src={model} style={IMAGE_STYLE} />
-          </div>
-        }
+      <ImageCard
+        image={model}
+        alt="Mathematical modeling illustration"
+        height={IMAGE_HEIGHT}
+        title="Mathematical Modeling"
       >
-        <Meta title="Mathematical Modeling" />
         <p>
           I have created credit and operational economic capital models as can
           be seen in the <Link to={RESEARCH}>research</Link> section of this
@@ -71,18 +67,15 @@ const About = () => (
           </a>
           .
         </p>
-      </Card>
+      </ImageCard>
     </Col>
     <Col xs={24} sm={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img alt="liquidity" src={liquidity} style={IMAGE_STYLE} />
-          </div>
-        }
+      <ImageCard
+        image={liquidity}
+        alt="Liquidity risk illustration"
+        height={IMAGE_HEIGHT}
+        title="Liquidity Risk"
       >
-        <Meta title="Liquidity Risk" />
         <p>
           One of the biggest risks to a financial institution is a lack of
           liquidity. A bank may be well capitalized, have good cash flow, and
@@ -98,18 +91,15 @@ const About = () => (
           well as proposals for managing liquidity risk. These papers can be
           found in the <Link to={RESEARCH}>research</Link> section of this site.
         </p>
-      </Card>
+      </ImageCard>
     </Col>
     <Col xs={24} sm={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img alt="sql" src={sql} style={IMAGE_STYLE} />
-          </div>
-        }
+      <ImageCard
+        image={sql}
+        alt="Data engineering illustration"
+        height={IMAGE_HEIGHT}
+        title="Data"
       >
-        <Meta title="Data" />
         <p>
           I lead teams that implement large scale big data solutions using
           Hadoop, S3, Snowflake, and Kafka. Large scale problems which require
@@ -124,18 +114,15 @@ const About = () => (
           pipelines; enabling both the technical data engineering business
           analyst personas.
         </p>
-      </Card>
+      </ImageCard>
     </Col>
     <Col xs={24} sm={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img alt="crypto" src={crypto} style={IMAGE_STYLE} />
-          </div>
-        }
+      <ImageCard
+        image={crypto}
+        alt="Fintech and cryptocurrency illustration"
+        height={IMAGE_HEIGHT}
+        title="Fintech"
       >
-        <Meta title="Fintech" />
         <p>
           I have a strong interest in blockchain technology and
           cryptocurrencies. Financial instutions will be forced by competitive
@@ -155,18 +142,15 @@ const About = () => (
           </a>{' '}
           repository.
         </p>
-      </Card>
+      </ImageCard>
     </Col>
     <Col xs={24} sm={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img alt="code" src={code} style={IMAGE_STYLE} />
-          </div>
-        }
+      <ImageCard
+        image={code}
+        alt="Programming illustration"
+        height={IMAGE_HEIGHT}
+        title="Programming"
       >
-        <Meta title="Programming" />
         <p>
           I have created applications in Java, C++, Python, Rust, and
           HTML/Javascript including NodeJS. Some of these applications are
@@ -211,19 +195,16 @@ const About = () => (
           </a>{' '}
           ,
         </p>
-      </Card>
+      </ImageCard>
     </Col>
 
     <Col xs={24} sm={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img alt="passion" src={passion} style={IMAGE_STYLE} />
-          </div>
-        }
+      <ImageCard
+        image={passion}
+        alt="Passions illustration"
+        height={IMAGE_HEIGHT}
+        title="Passions"
       >
-        <Meta title="Passions" />
         <p>
           I have a goal of creating a parsimonious economic capital model that
           is both actionable and accurate. Actionable models have intuitive
@@ -246,7 +227,7 @@ const About = () => (
           </a>
           .
         </p>
-      </Card>
+      </ImageCard>
     </Col>
   </Row>
 )

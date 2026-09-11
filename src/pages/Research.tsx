@@ -9,24 +9,19 @@ import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
 import CreditRiskExtensions from '../assets/pdf/CreditRiskExtensions.pdf'
 import LiquidityRisk from '../assets/pdf/LiquidityRisk.pdf'
 import ExpectedUtility from '../assets/pdf/ExpectedUtility.pdf'
-import { Card, Col, Row } from 'antd'
-import { imageStyle } from '../utils/image'
-const { Meta } = Card
+import { Col, Row } from 'antd'
+import { ImageCard } from '../components/Cards'
 
 const IMAGE_HEIGHT = '200px'
-const IMAGE_STYLE = imageStyle(IMAGE_HEIGHT)
 const Research = () => (
   <Row gutter={[16, 16]}>
     <Col xs={24} md={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img alt="credit risk" src={creditRisk} style={IMAGE_STYLE} />
-          </div>
-        }
+      <ImageCard
+        image={creditRisk}
+        alt="Credit risk paper cover"
+        height={IMAGE_HEIGHT}
+        title="Credit Risk"
       >
-        <Meta title="Credit Risk" />
         <p>
           This paper is published in the Journal of Credit Risk and pioneers
           efficient computation of the distribution of credit loss for large
@@ -42,22 +37,15 @@ const Research = () => (
             External Link
           </a>
         </p>
-      </Card>
+      </ImageCard>
     </Col>
     <Col xs={24} md={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img
-              alt="operational risk"
-              src={operationalRisk}
-              style={IMAGE_STYLE}
-            />
-          </div>
-        }
+      <ImageCard
+        image={operationalRisk}
+        alt="Operational risk paper cover"
+        height={IMAGE_HEIGHT}
+        title="Operational Risk"
       >
-        <Meta title="Operational Risk" />
         <p>
           This paper is published in the Journal of Operational Risk and
           significantly extends the standard LDA operational loss framework to
@@ -86,22 +74,15 @@ const Research = () => (
             Interview with Risk.net
           </a>
         </p>
-      </Card>
+      </ImageCard>
     </Col>
     <Col xs={24} md={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img
-              alt="credit risk"
-              src={creditRiskExtensions}
-              style={IMAGE_STYLE}
-            />
-          </div>
-        }
+      <ImageCard
+        image={creditRiskExtensions}
+        alt="Credit risk extensions paper cover"
+        height={IMAGE_HEIGHT}
+        title="Credit Risk Extensions (unpublished)"
       >
-        <Meta title="Credit Risk Extensions (unpublished)" />
         <p>
           This paper describes in greater detail how to allocate risk to
           individual loans including marginal liquidity risk.
@@ -114,18 +95,15 @@ const Research = () => (
             Internal Link
           </a>
         </p>
-      </Card>
+      </ImageCard>
     </Col>
     <Col xs={24} md={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img alt="liquidity risk" src={liquidity} style={IMAGE_STYLE} />
-          </div>
-        }
+      <ImageCard
+        image={liquidity}
+        alt="Liquidity risk paper cover"
+        height={IMAGE_HEIGHT}
+        title="Liquidity Risk (unpublished)"
       >
-        <Meta title="Liquidity Risk (unpublished)" />
         <p>
           This paper is a short description and proposal for managing liquidity
           risk.
@@ -134,22 +112,15 @@ const Research = () => (
             Internal Link
           </a>
         </p>
-      </Card>
+      </ImageCard>
     </Col>
     <Col xs={24} md={12} xl={8}>
-      <Card
-        hoverable
-        cover={
-          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
-            <img
-              alt="expected utility"
-              src={expectedUtility}
-              style={IMAGE_STYLE}
-            />
-          </div>
-        }
+      <ImageCard
+        image={expectedUtility}
+        alt="Expected utility paper cover"
+        height={IMAGE_HEIGHT}
+        title="Utility under Uncertainty (unpublished)"
       >
-        <Meta title="Utility under Uncertainty (unpublished)" />
         <p>
           This paper shows that utility has an expectation representation even
           if not all of von Nuemann-Morgenstern's axioms are met. This resolves
@@ -159,7 +130,7 @@ const Research = () => (
             Internal Link
           </a>
         </p>
-      </Card>
+      </ImageCard>
     </Col>
   </Row>
 )

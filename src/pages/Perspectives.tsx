@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Col, Row, Alert } from 'antd'
 const { Meta } = Card
-const Thoughts = () => (
+const Perspectives = () => (
   <Row gutter={[16, 16]}>
     <Col xs={24}>
       <Alert
@@ -190,4 +190,4 @@ const Thoughts = () => (
     </Col>
   </Row>
 )
-export default Thoughts
+export default Perspectives
