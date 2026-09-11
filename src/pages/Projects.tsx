@@ -1,7 +1,6 @@
 import React from 'react'
-//import { Card, CardBody, CardTitle, Container, Row } from 'reactstrap'
 import CreditProject from '../components/CreditRiskForm'
-import OpsProject from '../components//OpsRiskForm'
+import OpsProject from '../components/OpsRiskForm'
 import LambdaForm from '../components/LambdaForm'
 import DensityChart from '../components/DensityChart'
 import HistogramChart from '../components/HistogramChart'

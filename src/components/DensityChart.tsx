@@ -17,11 +17,7 @@ export interface DensityData {
 }
 
 const chartPadding = { bottom: 70 }
-const DensityChart = ({
-  data,
-  color,
-  //animateStyle = DEFAULT_ANIMATE_STYLE
-}: ChartInput<DensityData[]>) => (
+const DensityChart = ({ data, color }: ChartInput<DensityData[]>) => (
   <VictoryChart
     animate={DEFAULT_ANIMATE_STYLE}
     padding={chartPadding}

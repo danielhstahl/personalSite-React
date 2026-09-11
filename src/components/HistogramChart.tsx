@@ -22,11 +22,7 @@ const transformData = (data: HistogramData) =>
   }))
 const tickFormat = (t: string) => t.split('-')[0]
 const chartPadding = { bottom: 60, left: 20, right: 20 }
-const HistogramChart = ({
-  data,
-  color,
-  //animateStyle = DEFAULT_ANIMATE_STYLE
-}: ChartInput<HistogramData>) => (
+const HistogramChart = ({ data, color }: ChartInput<HistogramData>) => (
   <VictoryChart
     padding={chartPadding}
     animate={DEFAULT_ANIMATE_STYLE}

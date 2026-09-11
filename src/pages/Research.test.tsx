@@ -48,8 +48,6 @@ describe('functionality', () => {
           element: <Research />,
           id: ROOT_ID,
           errorElement: <p>Uh oh, 404</p>,
-          //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
-          //children: [{ path: "/", element: <div>Hello</div> }]
         },
       ],
       { initialEntries: ['/'] },
@@ -68,8 +66,6 @@ describe('functionality', () => {
           element: <Research />,
           id: ROOT_ID,
           errorElement: <p>Uh oh, 404</p>,
-          //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
-          //children: [{ path: "/", element: <div>Hello</div> }]
         },
       ],
       { initialEntries: ['/'] },
@@ -87,8 +83,6 @@ describe('functionality', () => {
           element: <Research />,
           id: ROOT_ID,
           errorElement: <p>Uh oh, 404</p>,
-          //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
-          //children: [{ path: "/", element: <div>Hello</div> }]
         },
       ],
       { initialEntries: ['/'] },
