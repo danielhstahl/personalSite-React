@@ -1,7 +1,7 @@
 /// <reference types="vite" />
-import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
-import { playwright } from "@vitest/browser-playwright";
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
+import { playwright } from '@vitest/browser-playwright'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,7 +9,7 @@ export default defineConfig({
     react({
       exclude: /\.test\.(t|j)sx?$/,
       babel: {
-        plugins: [["babel-plugin-react-compiler"]],
+        plugins: [['babel-plugin-react-compiler']],
       },
     }),
   ],
@@ -19,11 +19,11 @@ export default defineConfig({
       enabled: true,
       headless: true,
       provider: playwright(),
-      instances: [{ browser: "chromium" }],
+      instances: [{ browser: 'chromium' }],
     },
     coverage: {
-      include: ["src"],
-      reporter: ["lcov"],
+      include: ['src'],
+      reporter: ['lcov'],
     },
   },
-});
+})

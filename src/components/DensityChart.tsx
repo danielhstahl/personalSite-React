@@ -3,16 +3,16 @@ import {
   VictoryChart,
   VictoryLine,
   VictoryAxis,
-  VictoryContainer
+  VictoryContainer,
 } from 'victory'
 import {
   CONTAINER_STYLE,
   DEFAULT_ANIMATE_STYLE,
-  X_AXIS_STYLE
+  X_AXIS_STYLE,
 } from '../constants/charts'
 import { ChartInput } from './LambdaForm'
 export interface DensityData {
-  density: number,
+  density: number
   at_point: number
 }
 

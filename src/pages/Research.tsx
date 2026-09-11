@@ -9,11 +9,11 @@ import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
 import CreditRiskExtensions from '../assets/pdf/CreditRiskExtensions.pdf'
 import LiquidityRisk from '../assets/pdf/LiquidityRisk.pdf'
 import ExpectedUtility from '../assets/pdf/ExpectedUtility.pdf'
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row } from 'antd'
 import { imageStyle } from '../utils/image'
-const { Meta } = Card;
+const { Meta } = Card
 
-const IMAGE_HEIGHT = "200px"
+const IMAGE_HEIGHT = '200px'
 const IMAGE_STYLE = imageStyle(IMAGE_HEIGHT)
 const Research = () => (
   <Row gutter={[16, 16]}>
@@ -21,12 +21,13 @@ const Research = () => (
       <Card
         hoverable
         cover={
-          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
             <img alt="credit risk" src={creditRisk} style={IMAGE_STYLE} />
           </div>
         }
       >
-        <Meta title="Credit Risk" /><p>
+        <Meta title="Credit Risk" />
+        <p>
           This paper is published in the Journal of Credit Risk and pioneers
           efficient computation of the distribution of credit loss for large
           heterogenuous portfolios.
@@ -40,7 +41,6 @@ const Research = () => (
           >
             External Link
           </a>
-
         </p>
       </Card>
     </Col>
@@ -48,14 +48,20 @@ const Research = () => (
       <Card
         hoverable
         cover={
-          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
-            <img alt="operational risk" src={operationalRisk} style={IMAGE_STYLE} />
-          </div>}
+          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
+            <img
+              alt="operational risk"
+              src={operationalRisk}
+              style={IMAGE_STYLE}
+            />
+          </div>
+        }
       >
-        <Meta title="Operational Risk" /><p>
+        <Meta title="Operational Risk" />
+        <p>
           This paper is published in the Journal of Operational Risk and
-          significantly extends the standard LDA operational loss framework
-          to include correlation between severity and frequency and
+          significantly extends the standard LDA operational loss framework to
+          include correlation between severity and frequency and
           auto-correlation in frequency. The distribution can be recovered
           practically instantly even for very long tailed severity
           distributions.
@@ -79,7 +85,6 @@ const Research = () => (
           >
             Interview with Risk.net
           </a>
-
         </p>
       </Card>
     </Col>
@@ -87,11 +92,17 @@ const Research = () => (
       <Card
         hoverable
         cover={
-          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
-            <img alt="credit risk" src={creditRiskExtensions} style={IMAGE_STYLE} />
-          </div>}
+          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
+            <img
+              alt="credit risk"
+              src={creditRiskExtensions}
+              style={IMAGE_STYLE}
+            />
+          </div>
+        }
       >
-        <Meta title="Credit Risk Extensions (unpublished)" /><p>
+        <Meta title="Credit Risk Extensions (unpublished)" />
+        <p>
           This paper describes in greater detail how to allocate risk to
           individual loans including marginal liquidity risk.
           <br />
@@ -102,7 +113,6 @@ const Research = () => (
           >
             Internal Link
           </a>
-
         </p>
       </Card>
     </Col>
@@ -110,18 +120,19 @@ const Research = () => (
       <Card
         hoverable
         cover={
-          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
+          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
             <img alt="liquidity risk" src={liquidity} style={IMAGE_STYLE} />
-          </div>}
+          </div>
+        }
       >
-        <Meta title="Liquidity Risk (unpublished)" /><p>
-          This paper is a short description and proposal for managing
-          liquidity risk.
+        <Meta title="Liquidity Risk (unpublished)" />
+        <p>
+          This paper is a short description and proposal for managing liquidity
+          risk.
           <br />
           <a href={LiquidityRisk} target="_blank" rel="noopener noreferrer">
             Internal Link
           </a>
-
         </p>
       </Card>
     </Col>
@@ -129,17 +140,24 @@ const Research = () => (
       <Card
         hoverable
         cover={
-          <div style={{ overflow: "hidden", height: IMAGE_HEIGHT }}>
-            <img alt="expected utility" src={expectedUtility} style={IMAGE_STYLE} />
-          </div>}
+          <div style={{ overflow: 'hidden', height: IMAGE_HEIGHT }}>
+            <img
+              alt="expected utility"
+              src={expectedUtility}
+              style={IMAGE_STYLE}
+            />
+          </div>
+        }
       >
-        <Meta title="Utility under Uncertainty (unpublished)" /><p>
-          This paper shows that utility has an expectation representation even if not all of von Nuemann-Morgenstern's axioms are met.  This resolves Allais' paradox.
+        <Meta title="Utility under Uncertainty (unpublished)" />
+        <p>
+          This paper shows that utility has an expectation representation even
+          if not all of von Nuemann-Morgenstern's axioms are met. This resolves
+          Allais' paradox.
           <br />
           <a href={ExpectedUtility} target="_blank" rel="noopener noreferrer">
             Internal Link
           </a>
-
         </p>
       </Card>
     </Col>

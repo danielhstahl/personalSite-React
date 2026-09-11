@@ -17,3 +17,9 @@ npm-debug.log
 src/assets/pdf/*.pdf
 !src/assets/pdf/LiquidityRisk.pdf
 dist
+
+# typescript incremental build info
+tsconfig.tsbuildinfo
+
+# vitest cache
+.vitest/

@@ -1,11 +1,10 @@
-import React from "react";
-import DensityChart from "./DensityChart";
-import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import React from 'react'
+import DensityChart from './DensityChart'
+import { render } from 'vitest-browser-react'
+import { page } from 'vitest/browser'
 
-
-describe("render", () => {
-  it("renders", () => {
+describe('render', () => {
+  it('renders', () => {
     render(
       <DensityChart
         data={[
@@ -14,6 +13,6 @@ describe("render", () => {
         ]}
         color="blue"
       />,
-    );
-  });
-});
+    )
+  })
+})

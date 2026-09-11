@@ -12,13 +12,12 @@ jobs:
           npm ci
           npm run get_pdf
           npx playwright install
-          npm test -- --coverage
+          npm run test:ci -- --coverage
           npm run build
         env:
           CI: true
-          SKIP_PREFLIGHT_CHECK: true
       - name: Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: "./coverage/lcov.info"
+          path-to-lcov: './coverage/lcov.info'

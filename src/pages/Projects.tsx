@@ -8,10 +8,10 @@ import HistogramChart from '../components/HistogramChart'
 import CreditRiskPaper from '../assets/pdf/CreditRiskPaper.pdf'
 import OpsRiskPaper from '../assets/pdf/OpsRiskPaper.pdf'
 import MarketRiskPaper from '../assets/pdf/MarketRiskDocumentation.pdf'
-import { Card, Col, Row } from 'antd';
-import { blue } from '@ant-design/colors';
+import { Card, Col, Row } from 'antd'
+import { blue } from '@ant-design/colors'
 import MarketRiskForm from '../components/MarketRiskForm'
-const { Meta } = Card;
+const { Meta } = Card
 const COLOR_INDEX = 5
 const color = blue[COLOR_INDEX]
 const Projects = () => {
@@ -21,9 +21,13 @@ const Projects = () => {
         <Card
           hoverable
           actions={[
-            <a color="secondary" className="float-right text-secondary" href={CreditRiskPaper}>
+            <a
+              color="secondary"
+              className="float-right text-secondary"
+              href={CreditRiskPaper}
+            >
               Documentation
-            </a>
+            </a>,
           ]}
         >
           <Meta title="Credit Risk" />
@@ -35,14 +39,17 @@ const Projects = () => {
         </Card>
       </Col>
 
-
       <Col xs={24} md={12}>
         <Card
           hoverable
           actions={[
-            <a color="secondary" className="float-right text-secondary" href={OpsRiskPaper}>
+            <a
+              color="secondary"
+              className="float-right text-secondary"
+              href={OpsRiskPaper}
+            >
               Documentation
-            </a>
+            </a>,
           ]}
         >
           <Meta title="Operational Risk" />
@@ -51,7 +58,6 @@ const Projects = () => {
             chartComponent={DensityChart}
             color={color}
           />
-
         </Card>
       </Col>
       <Col xs={24} md={12}>
@@ -60,7 +66,7 @@ const Projects = () => {
           actions={[
             <a className="float-right text-secondary" href={MarketRiskPaper}>
               Documentation
-            </a>
+            </a>,
           ]}
         >
           <Meta title="Market Risk" />
@@ -71,9 +77,7 @@ const Projects = () => {
           />
         </Card>
       </Col>
-
-
-    </Row >
+    </Row>
   )
 }
 

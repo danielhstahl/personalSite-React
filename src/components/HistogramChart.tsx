@@ -3,12 +3,12 @@ import {
   VictoryChart,
   VictoryBar,
   VictoryAxis,
-  VictoryContainer
+  VictoryContainer,
 } from 'victory'
 import {
   CONTAINER_STYLE,
   DEFAULT_ANIMATE_STYLE,
-  X_AXIS_STYLE
+  X_AXIS_STYLE,
 } from '../constants/charts'
 import { ChartInput } from './LambdaForm'
 export interface HistogramData {
@@ -18,7 +18,7 @@ export interface HistogramData {
 const transformData = (data: HistogramData) =>
   Object.entries(data).map(([bin, frequency]) => ({
     bin,
-    frequency
+    frequency,
   }))
 const tickFormat = (t: string) => t.split('-')[0]
 const chartPadding = { bottom: 60, left: 20, right: 20 }
