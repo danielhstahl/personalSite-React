@@ -3,7 +3,12 @@ import { Button, Form, FormInstance, InputNumber, Select, Space } from 'antd'
 import { ChildProps } from './LambdaForm'
 import { HistogramData } from './HistogramChart'
 import { getData } from '../utils/service'
-import { INPUT_NUMBER_STYLE, LABEL_COL, WRAPPER_COL } from '../constants/forms'
+import {
+  ALIGNED_WRAPPER_COL,
+  INPUT_NUMBER_STYLE,
+  LABEL_COL,
+  WRAPPER_COL,
+} from '../constants/forms'
 import { API_BASE_URLS, apiUrl } from '../constants/api'
 const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo)
@@ -235,9 +240,7 @@ function generateForm<T>(
           </Form.Item>
         ),
       )}
-      <Form.Item
-        wrapperCol={{ offset: LABEL_COL.span, span: WRAPPER_COL.span }}
-      >
+      <Form.Item wrapperCol={ALIGNED_WRAPPER_COL}>
         <Button type="primary" htmlType="submit" loading={isLoading}>
           Submit
         </Button>

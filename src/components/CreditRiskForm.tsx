@@ -2,7 +2,12 @@ import { Button, Form, InputNumber } from 'antd'
 import { ChildProps } from './LambdaForm'
 import { DensityData } from './DensityChart'
 import { getData } from '../utils/service'
-import { INPUT_NUMBER_STYLE, LABEL_COL, WRAPPER_COL } from '../constants/forms'
+import {
+  ALIGNED_WRAPPER_COL,
+  INPUT_NUMBER_STYLE,
+  LABEL_COL,
+  WRAPPER_COL,
+} from '../constants/forms'
 import { CREDIT_DENSITY_URL } from '../constants/api'
 
 const onFinishFailed = (errorInfo: any) => {
@@ -66,7 +71,7 @@ const CreditRiskForm = ({
       <InputNumber style={INPUT_NUMBER_STYLE} min={0} step={0.01} />
     </Form.Item>
 
-    <Form.Item wrapperCol={{ offset: LABEL_COL.span, span: WRAPPER_COL.span }}>
+    <Form.Item wrapperCol={ALIGNED_WRAPPER_COL}>
       <Button type="primary" htmlType="submit" loading={isLoading}>
         Submit
       </Button>
