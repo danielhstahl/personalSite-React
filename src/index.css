@@ -1,12 +1,51 @@
+/*
+ * Minimal semantic styles for the app shell only. Colour, height and type are
+ * owned by the antd theme tokens in `src/theme.ts`; the rules here are purely
+ * the structural flex layout that tokens cannot express.
+ *
+ * NOTE on `.app-content` horizontal padding: it must be at least half of the
+ * widest `Row gutter` used by the pages. The pages use `gutter={16}`, which
+ * applies -8px negative margins to the Row; the old 5px padding was *smaller*
+ * than that, so every page bled 3px past the viewport and produced a
+ * horizontal scrollbar even at 1280px. 24px clears the gutter comfortably.
+ */
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-color:#FAFAFA
-
+  background-color: #fafafa;
 }
+
+.app-layout {
+  min-height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Brand block never shrinks; it is the header's anchor. */
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
 /*
-a {
-    color: #9E9E9E;
-}*/
-html { font-family: 'Roboto', sans-serif; }
+ * The nav gets the remaining width and is allowed to shrink below its content
+ * width (min-width: 0). Without `min-width: 0` a flex item cannot shrink past
+ * its intrinsic content size, which is exactly why the old `<Space>`-wrapped
+ * menu overflowed instead of collapsing.
+ */
+.app-nav {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.app-content {
+  padding: 32px 24px;
+}

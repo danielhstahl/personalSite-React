@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
 import Flip from './Flip'
 
-
 export interface Fields {
   [key: string]: number
 }
 export type ChartInput<T> = {
-  data: T | undefined, //can be array or object; but need to explicitly pass the type
+  data: T | undefined //can be array or object; but need to explicitly pass the type
   color: string
 }
 export interface ChildProps<T> {
-  onSubmit: (
-    fetchData: () => Promise<T>
-  ) => Promise<void>,
-  isLoading: boolean,
+  onSubmit: (fetchData: () => Promise<T>) => Promise<void>
+  isLoading: boolean
   isVisible: boolean
 }
 
@@ -21,11 +18,9 @@ export interface ChildProps<T> {
 export function onSubmitHOF<T>(
   setChart: (_: T) => void,
   setShowChart: (_: boolean) => void,
-  setIsLoading: (_: boolean) => void
+  setIsLoading: (_: boolean) => void,
 ) {
-  return (
-    fetchData: () => Promise<T>
-  ) => {
+  return (fetchData: () => Promise<T>) => {
     setIsLoading(true)
 
     return fetchData()
@@ -37,16 +32,16 @@ export function onSubmitHOF<T>(
 }
 
 interface Props<T> {
-  formComponent: (_: ChildProps<T>) => React.ReactElement,
-  chartComponent: (_: ChartInput<T>) => React.ReactElement,
+  formComponent: (_: ChildProps<T>) => React.ReactElement
+  chartComponent: (_: ChartInput<T>) => React.ReactElement
   color: string
 }
-function LambdaForm<T>({ formComponent, chartComponent, color, ...rest }: Props<T>) {
+function LambdaForm<T>({ formComponent, chartComponent, color }: Props<T>) {
   const [chart, setChart] = useState<T>()
   const [showChart, setShowChart] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const onSubmit = onSubmitHOF<T>(setChart, setShowChart, setIsLoading)
-  const chartCInst = () => chartComponent({ data: chart, color, ...rest })
+  const chartCInst = () => chartComponent({ data: chart, color })
   return (
     <>
       <Flip open={showChart} onClose={() => setShowChart(false)}>

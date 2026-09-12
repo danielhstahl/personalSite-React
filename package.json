@@ -22,8 +22,8 @@
     "web-vitals": "^2.1.4"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.6.1",
     "@ant-design/colors": "^7.0.2",
-    "@types/jest": "^29.5.11",
     "@types/node": "^22.20.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -39,9 +39,8 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css,tsx}": [
-      "prettier --single-quote --write --no-semi",
-      "git add"
+    "src/**/*.{js,jsx,ts,tsx,json,css}": [
+      "prettier --write"
     ]
   },
   "swagger_urls": [
@@ -71,19 +70,6 @@
       "name": "ExpectedUtility"
     }
   ],
-  "eslintConfig": {
-    "extends": "react-app",
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -94,17 +80,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "test": "vitest",
-    "deploy": "gh-pages -d build",
+    "test:ci": "vitest run",
+    "deploy": "gh-pages -d dist",
     "get_pdf": "node ./scripts/downloadPdf"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/components/generatedComponents/*",
-      "!src/setupTests.js",
-      "!src/serviceWorker.js",
-      "!src/index.js",
-      "!src/**/*.stories.js"
-    ]
   }
 }

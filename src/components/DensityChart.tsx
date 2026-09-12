@@ -3,25 +3,21 @@ import {
   VictoryChart,
   VictoryLine,
   VictoryAxis,
-  VictoryContainer
+  VictoryContainer,
 } from 'victory'
 import {
   CONTAINER_STYLE,
   DEFAULT_ANIMATE_STYLE,
-  X_AXIS_STYLE
+  X_AXIS_STYLE,
 } from '../constants/charts'
 import { ChartInput } from './LambdaForm'
 export interface DensityData {
-  density: number,
+  density: number
   at_point: number
 }
 
 const chartPadding = { bottom: 70 }
-const DensityChart = ({
-  data,
-  color,
-  //animateStyle = DEFAULT_ANIMATE_STYLE
-}: ChartInput<DensityData[]>) => (
+const DensityChart = ({ data, color }: ChartInput<DensityData[]>) => (
   <VictoryChart
     animate={DEFAULT_ANIMATE_STYLE}
     padding={chartPadding}

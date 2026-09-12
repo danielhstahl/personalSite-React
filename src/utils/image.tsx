@@ -1,1 +1,4 @@
-export const imageStyle = (height: string) => ({ minHeight: height, minWidth: "100%" })
+export const imageStyle = (height: string) => ({
+  minHeight: height,
+  minWidth: '100%',
+})

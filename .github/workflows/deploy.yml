@@ -9,17 +9,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Build
         run: |
           npm ci
           npm run get_pdf
           npx playwright install
-          npm test
+          npm run test:ci
           npm run build
         env:
           CI: true
-          SKIP_PREFLIGHT_CHECK: true
       - name: Deploy pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:

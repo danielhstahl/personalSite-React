@@ -1,81 +1,76 @@
-import { createMemoryRouter, RouterProvider } from "react-router-dom";
-import Projects from "./Projects";
-import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
-import { ROOT_ID } from "../constants/routes";
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
+import Projects from './Projects'
+import { render } from 'vitest-browser-react'
+import { page } from 'vitest/browser'
+import { ROOT_ID } from '../constants/routes'
 
-
-describe("render", () => {
-  test("renders", async () => {
+describe('render', () => {
+  test('renders', async () => {
     const router = createMemoryRouter(
       [
         {
-          path: "/",
+          path: '/',
           element: <Projects />,
           id: ROOT_ID,
           errorElement: <p>Uh oh, 404</p>,
-          //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
-          //children: [{ path: "/", element: <div>Hello</div> }]
         },
       ],
-      { initialEntries: ["/"] },
-    );
-    render(<RouterProvider router={router} />);
-  });
-});
+      { initialEntries: ['/'] },
+    )
+    render(<RouterProvider router={router} />)
+  })
+})
 
-describe("functionality", () => {
-  test("has credit risk card", async () => {
+describe('functionality', () => {
+  test('has credit risk card', async () => {
     const router = createMemoryRouter(
       [
         {
-          path: "/",
+          path: '/',
           element: <Projects />,
           id: ROOT_ID,
           errorElement: <p>Uh oh, 404</p>,
-          //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
-          //children: [{ path: "/", element: <div>Hello</div> }]
         },
       ],
-      { initialEntries: ["/"] },
-    );
-    render(<RouterProvider router={router} />);
-    await expect.element(page.getByText(/Credit Risk/i)).toBeInTheDocument();
-  });
+      { initialEntries: ['/'] },
+    )
+    render(<RouterProvider router={router} />)
+    await expect.element(page.getByText(/Credit Risk/i)).toBeInTheDocument()
+  })
 
-  test("has ops risk card", async () => {
+  test('has ops risk card', async () => {
     const router = createMemoryRouter(
       [
         {
-          path: "/",
+          path: '/',
           element: <Projects />,
           id: ROOT_ID,
           errorElement: <p>Uh oh, 404</p>,
-          //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
-          //children: [{ path: "/", element: <div>Hello</div> }]
         },
       ],
-      { initialEntries: ["/"] },
-    );
-    render(<RouterProvider router={router} />);
-    await expect.element(page.getByText(/Operational Risk/i).first()).toBeInTheDocument();
-  });
+      { initialEntries: ['/'] },
+    )
+    render(<RouterProvider router={router} />)
+    await expect
+      .element(page.getByText(/Operational Risk/i).first())
+      .toBeInTheDocument()
+  })
 
-  test("has market risk card", async () => {
+  test('has market risk card', async () => {
     const router = createMemoryRouter(
       [
         {
-          path: "/",
+          path: '/',
           element: <Projects />,
           id: ROOT_ID,
           errorElement: <p>Uh oh, 404</p>,
-          //loader: () => ({ versions: [{ version: "0.1", appliedVersion: true }], speakers: undefined, filters: undefined, appliedVersion: undefined }),
-          //children: [{ path: "/", element: <div>Hello</div> }]
         },
       ],
-      { initialEntries: ["/"] },
-    );
-    render(<RouterProvider router={router} />);
-    await expect.element(page.getByText(/Market Risk/i).first()).toBeInTheDocument();
-  });
-});
+      { initialEntries: ['/'] },
+    )
+    render(<RouterProvider router={router} />)
+    await expect
+      .element(page.getByText(/Market Risk/i).first())
+      .toBeInTheDocument()
+  })
+})
