@@ -5,7 +5,7 @@
   "homepage": "https://danielhstahl.github.io",
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.1",
-    "@vitest/browser": "^5.0.0",
+    "@vitest/browser": "^5.0.5",
     "@vitest/browser-playwright": "^5.0.0",
     "@vitest/coverage-v8": "^5.0.0",
     "babel-plugin-react-compiler": "^1.0.0",
